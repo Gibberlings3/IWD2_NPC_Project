@@ -1,0 +1,1651 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat("Peony",0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat("Peony",FATIGUE,1,SET)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("P#SetPeonyBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPeonyBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("P#SetPeonyBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPeonyBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#PeonyRomanceTimer","GLOBAL",900)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1200)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("P#SetPeonyBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPeonyBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#PeonyRomanceTimer","GLOBAL",900)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1200)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("P#SetPeonyBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPeonyBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#PeonyRomanceTimer","GLOBAL",900)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1200)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("P#SetPeonyBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPeonyBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#PeonyRomanceTimer","GLOBAL",900)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1200)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("P#SetPeonyBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPeonyBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#PeonyRomanceTimer","GLOBAL",900)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1200)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("P#SetPeonyBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPeonyBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#PeonyRomanceTimer","GLOBAL",900)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1200)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//Chapter Talks
+
+//Chapter 5 - Dragon's eye, Day
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("peony",6104)
+Global("P#PeonyCh5","GLOBAL",0)
+Global("61CurrentDay","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh5","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",6104)
+Global("P#PeonyCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh5","GLOBAL",2)
+END
+
+//Chapetr 4 - Red Wizards Dead
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Dead("Majrash")
+Dead("Mirabel")
+Dead("Earth_Elemental1")
+Dead("Earth_Elemental2")
+Dead("Earth_Elemental3")
+Dead("Earth_Elemental4")
+Dead("Earth_Elemental5")
+Dead("Harpy1")
+Dead("Harpy2")
+Dead("Harpy3")
+Dead("Harpy4")
+Dead("Harpy5")
+Dead("Harpy6")
+Dead("Harpy7")
+Dead("Harpy8")
+Dead("Harpy9")
+Dead("Harpy10")
+Dead("Harpy11")
+Global("Chapter","GLOBAL",4)
+Global("5303_Cutscene_Done","AR5303",1)
+CurrentAreaIs("peony",5303)
+Global("P#PeonyCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh4","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+CurrentAreaIs("peony",5303)
+Global("P#PeonyCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh4","GLOBAL",0)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",5303)
+Global("P#PeonyCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh4","GLOBAL",2)
+END
+
+//Chapetr 3 - Marshes
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("peony",5004)
+Global("P#PeonyCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh3","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",5004)
+Global("P#PeonyCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh3","GLOBAL",2)
+END
+
+//Chapter 3 - in Romance
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#PeonyMatch","GLOBAL",1)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Peony",5010)
+Global("P#PeonyCh3RTimer","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh3RTimer","GLOBAL",1)
+SetGlobalTimer("P#PeonyWoodTimer","GLOBAL",100)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+OR(21)
+CurrentAreaIs("Peony",5010)
+CurrentAreaIs("Peony",5011)
+CurrentAreaIs("Peony",5012)
+CurrentAreaIs("Peony",5013)
+CurrentAreaIs("Peony",5014)
+CurrentAreaIs("Peony",5015)
+CurrentAreaIs("Peony",5016)
+CurrentAreaIs("Peony",5017)
+CurrentAreaIs("Peony",5018)
+CurrentAreaIs("Peony",5019)
+CurrentAreaIs("Peony",5020)
+CurrentAreaIs("Peony",5021)
+CurrentAreaIs("Peony",5022)
+CurrentAreaIs("Peony",5023)
+CurrentAreaIs("Peony",5024)
+CurrentAreaIs("Peony",5025)
+CurrentAreaIs("Peony",5026)
+CurrentAreaIs("Peony",5027)
+CurrentAreaIs("Peony",5028)
+CurrentAreaIs("Peony",5029)
+CurrentAreaIs("Peony",5030)
+Global("P#PeonyMatch","GLOBAL",1)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+Global("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PeonyWoodTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#PeonyCh3R","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh3R","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+!CurrentAreaIs("Peony",5010)
+!CurrentAreaIs("Peony",5011)
+!CurrentAreaIs("Peony",5012)
+!CurrentAreaIs("Peony",5013)
+!CurrentAreaIs("Peony",5014)
+!CurrentAreaIs("Peony",5015)
+!CurrentAreaIs("Peony",5016)
+!CurrentAreaIs("Peony",5017)
+!CurrentAreaIs("Peony",5018)
+!CurrentAreaIs("Peony",5019)
+!CurrentAreaIs("Peony",5020)
+!CurrentAreaIs("Peony",5021)
+!CurrentAreaIs("Peony",5022)
+!CurrentAreaIs("Peony",5023)
+!CurrentAreaIs("Peony",5024)
+!CurrentAreaIs("Peony",5025)
+!CurrentAreaIs("Peony",5026)
+!CurrentAreaIs("Peony",5027)
+!CurrentAreaIs("Peony",5028)
+!CurrentAreaIs("Peony",5029)
+!CurrentAreaIs("Peony",5030)
+Global("P#PeonyCh3R","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh3R","GLOBAL",2)
+END
+
+//Chapetr 2 - Shoot Prism
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("peony",4102)
+OR(3)
+Global("PrismSequence","MYAREA",4)
+Global("PrismSequence","MYAREA",0)
+Global("P#NickToldDoors","GLOBAL",1)
+Global("P#PeonyCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh2","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",4102)
+Global("P#PeonyCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh2","GLOBAL",2)
+END
+
+//Chapter 1-Enneli and Branston Reunited
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("peony",3000)
+Global("Braston_Ennelia_Leave", "GLOBAL", 1)
+Global("P#PeonyCh1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh1","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",3000)
+Global("P#PeonyCh1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyCh1","GLOBAL",2)
+END
+
+//Scenery
+
+//Romantic Aerie
+
+IF
+!AnyPCSeesEnemy()
+InParty("charbase")
+See("charbase",0)
+InParty("Peony") 
+!Dead("Peony") 
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+!StateCheck("Peony",STATE_SLEEPING)
+!StateCheck("Peony",STATE_DEAD)
+!StateCheck("Peony",STATE_ACID_DEATH)
+!StateCheck("Peony",STATE_FLAME_DEATH )
+!StateCheck("Peony",STATE_EXPLODING_DEATH)             
+!StateCheck("Peony",STATE_STONE_DEATH)
+!StateCheck("Peony",STATE_FROZEN_DEATH)
+!StateCheck("Peony",STATE_HELPLESS)
+!StateCheck("Peony",STATE_INVISIBLE)
+!StateCheck("Peony",STATE_STUNNED)
+!StateCheck("Peony",STATE_PANIC)
+!StateCheck("Peony",STATE_BERSERK)
+!StateCheck("Peony",STATE_CHARMED)
+!StateCheck("Peony",STATE_BLIND)
+!StateCheck("Peony",STATE_FEEBLEMINDED)
+!StateCheck("Peony",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("Peony",STATE_CONFUSED)
+!StateCheck("charbase",STATE_SLEEPING)
+!StateCheck("charbase",STATE_DEAD)
+!StateCheck("charbase",STATE_ACID_DEATH)
+!StateCheck("charbase",STATE_FLAME_DEATH )
+!StateCheck("charbase",STATE_EXPLODING_DEATH)             
+!StateCheck("charbase",STATE_STONE_DEATH)
+!StateCheck("charbase",STATE_FROZEN_DEATH)
+!StateCheck("charbase",STATE_HELPLESS)
+!StateCheck("charbase",STATE_INVISIBLE)
+!StateCheck("charbase",STATE_STUNNED)
+!StateCheck("charbase",STATE_PANIC)
+!StateCheck("charbase",STATE_BERSERK)
+!StateCheck("charbase",STATE_CHARMED)
+!StateCheck("charbase",STATE_BLIND)
+!StateCheck("charbase",STATE_FEEBLEMINDED)
+!StateCheck("charbase",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("charbase",STATE_CONFUSED)
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Peony",6703)
+Global("P#PeonyRoInt12","GLOBAL",0)
+Global("Unhide_Buvai","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyRoInt12","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",6703)
+Global("P#PeonyRoInt12","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyRoInt12","GLOBAL",2)
+END
+
+//Chapters 1 through 4
+
+//Romantic Peony, Prologue
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("peony",1200)
+GlobalGT("Palisade_Iron_Collar_Quest","GLOBAL",2)
+Global("Goblins_Attack_Palisade","GLOBAL",1)
+OR(2)
+Global("S_R_1", "GLOBAL", 1)
+Global("Shawford_Has_No_Pants", "GLOBAL", 1)
+Global("P#PeonyFirstBattle","GLOBAL",0)
+Gender(Player1,MALE) 
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyFirstBattle","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",1200)
+Global("P#PeonyFirstBattle","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyFirstBattle","GLOBAL",2)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("peony",5004)
+OR(4)
+Global("Rock_Row_1_Moved","AR5004",1)
+Global("Rock_Row_2_Moved","AR5004",1)
+Global("Rock_Row_3_Moved","AR5004",1)
+Global("Rock_Row_4_Moved","AR5004",1)
+Global("P#PeonyStoneGame","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyStoneGame","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",5004)
+Global("P#PeonyStoneGame","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyStoneGame","GLOBAL",2)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("peony",5000)
+Global("P#PeonyTahvoJelouse","GLOBAL",0)
+Global("P#PC_WantsComplimentFemale","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+InParty("Rizdaer")
+!Dead("Rizdaer")
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyTahvoJelouse","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",5000)
+Global("P#PeonyTahvoJelouse","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyTahvoJelouse","GLOBAL",2)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("peony",5000)
+Global("P#PeonyTahvoCompliment","GLOBAL",0)
+Global("P#PC_WantsComplimentMale","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyTahvoCompliment","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",5000)
+Global("P#PeonyTahvoCompliment","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyTahvoCompliment","GLOBAL",2)
+END
+
+//AR6103
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("peony",6103)
+Global("P#PeonyAr6103","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyAr6103","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",6103)
+Global("P#PeonyAr6103","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyAr6103","GLOBAL",2)
+END
+
+//AR4101
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING) 
+!Dead("peony") 
+!StateCheck("peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("peony",4100)
+IsPlayerNumber("charbase",1)
+PartyHasItem("41genor")
+Global("P#PeonyOriaLetter","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyOriaLetter","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+IF
+!CurrentAreaIs("peony",4101)
+Global("P#PeonyOriaLetter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyOriaLetter","GLOBAL",2)
+END
+
+//Saw Sherincal
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING) 
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("peony",3101)
+Global("P#HearSherincal","GLOBAL",1)
+Global("P#peonySherincal","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#peonySherincal","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",3101)
+Global("P#peonySherincal","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#peonySherincal","GLOBAL",2)
+END
+
+//AR3000
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("peony",3000)
+Dead("17_OgrGar")
+Global("P#PeonyGarkDead","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyGarkDead","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",3000)
+Global("P#PeonyGarkDead","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyGarkDead","GLOBAL",2)
+END
+
+//Sh. Bridge destroyed
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("peony",2102)
+Global("Shaengarne_Quest", "GLOBAL", 2)
+Global("Shaengarne_Bridge_Destroyed","GLOBAL",2)
+Global("P#PeonyBridgeDestroyed","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyBridgeDestroyed","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",2102)
+Global("P#PeonyBridgeDestroyed","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyBridgeDestroyed","GLOBAL",2)
+END
+
+//AR2101 Sh. Dam
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Peony",2101)
+OR(2)
+Dead("20snlp")
+See("20snlp",1)
+Global("P#PeonyLeopard","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyLeopard","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet("Peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",2101)
+Global("P#PeonyLeopard","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyLeopard","GLOBAL",2)
+END
+
+//Logging Village Resolution
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("peony",2001)
+Global("SR_Orc_Guards_Dead","GLOBAL",1)
+Global("SR_Villagers_Dead","GLOBAL",0)
+Global("SR_Rescue_Villagers","GLOBAL",5)
+Global("P#PeonyLV_Saved","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyLV_Saved","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",2001)
+Global("P#PeonyLV_Saved","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyLV_Saved","GLOBAL",2)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("peony",2001)
+Global("SR_Villagers_Dead","GLOBAL", 4)
+Global("SR_Dead_Villager","GLOBAL",12)
+GlobalLT("SR_Rescue_Villagers","GLOBAL", 5)
+Global("P#PeonyLV_Doom","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyLV_Doom","GLOBAL",1)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("peony",2001)
+Global("P#PeonyLV_Doom","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyLV_Doom","GLOBAL",2)
+END
+
+//Shaegarne Bridge
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Peony",2000)
+Global("P#PeonyTorakFlirt","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyTorakFlirt","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",2000)
+Global("P#PeonyTorakFlirt","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyTorakFlirt","GLOBAL",3)
+END
+
+
+//Chapters 4 through 6
+
+//Statue Open
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalGT("61BrazierTally","GLOBAL",30)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Peony",6101)
+Global("P#PeonyFlame","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyFlame","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",6101)
+Global("P#PeonyFlame","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyFlame","GLOBAL",2)
+END
+
+
+//Mandal Death
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#MandalStoryTold","GLOBAL",1)
+!See("61Mandal",0)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Peony",6102)
+Global("P#PeonyMandal","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyMandal","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",6102)
+Global("P#PeonyMandal","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyMandal","GLOBAL",2)
+END
+
+//Peony LostFollowers
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Peony",6103)
+Global("P#PeonyLostFollowers","GLOBAL",0)
+PartyHasItem("61AMULLF")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyLostFollowers","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",6103)
+Global("P#PeonyLostFollowers","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyLostFollowers","GLOBAL",2)
+END
+
+//Peony AR5203 (out of the monastery)
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Peony",5203)
+Global("P#PeonyAR5101","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyAR5101","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",5203)
+Global("P#PeonyAR5101","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyAR5101","GLOBAL",2)
+END
+
+//Peony found Druegar Key
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Peony",5101)
+PartyHasItem("51keydu")
+Global("P#PeonyDuergarKey","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyDuergarKey","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",5101)
+Global("P#PeonyDuergarKey","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyDuergarKey","GLOBAL",2)
+END
+
+//Peony sees Ice Trolls
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Peony",4101)
+See("41ITroIce",0)
+Global("P#PeonyITrolls","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyITrolls","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",4100)
+Global("P#PeonyITrolls","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyITrolls","GLOBAL",2)
+END
+
+//Aocha
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Peony",4100)
+OR(2)
+Global("P#PeonySeesAocha","GLOBAL",1)
+See("41Aocha",0)
+Global("P#PeonyAocha","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyAocha","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!CurrentAreaIs("Peony",4100)
+Global("P#PeonyAocha","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyAocha","GLOBAL",2)
+END
+
+
+//Normal NPC Banter
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEDI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEDI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEDI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEDI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEHI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEHI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEJA2","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEJA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEJA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PENI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PENI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PENI2","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PENI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PENO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PENO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PENO2","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PENO2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PENO3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PENO3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PENO4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PENO4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEPR1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEPR1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEPR2","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEPR2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PESA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PESA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PESA2","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PESA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PESA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PESA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PERI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PERI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PERI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PERI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PERI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PERI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PERI4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PERI4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PERI5","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PERI5","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEVA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEVA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("valeero"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEVA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEVA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("valeero"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAPE1","GLOBAL",2)
+Global("P#PEVA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEVA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("valeero"))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PeonyTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PEVA4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PeonyTimer","GLOBAL",2400)
+IncrementGlobal("P#PEVA4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet("valeero"))
+END
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+//In Prologue or later
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#PeonyPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1200)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#PeonyPCTalkTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#PeonyPCTalk","GLOBAL",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#PeonyPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#PeonyPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#PeonyPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+OR(2)
+Global("P#PeonyPCTalk","GLOBAL",5)
+Global("P#PeonyPCTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#PeonyPCTalk","GLOBAL",9)
+Global("P#PeonyPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+OR(2)
+Global("P#PeonyPCTalk","GLOBAL",13)
+Global("P#PeonyPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#PeonyPCTalk","GLOBAL",17)
+!CurrentAreaIs("peony",6050)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#PeonyPCTalk","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PeonyPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("peon000")
+ActionOverride("peony",StartDialogueNoSet(Player1))
+END

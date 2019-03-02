@@ -1,0 +1,97 @@
+//Hildury's Reincarnation Script
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationOrc","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ActionOverride("diriel",MoveToObject(Myself))
+ActionOverride(Myself,PlayDead(60))
+SpellHitEffectSprite(Myself,Myself,RIGHTEOUS_WRATH_OF_THE_FAITHFUL_GROUND,0)
+ActionOverride(Myself,DisplayString(Myself,@0 /* ~Hildury is reincarnated as a half-orc.~ */))
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationElf","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ActionOverride("diriel",MoveToObject(Myself))
+ActionOverride(Myself,PlayDead(60))
+SpellHitEffectSprite(Myself,Myself,RIGHTEOUS_WRATH_OF_THE_FAITHFUL_GROUND,0)
+ActionOverride(Myself,DisplayString(Myself,@1 /* ~Hildury is reincarnated as an elf.~ */))
+ReallyForceSpellRES("P#HIHEEL",Myself)
+ChangeRace(Myself,ELF)
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationHalfelf","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ActionOverride("diriel",MoveToObject(Myself))
+ActionOverride(Myself,PlayDead(60))
+SpellHitEffectSprite(Myself,Myself,RIGHTEOUS_WRATH_OF_THE_FAITHFUL_GROUND,0)
+ActionOverride(Myself,DisplayString(Myself,@2 /* ~Hildury is reincarnated as a halfelf.~ */))
+ReallyForceSpellRES("P#HIHEEL",Myself)
+ChangeRace(Myself,HALF_ELF)
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationHuman","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ActionOverride("diriel",MoveToObject(Myself))
+ActionOverride(Myself,PlayDead(60))
+SpellHitEffectSprite(Myself,Myself,RIGHTEOUS_WRATH_OF_THE_FAITHFUL_GROUND,0)
+ActionOverride(Myself,DisplayString(Myself,@3 /* ~Hildury is reincarnated as a human.~ */))
+ReallyForceSpellRES("P#HIHUDW",Myself)
+ChangeRace(Myself,HUMAN)
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationDwarf","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ActionOverride("diriel",MoveToObject(Myself))
+ActionOverride(Myself,PlayDead(60))
+SpellHitEffectSprite(Myself,Myself,RIGHTEOUS_WRATH_OF_THE_FAITHFUL_GROUND,0)
+ActionOverride(Myself,DisplayString(Myself,@4 /* ~Hildury is reincarnated as a dwarf.~ */))
+ReallyForceSpellRES("P#HIHUDW",Myself)
+ChangeRace(Myself,DWARF)
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationHalfling","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ActionOverride("diriel",MoveToObject(Myself))
+ActionOverride(Myself,PlayDead(60))
+SpellHitEffectSprite(Myself,Myself,RIGHTEOUS_WRATH_OF_THE_FAITHFUL_GROUND,0)
+ActionOverride(Myself,DisplayString(Myself,@5 /* ~Hildury is reincarnated as a halfling.~ */))
+ReallyForceSpellRES("P#HIGNHA",Myself)
+ChangeRace(Myself,HALFLING)
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationGnome","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ActionOverride("diriel",MoveToObject(Myself))
+ActionOverride(Myself,PlayDead(60))
+SpellHitEffectSprite(Myself,Myself,RIGHTEOUS_WRATH_OF_THE_FAITHFUL_GROUND,0)
+ActionOverride(Myself,DisplayString(Myself,@6 /* ~Hildury is reincarnated as a gnome.~ */))
+ReallyForceSpellRES("P#HIGNHA",Myself)
+ChangeRace(Myself,GNOME)
+END

@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("hildury")
+		FloatMessage("hildury",@0 /* ~I do not be evil's servant.~ */)
+		SetGlobal("P#hilduryQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("hildury","hildury",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("hildury",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

@@ -1,0 +1,15 @@
+IF
+	NumTimesTalkedToGT(0)
+	OR(6)
+	HPPercentLT(Player1,15)
+	HPPercentLT(Player2,15)
+	HPPercentLT(Player3,15)
+	HPPercentLT(Player4,15)
+	HPPercentLT(Player5,15)
+	HPPercentLT(Player6,15)
+	Global("P#41Sherin_Prison","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("P#41Sherin_Prison","GLOBAL",1)
+		StartDialogueNoSet(Player1)
+END

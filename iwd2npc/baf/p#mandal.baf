@@ -1,0 +1,7 @@
+IF
+Global("TellStory","LOCALS",1)
+Global("P#MandalStoryTold","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#MandalStoryTold","GLOBAL",1)
+END

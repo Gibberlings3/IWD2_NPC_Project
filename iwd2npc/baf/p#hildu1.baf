@@ -1,0 +1,1083 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat("hildury",0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat("hildury",FATIGUE,1,SET)
+END
+
+//Chapter 5
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+Race("Hildury",HALFORC)
+CurrentAreaIs("Hildury",6101)
+Global("P#HilduryIntimidate","GLOBAL",1)
+CheckSkillGT("Hildury",11,Intimidate)
+Global("P#HilduryCh5","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh5","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("Hildury",6101)
+Global("P#HilduryCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh5","GLOBAL",2)
+END
+
+//Chapter 4
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Hildury",5203)
+Global("P#HilduryCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh4","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("Hildury",5203)
+Global("P#HilduryCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh4","GLOBAL",2)
+END
+
+//Chapter 3
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Hildury",5101)
+Global("51Barud_Offer", "GLOBAL",2)
+Global("P#HilduryCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh3","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("Hildury",5101)
+Global("P#HilduryCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh3","GLOBAL",2)
+END
+
+//Chapter 2 Temple Done
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+OR(3)
+CurrentAreaIs("hildury",4100)
+CurrentAreaIs("hildury",4101)
+CurrentAreaIs("hildury",4102)
+Global("CagedFury_dead","GLOBAL",1)
+Global("P#HilduryCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh2","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",4100)
+!CurrentAreaIs("hildury",4101)
+!CurrentAreaIs("hildury",4102)
+Global("P#HilduryCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh2","GLOBAL",2)
+END
+
+//Chapter 1 Torak Dead
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("hildury",2001)
+Global("SR_Torak_Dead","GLOBAL", 1)
+Global("P#HilduryCh1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh1","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",2001)
+Global("P#HilduryCh1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh1","GLOBAL",2)
+END
+
+//Scenery
+
+//Hildury LostFollowers
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("hildury",6103)
+Global("P#HilduryLostFollowers","GLOBAL",0)
+PartyHasItem("61AMULLF")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryLostFollowers","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",6103)
+Global("P#HilduryLostFollowers","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryLostFollowers","GLOBAL",2)
+END
+
+//In Fell Wood, Restless Dead
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("hildury",5010)
+Global("50HGhost","GLOBAL",2)
+Global("P#HilduryRD5010","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryRD5010","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",5010)
+Global("P#HilduryRD5010","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryRD5010","GLOBAL",2)
+END
+
+//AR4102 IceTemple
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("hildury",4102)
+Global("KillMirrorTrap","AR4102",1)
+Global("P#HilduryTalisman","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryTalisman","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",4102)
+Global("P#HilduryTalisman","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryTalisman","GLOBAL",2)
+END
+
+//AR4101 IceTemple
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("hildury",4101)
+GlobalGT("41SaidPainting2","GLOBAL",0)
+Global("P#HilduryStatues","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryStatues","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",4101)
+Global("P#HilduryStatues","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryStatues","GLOBAL",2)
+END
+
+//AR2101 Sh. Dam
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("hildury",2101)
+PartyHasItem("21GENWP")
+Global("P#HilduryBeam","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryBeam","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",2101)
+Global("P#HilduryBeam","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryBeam","GLOBAL",2)
+END
+
+//LG Village Resolutions
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("hildury",2001)
+Global("SR_Orc_Guards_Dead","GLOBAL",1)
+Global("SR_Villagers_Dead","GLOBAL",0)
+Global("SR_Rescue_Villagers","GLOBAL",5)
+Global("P#HilduryLV_Saved","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryLV_Saved","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",2001)
+Global("P#HilduryLV_Saved","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryLV_Saved","GLOBAL",2)
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("hildury",2001)
+Global("SR_Villagers_Dead","GLOBAL", 4)
+Global("SR_Dead_Villager","GLOBAL",12)
+GlobalLT("SR_Rescue_Villagers","GLOBAL", 5)
+Global("P#HilduryLV_Doom","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryLV_Doom","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",2001)
+Global("P#HilduryLV_Doom","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryLV_Doom","GLOBAL",2)
+END
+
+//Shaengarne River
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+Global("SR_Torak_Talk","GLOBAL", 4)
+CurrentAreaIs("hildury",2000)
+Global("P#HilduryTorakFlee","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryTorakFlee","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",2000)
+Global("P#HilduryTorakFlee","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryTorakFlee","GLOBAL",2)
+END
+
+//Hildury Palisade Niles
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("Niles_Quest", "GLOBAL", 2)
+CurrentAreaIs("hildury",1200)
+Global("P#HilduryNiles","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryNiles","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",1200)
+Global("P#HilduryNiles","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryNiles","GLOBAL",2)
+END
+
+//Targos Town
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("Know_Crane_Broke", "GLOBAL",1)
+Global("Crane_Wheel", "GLOBAL", 0)
+CurrentAreaIs("hildury",1100)
+Global("P#HilduryLumbar","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryLumbar","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",1100)
+Global("P#HilduryLumbar","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryLumbar","GLOBAL",2)
+END
+
+//Targos Docks
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("Firtha_Cat", "GLOBAL",0)
+CurrentAreaIs("hildury",1004)
+PartyHasItem("00MISC02")
+Global("P#HilduryDeadCat","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryDeadCat","GLOBAL",1)
+ActionOverride("hildury",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!CurrentAreaIs("hildury",1004)
+PartyHasItem("00MISC02")
+Global("P#HilduryDeadCat","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryDeadCat","GLOBAL",2)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("P#SetHilduryBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetHilduryBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("P#SetHilduryBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetHilduryBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("P#SetHilduryBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetHilduryBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("P#SetHilduryBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetHilduryBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("P#SetHilduryBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetHilduryBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("P#SetHilduryBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetHilduryBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+Global("P#SetHilduryBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetHilduryBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//NPC Banter
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+Global("P#DIHI1","GLOBAL",2)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIDI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIDI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIDI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIDI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#HilduryReincarnation","GLOBAL",1)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIDI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIDI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIJA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+InParty("Salomeya")
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIJA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIJA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HINI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HINI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HINO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HINO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+Global("P#JustStarted","GLOBAL",1)
+CheckStat("hildury",0,FATIGUE)
+InParty("Salomeya")
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HINO2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HINO2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ChangeStat("hildury",FATIGUE,1,SET)
+ActionOverride("hildury",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HINO3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HINO3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HINO4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HINO4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+Global("P#NordIdentity","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HINO5","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HINO5","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+InParty("Jaemal")
+InParty("Nord")
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HISA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HISA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HISA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HISA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIPR1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIPR1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIPR2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIPR2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HIPE2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIPE2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("peony"))
+END
+
+//Rizdaer
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#HIRI1","GLOBAL",0)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIRI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#HIRI2","GLOBAL",0)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIRI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+Global("P#HIVA1","GLOBAL",0)
+GlobalTimerExpired("P#HilduryTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#HilduryTimer","GLOBAL",4800)
+IncrementGlobal("P#HIVA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet("Valeero"))
+END
+
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+//In Prologue or later goes to 2
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#HilduryPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#HilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",2800)
+END
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#HilduryPCTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#HilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+
+//In Chapter 1 goes to 4
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#HilduryPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#HilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2 goes to 6
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",1)
+Global("P#HilduryPCTalk","GLOBAL",5)
+THEN
+RESPONSE #100
+IncrementGlobal("P#HilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3 goes to 10
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#HilduryPCTalk","GLOBAL",7)
+Global("P#HilduryPCTalk","GLOBAL",9)
+THEN
+RESPONSE #100
+IncrementGlobal("P#HilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4 goes to 12
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",3)
+Global("P#HilduryPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#HilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5 goes to 16
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",4)
+!CurrentAreaIs(Myself,6050)
+OR(2)
+Global("P#HilduryPCTalk","GLOBAL",13)
+Global("P#HilduryPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#HilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6 goes to 18
+
+IF
+InParty("hildury") !Dead("hildury") !StateCheck("hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#HilduryPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#HilduryPCTalk","GLOBAL",17)
+THEN
+RESPONSE #100
+IncrementGlobal("P#HilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#HilduryPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("hild000")
+ActionOverride("hildury",StartDialogueNoSet(Player1))
+END
+

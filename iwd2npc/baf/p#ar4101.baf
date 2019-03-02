@@ -1,0 +1,35 @@
+IF
+InParty("Hildury")
+Global("Chapter","GLOBAL",2)
+GlobalGT("41SaidPainting2","GLOBAL",0)
+Global("P#HilduryStatues","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryStatues","GLOBAL",1)
+ActionOverride("Hildury",StartDialogueNoSet(Myself))
+END  
+
+IF
+InParty("Hildury")
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+Global("CagedFury_dead","GLOBAL",1)
+Global("P#HilduryCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh2","GLOBAL",1)
+ActionOverride("Hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("peony")
+Global("Chapter","GLOBAL",2)
+See("41ITroIce",0)
+Global("P#PeonyITrolls","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyITrolls","GLOBAL",1)
+ActionOverride("peony",StartDialogueNoSet(Myself))
+END

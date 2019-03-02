@@ -1,0 +1,23 @@
+IF
+True()
+THEN
+RESPONSE #100
+StopJoinRequests()
+CutSceneId("Diriel")
+MultiPlayerSync()
+HideGUI()
+FadeToColor([0.0],0)
+ActionOverride(Player1,LeaveAreaLUA("AR6001","LOAD5000",[1224.903],2))
+ActionOverride(Player2,LeaveAreaLUA("AR6001","LOAD5000",[1227.906],2))
+ActionOverride(Player3,LeaveAreaLUA("AR6001","LOAD5000",[1227.906],2))
+ActionOverride(Player4,LeaveAreaLUA("AR6001","LOAD5000",[1391.1106],2))
+ActionOverride(Player5,LeaveAreaLUA("AR6001","LOAD5000",[1445.1035],2))
+ActionOverride(Player6,LeaveAreaLUA("AR6001","LOAD5000",[1440.969],2))
+ActionOverride("Diriel",JumpToObject(Player1))
+FadeFromColor([0.0],0)
+Wait(1)
+MoveViewObject(NearestPC,INSTANT)
+SetGlobal("P#DirielSeduction","GLOBAL",11)
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+EndCutSceneMode()
+END

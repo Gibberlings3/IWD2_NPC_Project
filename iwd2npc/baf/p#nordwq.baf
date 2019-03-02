@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("nord")
+		FloatMessage("nord",@0 /* ~Curse you, pup!~ */)
+		SetGlobal("P#nordQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("nord","nord",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("nord",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("peony")
+		FloatMessage("peony",@0 /* ~Well, grandma wouldn't have approved of you anyways.~ */)
+		SetGlobal("P#peonyQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("peony","peony",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("peony",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

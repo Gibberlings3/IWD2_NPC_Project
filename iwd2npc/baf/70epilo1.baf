@@ -1,0 +1,104 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Protagonist)
+		SetGlobal("P#SH_Teleported_To_Outside","GLOBAL",1)
+		HideGUI()
+		MultiPlayerSync()
+		MoveViewObject(Myself,FASTEST)
+		Wait(3)
+		PlaySound("EFF_E02")
+		SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		HideCreature(Myself,TRUE)
+		Wait(3)
+		FadeToColor([0.0],0)
+		Wait(1)
+		ScreenShake(22,100,100)
+		StartCutScene("70cutlua")
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		Wait(6)
+		PlaySound("EFF_E02")
+		ApplySpell(Myself,CLERIC_GREATER_RESTORATION)
+                ApplySpell(Myself,CLERIC_HEAL)
+                ApplySpell(Myself,CLERIC_FREE_ACTION)
+                SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		HideCreature(Myself,TRUE)
+		END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player2)
+		Wait(6)
+		PlaySound("EFF_E02")
+		ApplySpell(Myself,CLERIC_GREATER_RESTORATION)
+                ApplySpell(Myself,CLERIC_HEAL)
+                ApplySpell(Myself,CLERIC_FREE_ACTION)
+                SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		HideCreature(Myself,TRUE)
+		END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player3)
+		Wait(6)
+		PlaySound("EFF_E02")
+		ApplySpell(Myself,CLERIC_GREATER_RESTORATION)
+                ApplySpell(Myself,CLERIC_HEAL)
+                ApplySpell(Myself,CLERIC_FREE_ACTION)
+                SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		HideCreature(Myself,TRUE)
+		END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player4)
+		Wait(6)
+		PlaySound("EFF_E02")
+		ApplySpell(Myself,CLERIC_GREATER_RESTORATION)
+                ApplySpell(Myself,CLERIC_HEAL)
+                ApplySpell(Myself,CLERIC_FREE_ACTION)
+                SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		HideCreature(Myself,TRUE)
+		END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player5)
+		Wait(6)
+		PlaySound("EFF_E02")
+		ApplySpell(Myself,CLERIC_GREATER_RESTORATION)
+                ApplySpell(Myself,CLERIC_HEAL)
+                ApplySpell(Myself,CLERIC_FREE_ACTION)
+                SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		HideCreature(Myself,TRUE)
+		END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		Wait(6)
+		PlaySound("EFF_E02")
+		ApplySpell(Myself,CLERIC_GREATER_RESTORATION)
+                ApplySpell(Myself,CLERIC_HEAL)
+                ApplySpell(Myself,CLERIC_FREE_ACTION)
+                SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		HideCreature(Myself,TRUE)
+		END
+

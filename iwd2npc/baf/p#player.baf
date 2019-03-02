@@ -1,0 +1,49 @@
+IF
+Global("P#CheckPlayer2","GLOBAL",0)
+IsPlayerNumber("charbase",2)
+IsScriptName("charbase",Player2)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckPlayer2","GLOBAL",1)
+SetScriptName(Player2,"PLAYER02")
+END
+
+IF
+Global("P#CheckPlayer3","GLOBAL",0)
+IsPlayerNumber("charbase",3)
+IsScriptName("charbase",Player3)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckPlayer3","GLOBAL",1)
+SetScriptName(Player3,"PLAYER03")
+END
+
+IF
+Global("P#CheckPlayer4","GLOBAL",0)
+IsPlayerNumber("charbase",4)
+IsScriptName("charbase",Player4)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckPlayer4","GLOBAL",1)
+SetScriptName(Player4,"PLAYER04")
+END
+
+IF
+Global("P#CheckPlayer5","GLOBAL",0)
+IsPlayerNumber("charbase",5)
+IsScriptName("charbase",Player5)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckPlayer5","GLOBAL",1)
+SetScriptName(Player5,"PLAYER05")
+END
+
+IF
+Global("P#CheckPlayer6","GLOBAL",0)
+IsPlayerNumber("charbase",6)
+IsScriptName("charbase",Player6)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckPlayer6","GLOBAL",1)
+SetScriptName(Player6,"PLAYER06")
+END

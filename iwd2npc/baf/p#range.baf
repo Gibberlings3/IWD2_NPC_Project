@@ -1,0 +1,79 @@
+//Summon Familiar for the first time
+
+IF
+Global("P#SummonBear","GLOBAL",0)
+ClassEx(Myself,Ranger)
+Alignment(Myself,MASK_GOOD)
+!StateCheck(Myself,STATE_DEAD)
+!Exists("P#BEARPO")
+THEN RESPONSE #100
+IncrementGlobal("P#SummonBear","GLOBAL",1)
+SetGlobal("P#bear_Dead","GLOBAL",0)
+CreateCreature("P#bearpo","P#bearpo",[-1.-1],4)
+ActionOverride("P#bearpo",JumpToObject(Myself))
+END
+
+//Resummon if walked out of the area
+
+IF
+Global("P#SummonBear","GLOBAL",0)
+ClassEx(Myself,Ranger)
+Alignment(Myself,MASK_GOOD)
+!StateCheck(Myself,STATE_DEAD)
+Global("P#bear_Dead","GLOBAL",0)
+!See("p#bearpo",0)
+THEN RESPONSE #100
+IncrementGlobal("P#SummonBear","GLOBAL",1)
+CreateCreature("P#bearpo","P#bearpo",[-1.-1],4)
+ActionOverride("P#bearpo",JumpToObject(Myself))
+END
+
+IF
+Global("P#SummonBear","GLOBAL",1)
+ClassEx(Myself,Ranger)
+Alignment(Myself,MASK_GOOD)
+!StateCheck(Myself,STATE_DEAD)
+!See("P#bear",0)
+THEN RESPONSE #100
+SetGlobal("P#SummonBear","GLOBAL",2)
+SetGlobal("P#bear_Dead","GLOBAL",1)
+ActionOverride("P#bear",DestroySelf())
+END
+
+IF
+Global("P#SummonBear","GLOBAL",2)
+ClassEx(Myself,Ranger)
+Alignment(Myself,MASK_GOOD)
+!StateCheck(Myself,STATE_DEAD)
+Dead("P#bear")
+Global("P#bear_Dead","GLOBAL",1)
+THEN RESPONSE #100
+SetGlobal("P#bear_Dead","GLOBAL",0)
+SetGlobal("P#SummonBear","GLOBAL",0)
+END
+
+//Follow Script - temp
+
+IF
+Global("P#SummonBear","GLOBAL",1)
+ClassEx(Myself,Ranger)
+Alignment(Myself,MASK_GOOD)
+See("p#bearpo",1)
+!StateCheck(Myself,STATE_DEAD)
+THEN RESPONSE #100
+ActionOverride("p#bearpo",MoveToObjectFollow(Myself))
+END
+
+//Jump Area script - don't work
+
+IF
+Global("P#SummonBear","GLOBAL",1)
+ClassEx(Myself,Ranger)
+Alignment(Myself,MASK_GOOD)
+!See("p#bearpo",1)
+!StateCheck(Myself,STATE_DEAD)
+THEN RESPONSE #100
+ActionOverride("p#bearpo",MoveToObjectUntilSee(Myself))
+END
+
+//Level Up Script

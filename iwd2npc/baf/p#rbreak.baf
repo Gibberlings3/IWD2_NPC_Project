@@ -1,0 +1,317 @@
+IF
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+!Global("P#JaemalRomanceInactive","GLOBAL",1) 
+Global("P#DirielSeduction","GLOBAL",12)
+OR(2)
+Global("P#DirielChild","GLOBAL",2)
+Global("P#DirielChild","GLOBAL",4)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalInterest","GLOBAL",-100)
+SetGlobal("P#JaemalRomanceDchild","GLOBAL",1)
+SetGlobal("P#JaemalRomanceInactive","GLOBAL",1)
+SetGlobal("P#JaemalRomanceNoRestore","GLOBAL",1)
+END
+
+IF
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+!Global("P#JaemalRomanceInactive","GLOBAL",1) 
+Global("P#DirielSeduction","GLOBAL",12)
+Global("P#DirielChild","GLOBAL",3)
+Global("P#JaemalRomanceDchild","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalRomanceDchild","GLOBAL",1)
+SetGlobal("P#JaemalRomanceInactive","GLOBAL",1)
+END
+
+IF
+Global("P#JaemalRomanceDchild","GLOBAL",1)
+Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#DirielSeduction","GLOBAL",12)
+Global("P#DirielChild","GLOBAL",2)
+Global("P#JaemalQuitDiriel","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalInterest","GLOBAL",-100)
+SetGlobal("P#JaemalQuitDiriel","GLOBAL",1)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#jaemaq")
+END
+
+IF
+GlobalGT("P#RizdaerRomanceActive","GLOBAL",0)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1) 
+Global("P#DirielSeduction","GLOBAL",12)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-100)
+SetGlobal("P#RizdaerRomanceInactive","GLOBAL",1)
+SetGlobal("P#RizdaerRomanceNoRestore","GLOBAL",1)
+END
+
+//Based on Interest Values
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal") 
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#JaemalMatch","GLOBAL",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+GlobalLT("P#JaemalInterest","GLOBAL",-3)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalRomanceInactive","GLOBAL",1)
+DisplayString(Player1,@0 /* ~You've lost Jaemal's affection.~ */)
+END
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#RizdaerMatch","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+GlobalGT("P#RizdaerRomanceActive","GLOBAL",0)
+!Global("P#RizdaerRomanceActive","GLOBAL",3)
+GlobalLT("P#RizdaerInterest","GLOBAL",-4)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerRomanceInactive","GLOBAL",1)
+DisplayString(Player1,@1 /* ~You've lost Rizdaer's affection.~ */)
+END
+
+IF
+InParty("Diriel")
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DirielMatch","GLOBAL",1)
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+GlobalGT("P#DirielRomanceActive","GLOBAL",0)
+!Global("P#DirielRomanceActive","GLOBAL",3)
+GlobalLT("P#DirielInterest","GLOBAL",-4)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielRomanceInactive","GLOBAL",1)
+DisplayString(Player1,@1 /* ~You've lost Diriel's affection.~ */)
+END
+
+IF
+InParty("Peony")
+!Dead("Peony")
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#PeonyMatch","GLOBAL",1)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+GlobalLT("P#PeonyInterest","GLOBAL",-2)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyRomanceInactive","GLOBAL",1)
+DisplayString(Player1,@2 /* ~You've lost Peony's affection.~ */)
+END
+
+IF
+InParty("Salomeya")
+!Dead("Salomeya")
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#SalomeyaMatch","GLOBAL",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+GlobalLT("P#SalomeyaInterest","GLOBAL",-10)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRomanceInactive","GLOBAL",1)
+DisplayString(Player1,@3 /* ~You've lost Salomeya's affection.~ */)
+END
+
+//Main Romances auto-shutdown
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal") 
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaLT","GLOBAL",0)
+Global("P#RizdaerRomanceActive","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalInterest","GLOBAL",-100)
+DisplayString(Player1,@4 /* ~You've lost Jaemal's affection, due to your treatment of Rizdaer.~ */)
+SetGlobal("P#JaemalRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal") 
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalLT("P#JaLT","GLOBAL",12)
+GlobalGT("P#RiLT","GLOBAL",19)
+GlobalGT("P#RizdaerRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalInterest","GLOBAL",-100)
+DisplayString(Player1,@5 /* ~You've lost Jaemal's affection, due to your relationship with Rizdaer.~ */)
+SetGlobal("P#JaemalRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer")
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+GlobalLT("P#RiLT","GLOBAL",12)
+GlobalGT("P#JaLT","GLOBAL",19)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-100)
+DisplayString(Player1,@6 /* ~You've lost Rizdaer's affection, due to your relationship with Jaemal.~ */)
+SetGlobal("P#RizdaerRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya")
+!Dead("Salomeya")
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalLT("P#SaLT","GLOBAL",8)
+GlobalGT("P#PeLT","GLOBAL",19)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-100)
+DisplayString(Player1,@7 /* ~You've lost Salomeya's affection, due to your relationship with Peony.~ */)
+SetGlobal("P#SalomeyaRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Peony")
+!Dead("Peony")
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalLT("P#PeLT","GLOBAL",12)
+GlobalGT("P#SaLT","GLOBAL",8)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeonyInterest","GLOBAL",-100)
+DisplayString(Player1,@8 /* ~You've lost Peony's affection, due to your relationship with Peony.~ */)
+SetGlobal("P#PeonyRomanceInactive","GLOBAL",1)
+END
+
+//Conflicts with secondary romantic characters - auto Shut-down
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal") 
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#JaemalMatch","GLOBAL",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+GlobalGT("P#JaLT","GLOBAL",12)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal") 
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#JaemalMatch","GLOBAL",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+GlobalGT("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#RizdaerMatch","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+GlobalGT("P#RizdaerRomanceActive","GLOBAL",0)
+GlobalGT("P#RiLT","GLOBAL",12)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#RizdaerMatch","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+GlobalGT("P#RizdaerRomanceActive","GLOBAL",0)
+GlobalGT("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Peony")
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#PeonyMatch","GLOBAL",1)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+GlobalGT("P#PeLT","GLOBAL",12)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiRomanceInactive","GLOBAL",1)
+SetGlobal("P#HilduryRomanceInactive","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya")
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#SalomeyaMatch","GLOBAL",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+GlobalGT("P#SaLT","GLOBAL",8)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiRomanceInactive","GLOBAL",1)
+SetGlobal("P#HilduryRomanceInactive","GLOBAL",1)
+END
+
+//Rizdaer Mistress
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+!Global("P#RizdaerRomanceActive","GLOBAL",3)
+GlobalGT("P#RizdaerMistress","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerRomanceActive","GLOBAL",3)
+DisplayString(Player1,@9 /* ~You broke Rizdaer into submitting to you.~ */)
+END
+

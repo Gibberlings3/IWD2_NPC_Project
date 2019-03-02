@@ -1,0 +1,75 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		PlaySound("EFF_E02")
+		SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		FaceObject(Player2)
+		HideCreature(Myself,FALSE)
+		Wait(4)
+		ExportParty("IWD2")
+		Wait(1)
+		SetDialogueRange(800)
+		StartDialogueNoSet(Myself)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player2)
+		Wait(2)
+		PlaySound("EFF_E02")
+		SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		FaceObject(Player1)
+		HideCreature(Myself,FALSE)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player3)
+		Wait(2)
+		PlaySound("EFF_E02")
+		SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		FaceObject(Player1)
+		HideCreature(Myself,FALSE)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player4)
+		Wait(2)
+		PlaySound("EFF_E02")
+		SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		FaceObject(Player1)
+		HideCreature(Myself,FALSE)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player5)
+		Wait(2)
+		PlaySound("EFF_E02")
+		SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		FaceObject(Player1)
+		HideCreature(Myself,FALSE)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		Wait(2)
+		PlaySound("EFF_E02")
+		SpellHitEffectSprite(Myself,Myself,PORTAL,0)
+		FaceObject(Player1)
+		HideCreature(Myself,FALSE)
+		END

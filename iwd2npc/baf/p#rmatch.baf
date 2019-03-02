@@ -1,0 +1,1856 @@
+//Matches
+
+IF
+InParty("Jaemal") 
+!Dead("Jaemal") 
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalGT("P#JaLT","GLOBAL",6)
+Global("P#JaemalMatch","GLOBAL",0)
+GlobalGT("P#JaemalInterest","GLOBAL",6)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+THEN
+RESPONSE #100
+DisplayString(Player1,@0 /* ~Jaemal seems to be falling in love with you.~ */)
+SetGlobal("P#JaemalMatch","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal") 
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#JaemalMatch","GLOBAL",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalRomanceActive","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Gender(Player1,FEMALE)
+GlobalGT("P#RiLT","GLOBAL",6)
+Global("P#RizdaerMatch","GLOBAL",0)
+GlobalGT("P#RizdaerInterest","GLOBAL",4)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+THEN
+RESPONSE #100
+DisplayString(Player1,@1 /* ~Rizdaer seems to be falling in love with you.~ */)
+SetGlobal("P#RizdaerMatch","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#RizdaerMatch","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerRomanceActive","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Gender(Player1,MALE)
+GlobalGT("P#PeLT","GLOBAL",6)
+Global("P#PeonyMatch","GLOBAL",0)
+GlobalGT("P#PeonyInterest","GLOBAL",5)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+THEN
+RESPONSE #100
+DisplayString(Player1,@2 /* ~Peony seems to be falling in love with you.~ */)
+SetGlobal("P#PeonyMatch","GLOBAL",1)
+END
+
+IF
+InParty("Peony")
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#PeonyMatch","GLOBAL",1)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+Global("P#PeonyRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PeonyRomanceActive","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Gender(Player1,MALE)
+GlobalGT("P#SaLT","GLOBAL",4)
+OR(2)
+Global("P#SaLTO1","GLOBAL",2)
+Global("P#SaLTO2","GLOBAL",2)
+Global("P#SalomeyaMatch","GLOBAL",0)
+GlobalGT("P#SalomeyaInterest","GLOBAL",4)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+THEN
+RESPONSE #100
+DisplayString(Player1,@3 /* ~Salomeya seems to be falling in love with you.~ */)
+SetGlobal("P#SalomeyaMatch","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya")
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#SalomeyaMatch","GLOBAL",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+Global("P#SalomeyaRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRomanceActive","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Gender(Player1,FEMALE)
+Race(Player1,ELF)
+!Subrace(Player1,ELF_DROW)
+GlobalGT("P#DiLT","GLOBAL",8)
+Global("P#DirielMatch","GLOBAL",0)
+GlobalGT("P#DirielInterest","GLOBAL",4)
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+THEN
+RESPONSE #100
+DisplayString(Player1,@1 /* ~Diriel seems to be falling in love with you.~ */)
+SetGlobal("P#DirielMatch","GLOBAL",1)
+END
+
+IF
+InParty("Diriel")
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Race(Player1,ELF)
+!Subrace(Player1,ELF_DROW)
+Global("P#DirielMatch","GLOBAL",1)
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+Global("P#DirielRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielRomanceActive","GLOBAL",1)
+END
+
+//For Jaemal
+
+//Skills: Bluff>5, Intimidate>5, Pick_Pocket/Open_Lock>5 Hide>5 -1
+//Stats: Int >13; Wis>13 +1; CHR>13+1; Int<9; Wis<9; Chr<9 -1
+//Alignment: Any good + 2;Any Evil -2
+//Race: Humans, Half-Elves +2; Elves + 1; Halflings, Gnomes, Dwarves -1
+//Subrace: Aasimar + 1; Drow, Duergar -2
+//Class: Rogue, Barbarian -1; Wizard_All, Bard_All +1
+//Feats: ARTERIAL_STRIKE -1; CRIPPLING_STRIKE -1; DIRTY_FIGHTING -1; ENVENOM_WEAPON -1
+//Feats: DISCIPLINE + 1, HEROIC_INSPIRATION + 1, LUCK_OF_HEROES +1, SPIRIT_OF_FLAME + 1
+//Kit: MAGE_NECROMANCER, CLERIC_BANE, CLERIC_TALOS -1
+//Skills Diplomacy>5 +1; Knowledge_Arcana>5 + 1; Spellcraft >5 +1; Use_Magic_Device>5 +1
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatJa1","GLOBAL",0)
+CheckStatGT(Player1,13,INT)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatJa2","GLOBAL",0)
+CheckStatGT(Player1,13,WIS)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatJa2","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatJa3","GLOBAL",0)
+CheckStatGT(Player1,13,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatJa3","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatJa4","GLOBAL",0)
+CheckStatLT(Player1,9,INT)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatJa4","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatJa6","GLOBAL",0)
+CheckStatLT(Player1,9,WIS)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatJa6","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatJa5","GLOBAL",0)
+CheckStatLT(Player1,9,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatJa5","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentJa1","GLOBAL",0)
+Alignment(Player1,MASK_GOOD)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",2)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentJa1","GLOBAL",0)
+Alignment(Player1,MASK_EVIL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceJa1","GLOBAL",0)
+OR(2)
+Race(Player1,HUMAN)
+Race(Player1,HALF_ELF)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",2)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceJa1","GLOBAL",0)
+Race(Player1,ELF)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceJa1","GLOBAL",0)
+OR(3)
+Race(Player1,HALFLING)
+Race(Player1,GNOME)
+Race(Player1,DWARF)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSubraceJa1","GLOBAL",0)
+Subrace(Player1,HUMAN_AASIMAR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSubraceJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSubraceJa1","GLOBAL",0)
+OR(2)
+Subrace(Player1,DWARF_GRAY)
+Subrace(Player1,ELF_DROW)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSubraceJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassJa1","GLOBAL",0)
+Class(Player1,BARD_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassJa4","GLOBAL",0)
+Class(Player1,MAGE_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassJa4","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassJa2","GLOBAL",0)
+Class(Player1,BARBARIAN)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassJa2","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassJa3","GLOBAL",0)
+Class(Player1,THIEF_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassJa3","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckKitJa1","GLOBAL",0)
+Kit(Player1,MAGE_NECROMANCER)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckKitJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckKitJa2","GLOBAL",0)
+OR(2)
+Kit(Player1,CLERIC_TALOS)
+Kit(Player1,CLERIC_BANE)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckKitJa2","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillJa1","GLOBAL",0)
+CheckSkillGT(Player1,5,Diplomacy)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillJa2","GLOBAL",0)
+CheckSkillGT(Player1,5,Knowledge_Arcana)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillJa2","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillJa3","GLOBAL",0)
+CheckSkillGT(Player1,5,Spellcraft)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillJa3","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillJa4","GLOBAL",0)
+CheckSkillGT(Player1,5,Use_Magic_Device)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillJa4","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegJa1","GLOBAL",0)
+CheckSkillGT(Player1,5,Bluff)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegJa1","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegJa2","GLOBAL",0)
+CheckSkillGT(Player1,5,Intimidate)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegJa2","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegJa3","GLOBAL",0)
+OR(2)
+CheckSkillGT(Player1,5,Pick_Pocket)
+CheckSkillGT(Player1,5,Open_Lock)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegJa3","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Jaemal")
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegJa4","GLOBAL",0)
+CheckSkillGT(Player1,5,Hide)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegJa4","GLOBAL",1)
+IncrementGlobal("P#JaemalInterest","GLOBAL",-1)
+END
+
+//For Rizdaer
+
+//Stats: Str>13; Con>13 +1; CHR>13+1; Str<9; Con<9; Chr<9 -1
+//Alignment: Any evil + 2;Any good -2
+//Race: Half-Orcs, Dwarves +2, Elves, Humans, Half-Elves +1; Halflings, Gnomes -1
+//Subrace: Drow +5
+//Class: CLASSMASK_GROUP_WARRIORS +1/CLASSMASK_GROUP_DIVINE +1/CLASSMASK_GROUP_ROGUE_BARD -1/Paladin_ALL -2
+//Feats: LUCK_OF_HEROES -1; EXTRA_SHAPESHIFTING -1; BULLHEADED -1; EXTRA_SMITING -1
+//Feats: SLIPPERY_MIND + 1, CLEAVE + 1, POWER_ATTACK +1, RESIST_POISON + 1
+//Kit: CLERIC_LATHANDER, CLERIC_SELUNE -1
+//Skills Bluff>5, Intimidate>5, Search>5 Hide>5 +1
+//Skills: Wilderness_Lore>5, Diplomacy>5
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatRi1","GLOBAL",0)
+CheckStatGT(Player1,13,STR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatRi2","GLOBAL",0)
+CheckStatGT(Player1,13,CON)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatRi2","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatRi3","GLOBAL",0)
+CheckStatGT(Player1,13,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatRi3","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatRi4","GLOBAL",0)
+CheckStatLT(Player1,9,STR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatRi4","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatRi6","GLOBAL",0)
+CheckStatLT(Player1,9,CON)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatRi6","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatRi5","GLOBAL",0)
+CheckStatLT(Player1,9,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatRi5","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentRi1","GLOBAL",0)
+Alignment(Player1,MASK_GOOD)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentRi1","GLOBAL",0)
+Alignment(Player1,MASK_EVIL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",2)
+END
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceRi1","GLOBAL",0)
+OR(2)
+Race(Player1,DWARF)
+Race(Player1,HALFORC)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",2)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceRi1","GLOBAL",0)
+OR(3)
+Race(Player1,HUMAN)
+Race(Player1,HALF_ELF)
+Race(Player1,ELF)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceRi1","GLOBAL",0)
+OR(2)
+Race(Player1,HALFLING)
+Race(Player1,GNOME)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSubraceRi1","GLOBAL",0)
+Subrace(Player1,ELF_DROW)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSubraceRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",5)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassRi1","GLOBAL",0)
+Class(Player1,FIGHTER_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassRi2","GLOBAL",0)
+Class(Player1,BARBARIAN)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassRi2","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassRi3","GLOBAL",0)
+Class(Player1,MONK)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassRi3","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassRi4","GLOBAL",0)
+or(2)
+Class(Player1,CLERIC_ALL)
+Class(Player1,DRUID_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassRi4","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassRi5","GLOBAL",0)
+Class(Player1,THIEF_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassRi5","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassRi6","GLOBAL",0)
+Class(Player1,PALADIN_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassRi6","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassRi7","GLOBAL",0)
+Class(Player1,BARD_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassRi7","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckKitRi2","GLOBAL",0)
+OR(2)
+Kit(Player1,CLERIC_LATHANDER)
+Kit(Player1,CLERIC_SELUNE)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckKitRi2","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillRi1","GLOBAL",0)
+CheckSkillGT(Player1,5,Bluff)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillRi2","GLOBAL",0)
+CheckSkillGT(Player1,5,Intimidate)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillRi2","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillRi3","GLOBAL",0)
+CheckSkillGT(Player1,5,Search)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillRi3","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillRi4","GLOBAL",0)
+CheckSkillGT(Player1,5,Hide)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillRi4","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegRi1","GLOBAL",0)
+CheckSkillGT(Player1,5,Wilderness_Lore)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegRi1","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegRi2","GLOBAL",0)
+CheckSkillGT(Player1,5,Diplomacy)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegRi2","GLOBAL",1)
+IncrementGlobal("P#RizdaerInterest","GLOBAL",-1)
+END
+
+//For Peony
+
+//Stats: Int >13; Dex>13 +1; CHR>13+1; Int<9; Dex<9; Chr<9 -1
+//Alignment: Any Chaotic + 2, Any Lawful -2
+//Race: Halflings, Gnomes + 2, Elves, Dwarves, Half-Elves +1; Humans, Half-Orcs -1
+//Subrace: Aasimar, Tiefling, Drow, Duregar, Sniferblin +5
+//Class: no prefrence
+//Feats: DISCIPLINE -1; CRIPPLING_STRIKE -1; DIRTY_FIGHTING -1; ENVENOM_WEAPON -1
+//Feats: DASH +1, LIGHTNING_REFLEXES +1, LUCK_OF_HEROES +1, SPIRIT_OF_FLAME + 1
+//Kit: MAGE_NECROMANCER, CLERIC_BANE, CLERIC_TALOS -1
+//Skills Concentration>5 +1; Knowledge_Arcana>5 + 1; Spellcraft >5 +1; Use_Magic_Device>5 +1
+//Skills: Bluff>5, Intimidate>5, Move_Silently, Hide -1
+
+IF
+InParty("Peony")
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatPe1","GLOBAL",0)
+CheckStatGT(Player1,13,INT)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatPe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatPe2","GLOBAL",0)
+CheckStatGT(Player1,13,DEX)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatPe2","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatPe3","GLOBAL",0)
+CheckStatGT(Player1,13,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatPe3","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatPe4","GLOBAL",0)
+CheckStatLT(Player1,9,INT)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatPe4","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatPe6","GLOBAL",0)
+CheckStatLT(Player1,9,DEX)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatPe6","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatPe5","GLOBAL",0)
+CheckStatLT(Player1,9,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatPe5","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentPe1","GLOBAL",0)
+Alignment(Player1,MASK_CHAOTIC)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentPe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",2)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentPe1","GLOBAL",0)
+Alignment(Player1,MASK_LAWFUL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentPe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRacePe1","GLOBAL",0)
+OR(2)
+Race(Player1,HALFLING)
+Race(Player1,GNOME)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRacePe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",2)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRacePe1","GLOBAL",0)
+OR(2)
+Race(Player1,ELF)
+Race(Player1,DWARF)
+Race(Player1,HALF_ELF)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRacePe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRacePe1","GLOBAL",0)
+OR(2)
+Race(Player1,HUMAN)
+Race(Player1,HALFORC)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRacePe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony")
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSubracePe1","GLOBAL",0)
+OR(5)
+Subrace(Player1,HUMAN_AASIMAR)
+Subrace(Player1,HUMAN_TIEFLING)
+Subrace(Player1,ELF_DROW)
+Subrace(Player1,DWARF_GRAY)
+Subrace(Player1,GNOME_DEEP)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSubracePe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",5)
+END
+
+IF
+InParty("Peony")
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckKitPe1","GLOBAL",0)
+Kit(Player1,MAGE_NECROMANCER)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckKitPe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckKitPe2","GLOBAL",0)
+OR(2)
+Kit(Player1,CLERIC_TALOS)
+Kit(Player1,CLERIC_BANE)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckKitPe2","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony")
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillPe1","GLOBAL",0)
+CheckSkillGT(Player1,5,Concentration)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillPe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillPe2","GLOBAL",0)
+CheckSkillGT(Player1,5,Knowledge_Arcana)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillPe2","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillPe3","GLOBAL",0)
+CheckSkillGT(Player1,5,Spellcraft)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillPe3","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillPe4","GLOBAL",0)
+CheckSkillGT(Player1,5,Use_Magic_Device)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillPe4","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegPe1","GLOBAL",0)
+CheckSkillGT(Player1,5,Bluff)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegPe1","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegPe2","GLOBAL",0)
+CheckSkillGT(Player1,5,Intimidate)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegPe2","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegPe3","GLOBAL",0)
+CheckSkillGT(Player1,5,Move_Silently)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegPe3","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Peony") 
+!Dead("Peony") 
+!StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegPe4","GLOBAL",0)
+CheckSkillGT(Player1,5,Hide)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegPe4","GLOBAL",1)
+IncrementGlobal("P#PeonyInterest","GLOBAL",-1)
+END
+
+//For Salomeya
+
+//Stats: Str/Con>13; Int>13 +1; CHR>13+1; Str/Con<9; Int<9; Chr<9 -1
+//Alignment: Any evil + 2;Any good -2;
+//Race: Elves, Half-Elves +2; Humans + 1; Dwarves -1; Halflings, Gnomes, Half-Orcs -2
+//Subrace: Aasimar, Tiefling, Sun Elf +2
+//Class: CLASSMASK_GROUP_PALADIN_RANGER -3; CLASSMASK_MONK -1
+//Feats: BULLHEADED -1; EXTRA_SMITING -1; HERETICS_BANE -1; DISCIPLINE -1
+//Feats: SLIPPERY_MIND + 1, LUCK_OF_HEROES +1, LUCK_OF_HEROES +1, MERCANTILE_BACKGROUND + 1
+//Kit: CLERIC_ILMATER, CLERIC_HELM -1
+//Skills Bluff>5, Diplomacy>5, Concentration>5, Knowledge_Arcana  +1
+//Skills: Intimidate>5, Alchemy>5 -1
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatSa1","GLOBAL",0)
+CheckStatGT(Player1,13,INT)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatSa2","GLOBAL",0)
+OR(2)
+CheckStatGT(Player1,13,STR)
+CheckStatGT(Player1,13,CON)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatSa2","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatSa3","GLOBAL",0)
+CheckStatGT(Player1,13,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatSa3","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatSa4","GLOBAL",0)
+CheckStatLT(Player1,9,INT)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatSa4","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatSa6","GLOBAL",0)
+OR(2)
+CheckStatLT(Player1,9,STR)
+CheckStatLT(Player1,9,CON)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatSa6","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatSa5","GLOBAL",0)
+CheckStatLT(Player1,9,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatSa5","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Salomeya")
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentSa1","GLOBAL",0)
+Alignment(Player1,MASK_GOOD)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentSa1","GLOBAL",0)
+Alignment(Player1,MASK_EVIL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",2)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceSa1","GLOBAL",0)
+OR(2)
+Race(Player1,ELF)
+Race(Player1,HALF_ELF)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",2)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceSa1","GLOBAL",0)
+Race(Player1,HUMAN)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceSa1","GLOBAL",0)
+Race(Player1,DWARF)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckRaceSa1","GLOBAL",0)
+OR(3)
+Race(Player1,HALFLING)
+Race(Player1,GNOME)
+Race(Player1,HALFORC)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckRaceSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Salomeya")
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSubraceSa1","GLOBAL",0)
+OR(2)
+Subrace(Player1,HUMAN_AASIMAR)
+Subrace(Player1,HUMAN_TIEFLING)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSubraceSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",2)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSubraceSa1","GLOBAL",0)
+Race(Player1,ELF)
+!Subrace(Player1,ELF_DROW)
+!Subrace(Player1,ELF_WILD)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSubraceSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",2)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassSa2","GLOBAL",0)
+Class(Player1,PALADIN_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassSa2","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-3)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassSa3","GLOBAL",0)
+Class(Player1,MONK)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassSa3","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckKitSa2","GLOBAL",0)
+OR(2)
+Kit(Player1,CLERIC_ILMATER)
+Kit(Player1,CLERIC_HELM)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckKitSa2","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillSa1","GLOBAL",0)
+CheckSkillGT(Player1,5,Diplomacy)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillSa2","GLOBAL",0)
+CheckSkillGT(Player1,5,Bluff)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillSa2","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillSa3","GLOBAL",0)
+CheckSkillGT(Player1,5,Concentration)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillSa3","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillSa4","GLOBAL",0)
+CheckSkillGT(Player1,5,Use_Magic_Device)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillSa4","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegSa1","GLOBAL",0)
+CheckSkillGT(Player1,5,Intimidate)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegSa1","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillNegSa2","GLOBAL",0)
+CheckSkillGT(Player1,5,Alchemy)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillNegSa2","GLOBAL",1)
+IncrementGlobal("P#SalomeyaInterest","GLOBAL",-1)
+END
+
+//For Diriel
+//Stats: Str>13; Wis>13; INT>13; CHR>13+1; Str<9; Wis<9; Int<9; Chr<9 -1
+//Alignment: Any neutral + 2;Any non-neutral -2
+//Class: CLASSMASK_GROUP_WARRIORS +1/CLASSMASK_GROUP_DIVINE +1/Druid, ranger+3/CLASSMASK_GROUP_ROGUE_BARD -3/Paladin_ALL -2
+//Skills Bluff>5,Intimidate>5,  -1
+//Skills: Wilderness_Lore>5, Knowledge_Arcana>5 + 1; Spellcraft >5 +1; Use_Magic_Device>5 +1
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatDi1","GLOBAL",0)
+CheckStatGT(Player1,13,STR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatDi1","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatDi2","GLOBAL",0)
+CheckStatGT(Player1,13,WIS)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatDi2","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatDi3","GLOBAL",0)
+CheckStatGT(Player1,13,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatDi3","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatDi7","GLOBAL",0)
+CheckStatGT(Player1,13,INT)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatDi7","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatDi4","GLOBAL",0)
+CheckStatLT(Player1,9,STR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatDi4","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatDi6","GLOBAL",0)
+CheckStatLT(Player1,9,WIS)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatDi6","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatDi5","GLOBAL",0)
+CheckStatLT(Player1,9,CHR)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatDi5","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckStatDi8","GLOBAL",0)
+CheckStatLT(Player1,9,INT)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckStatDi8","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentDi1","GLOBAL",0)
+!Alignment(Player1,MASK_GENEUTRAL)
+!Alignment(Player1,MASK_LCNEUTRAL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentDi1","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckAlignmentDi1","GLOBAL",0)
+OR(2)
+Alignment(Player1,MASK_GENEUTRAL)
+Alignment(Player1,MASK_LCNEUTRAL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckAlignmentDi1","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",2)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassDi1","GLOBAL",0)
+Class(Player1,FIGHTER_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassDi1","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassDi2","GLOBAL",0)
+Class(Player1,BARBARIAN)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassDi2","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassDi3","GLOBAL",0)
+Class(Player1,MONK)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassDi3","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassDi4","GLOBAL",0)
+Class(Player1,CLERIC_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassDi4","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassDi5","GLOBAL",0)
+Class(Player1,THIEF_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassDi5","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-3)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassDi6","GLOBAL",0)
+Class(Player1,PALADIN_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassDi6","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-2)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassDi7","GLOBAL",0)
+Class(Player1,BARD_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassDi7","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-3)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckClassDi8","GLOBAL",0)
+OR(2)
+Class(Player1,DRUID_ALL)
+Class(Player1,RANGER_ALL)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckClassDi8","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",3)
+END
+
+IF
+InParty("Diriel")
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillDi1","GLOBAL",0)
+CheckSkillGT(Player1,5,Bluff)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillDi1","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillDi2","GLOBAL",0)
+CheckSkillGT(Player1,5,Intimidate)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillDi2","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",-1)
+END
+
+IF
+InParty("Diriel")
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillDi3","GLOBAL",0)
+CheckSkillGT(Player1,5,Wilderness_Lore)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillDi3","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel")
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillDi4","GLOBAL",0)
+CheckSkillGT(Player1,5,Knowledge_Arcana)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillDi4","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel")
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillDi5","GLOBAL",0)
+CheckSkillGT(Player1,5,Spellcraft)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillDi5","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+IF
+InParty("Diriel")
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#CheckSkillDi6","GLOBAL",0)
+CheckSkillGT(Player1,5,Use_Magic_Device)
+THEN
+RESPONSE #100
+SetGlobal("P#CheckSkillDi6","GLOBAL",1)
+IncrementGlobal("P#DirielInterest","GLOBAL",1)
+END
+
+
+

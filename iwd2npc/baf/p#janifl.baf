@@ -1,0 +1,503 @@
+//Early
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaLT","GLOBAL",6)
+Global("P#JaemalFlirtEarly","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#JaemalFlirtEarlyTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",1)
+END
+
+//One Time Firts
+
+IF
+GlobalGT("P#JaLT","GLOBAL",14)
+InParty("Jaemal") 
+!Dead("Jaemal")
+!StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+CheckStat("Jaemal",0,FATIGUE)
+Global("P#JaWakingFlirt1","GLOBAL",0)
+THEN
+RESPONSE #30
+SetGlobal("P#JaWakingFlirt1","GLOBAL",1)
+ChangeStat("Jaemal",FATIGUE,1,SET)
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+END  
+
+//indoors
+
+IF
+GlobalGT("P#JaLT","GLOBAL",6)
+GlobalLT("P#JaLT","GLOBAL",15)
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+GlobalTimerExpired("P#JaemalFlirtEarlyTime","GLOBAL")
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+OR(25)
+CurrentAreaIs("Jaemal",1007)
+CurrentAreaIs("Jaemal",2002)
+CurrentAreaIs("Jaemal",3001)
+CurrentAreaIs("Jaemal",3002)
+CurrentAreaIs("Jaemal",3101)
+CurrentAreaIs("Jaemal",4101)
+CurrentAreaIs("Jaemal",4102)
+CurrentAreaIs("Jaemal",4103)
+CurrentAreaIs("Jaemal",5101)
+CurrentAreaIs("Jaemal",5102)
+CurrentAreaIs("Jaemal",5201)
+CurrentAreaIs("Jaemal",5202)
+CurrentAreaIs("Jaemal",5203)
+CurrentAreaIs("Jaemal",5300)
+CurrentAreaIs("Jaemal",5301)
+CurrentAreaIs("Jaemal",5302)
+CurrentAreaIs("Jaemal",6051)
+CurrentAreaIs("Jaemal",6101)
+CurrentAreaIs("Jaemal",6102)
+CurrentAreaIs("Jaemal",6103)
+CurrentAreaIs("Jaemal",6104)
+CurrentAreaIs("Jaemal",6301)
+CurrentAreaIs("Jaemal",6302)
+CurrentAreaIs("Jaemal",6303)
+CurrentAreaIs("Jaemal",6304)
+Global("P#JaemalFlirtEarly","GLOBAL",1)
+THEN
+RESPONSE #30
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",2)
+SetGlobalTimer("P#JaemalFlirtRoll","GLOBAL",5)
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+RESPONSE #30
+SetGlobalTimer("P#JaemalFlirtEarlyTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",3)
+RESPONSE #30
+SetGlobalTimer("P#JaemalFlirtEarlyTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",3)
+END
+
+//Outdoor
+
+IF
+GlobalGT("P#JaLT","GLOBAL",6)
+GlobalLT("P#JaLT","GLOBAL",15)
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+GlobalTimerExpired("P#JaemalFlirtEarlyTime","GLOBAL")
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+OR(36)
+CurrentAreaIs("Jaemal",5010)
+CurrentAreaIs("Jaemal",5011)
+CurrentAreaIs("Jaemal",5012)
+CurrentAreaIs("Jaemal",5013)
+CurrentAreaIs("Jaemal",5014)
+CurrentAreaIs("Jaemal",5015)
+CurrentAreaIs("Jaemal",5016)
+CurrentAreaIs("Jaemal",5017)
+CurrentAreaIs("Jaemal",5018)
+CurrentAreaIs("Jaemal",5019)
+CurrentAreaIs("Jaemal",5020)
+CurrentAreaIs("Jaemal",5021)
+CurrentAreaIs("Jaemal",5022)
+CurrentAreaIs("Jaemal",5023)
+CurrentAreaIs("Jaemal",5024)
+CurrentAreaIs("Jaemal",5025)
+CurrentAreaIs("Jaemal",5026)
+CurrentAreaIs("Jaemal",5027)
+CurrentAreaIs("Jaemal",5028)
+CurrentAreaIs("Jaemal",5029)
+CurrentAreaIs("Jaemal",5030)
+CurrentAreaIs("Jaemal",2000)
+CurrentAreaIs("Jaemal",2000)
+CurrentAreaIs("Jaemal",2100)
+CurrentAreaIs("Jaemal",2101)
+CurrentAreaIs("Jaemal",2102)
+CurrentAreaIs("Jaemal",4000)
+CurrentAreaIs("Jaemal",5000)
+CurrentAreaIs("Jaemal",5001)
+CurrentAreaIs("Jaemal",5004)
+CurrentAreaIs("Jaemal",5100)
+CurrentAreaIs("Jaemal",5303)
+CurrentAreaIs("Jaemal",6002)
+CurrentAreaIs("Jaemal",6050)
+CurrentAreaIs("Jaemal",6100)
+CurrentAreaIs("Jaemal",6201)
+Global("P#JaemalFlirtEarly","GLOBAL",1)
+THEN
+RESPONSE #30
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",2)
+SetGlobalTimer("P#JaemalFlirtRoll","GLOBAL",5)
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+RESPONSE #30
+SetGlobalTimer("P#JaemalFlirtEarlyTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",3)
+RESPONSE #30
+SetGlobalTimer("P#JaemalFlirtEarlyTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",3)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalFlirtEarlyTime","GLOBAL")
+Global("P#JaemalFlirtEarly","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#JaemalFlirtEarlyTime","GLOBAL",1)
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",1)
+END
+
+IF 
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+OR(2)
+GlobalGT("P#JaLT","GLOBAL",14)
+Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalLT("P#JaemalFlirtEarly","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",4)
+END
+
+//Medium
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaLT","GLOBAL",14)
+Global("P#JaemalFlirtMedium","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#JaemalFlirtMediumTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#DisableJaemalFlirts","GLOBAL",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaLT","GLOBAL",14)
+Global("P#JaemalFlirtMedium","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#JaemalFlirtMediumTime","GLOBAL",587)
+SetGlobal("P#DisableJaemalFlirts","GLOBAL",0)
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",1)
+END
+
+//indoors
+
+IF
+GlobalGT("P#JaLT","GLOBAL",14)
+!Global("P#JaLT","GLOBAL",17)
+!Global("P#JaLT","GLOBAL",18)
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+GlobalTimerExpired("P#JaemalFlirtMediumTime","GLOBAL")
+OR(2)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",2)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+ OR(25)
+CurrentAreaIs("Jaemal",1007)
+CurrentAreaIs("Jaemal",2002)
+CurrentAreaIs("Jaemal",3001)
+CurrentAreaIs("Jaemal",3002)
+CurrentAreaIs("Jaemal",3101)
+CurrentAreaIs("Jaemal",4101)
+CurrentAreaIs("Jaemal",4102)
+CurrentAreaIs("Jaemal",4103)
+CurrentAreaIs("Jaemal",5101)
+CurrentAreaIs("Jaemal",5102)
+CurrentAreaIs("Jaemal",5201)
+CurrentAreaIs("Jaemal",5202)
+CurrentAreaIs("Jaemal",5203)
+CurrentAreaIs("Jaemal",5300)
+CurrentAreaIs("Jaemal",5301)
+CurrentAreaIs("Jaemal",5302)
+CurrentAreaIs("Jaemal",6051)
+CurrentAreaIs("Jaemal",6101)
+CurrentAreaIs("Jaemal",6102)
+CurrentAreaIs("Jaemal",6103)
+CurrentAreaIs("Jaemal",6104)
+CurrentAreaIs("Jaemal",6301)
+CurrentAreaIs("Jaemal",6302)
+CurrentAreaIs("Jaemal",6303)
+CurrentAreaIs("Jaemal",6304)
+Global("P#JaemalFlirtMedium","GLOBAL",1)
+THEN
+RESPONSE #50
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",2)
+SetGlobalTimer("P#JaemalFlirtRoll","GLOBAL",5)
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+RESPONSE #50
+SetGlobalTimer("P#JaemalFlirtMediumTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",3)
+END
+
+//Outdoor
+
+IF
+GlobalGT("P#JaLT","GLOBAL",14)
+!Global("P#JaLT","GLOBAL",17)
+!Global("P#JaLT","GLOBAL",18)
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+GlobalTimerExpired("P#JaemalFlirtMediumTime","GLOBAL")
+OR(2)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",2)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+ OR(37)
+CurrentAreaIs("Jaemal",5010)
+CurrentAreaIs("Jaemal",5011)
+CurrentAreaIs("Jaemal",5012)
+CurrentAreaIs("Jaemal",5013)
+CurrentAreaIs("Jaemal",5014)
+CurrentAreaIs("Jaemal",5015)
+CurrentAreaIs("Jaemal",5016)
+CurrentAreaIs("Jaemal",5017)
+CurrentAreaIs("Jaemal",5018)
+CurrentAreaIs("Jaemal",5019)
+CurrentAreaIs("Jaemal",5020)
+CurrentAreaIs("Jaemal",5021)
+CurrentAreaIs("Jaemal",5022)
+CurrentAreaIs("Jaemal",5023)
+CurrentAreaIs("Jaemal",5024)
+CurrentAreaIs("Jaemal",5025)
+CurrentAreaIs("Jaemal",5026)
+CurrentAreaIs("Jaemal",5027)
+CurrentAreaIs("Jaemal",5028)
+CurrentAreaIs("Jaemal",5029)
+CurrentAreaIs("Jaemal",5030)
+CurrentAreaIs("Jaemal",2000)
+CurrentAreaIs("Jaemal",2000)
+CurrentAreaIs("Jaemal",2100)
+CurrentAreaIs("Jaemal",2101)
+CurrentAreaIs("Jaemal",2102)
+CurrentAreaIs("Jaemal",4000)
+CurrentAreaIs("Jaemal",5000)
+CurrentAreaIs("Jaemal",5001)
+CurrentAreaIs("Jaemal",5004)
+CurrentAreaIs("Jaemal",5100)
+CurrentAreaIs("Jaemal",5303)
+CurrentAreaIs("Jaemal",6002)
+CurrentAreaIs("Jaemal",6050)
+CurrentAreaIs("Jaemal",6100)
+CurrentAreaIs("Jaemal",6201)
+Global("P#JaemalFlirtMedium","GLOBAL",1)
+THEN
+RESPONSE #50
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",2)
+SetGlobalTimer("P#JaemalFlirtRoll","GLOBAL",5)
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+RESPONSE #50
+SetGlobalTimer("P#JaemalFlirtMediumTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",3)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalFlirtMediumTime","GLOBAL")
+Global("P#JaemalFlirtMedium","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#JaemalFlirtMediumTime","GLOBAL",1)
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+OR(2)
+Global("P#JaemalRomanceInactive","GLOBAL",2)
+Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalLT("P#JaemalFlirtMedium","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",4)
+END
+
+//Late
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",2)
+Global("P#JaemalFlirtLate","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#JaemalFlirtLateTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtLate","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#DisableJaemalFlirts","GLOBAL",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",2)
+Global("P#JaemalFlirtLate","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#DisableJaemalFlirts","GLOBAL",0)
+SetGlobalTimer("P#JaemalFlirtLateTime","GLOBAL",587)
+SetGlobal("P#JaemalFlirtLate","GLOBAL",1)
+END
+
+//indoors
+
+IF
+Global("P#JaemalRomanceActive","GLOBAL",2)
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+GlobalTimerExpired("P#JaemalFlirtLateTime","GLOBAL")
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+OR(25)
+CurrentAreaIs("Jaemal",1007)
+CurrentAreaIs("Jaemal",2002)
+CurrentAreaIs("Jaemal",3001)
+CurrentAreaIs("Jaemal",3002)
+CurrentAreaIs("Jaemal",3101)
+CurrentAreaIs("Jaemal",4101)
+CurrentAreaIs("Jaemal",4102)
+CurrentAreaIs("Jaemal",4103)
+CurrentAreaIs("Jaemal",5101)
+CurrentAreaIs("Jaemal",5102)
+CurrentAreaIs("Jaemal",5201)
+CurrentAreaIs("Jaemal",5202)
+CurrentAreaIs("Jaemal",5203)
+CurrentAreaIs("Jaemal",5300)
+CurrentAreaIs("Jaemal",5301)
+CurrentAreaIs("Jaemal",5302)
+CurrentAreaIs("Jaemal",6051)
+CurrentAreaIs("Jaemal",6101)
+CurrentAreaIs("Jaemal",6102)
+CurrentAreaIs("Jaemal",6103)
+CurrentAreaIs("Jaemal",6104)
+CurrentAreaIs("Jaemal",6301)
+CurrentAreaIs("Jaemal",6302)
+CurrentAreaIs("Jaemal",6303)
+CurrentAreaIs("Jaemal",6304)
+Global("P#JaemalFlirtLate","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFlirtLate","GLOBAL",2)
+SetGlobalTimer("P#JaemalFlirtRoll","GLOBAL",5)
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+END
+
+//Outdoor
+
+IF
+Global("P#JaemalRomanceActive","GLOBAL",2)
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DisableJaemalFlirts","GLOBAL",0)
+GlobalTimerExpired("P#JaemalFlirtLateTime","GLOBAL")
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+OR(36)
+CurrentAreaIs("Jaemal",5010)
+CurrentAreaIs("Jaemal",5011)
+CurrentAreaIs("Jaemal",5012)
+CurrentAreaIs("Jaemal",5013)
+CurrentAreaIs("Jaemal",5014)
+CurrentAreaIs("Jaemal",5015)
+CurrentAreaIs("Jaemal",5016)
+CurrentAreaIs("Jaemal",5017)
+CurrentAreaIs("Jaemal",5018)
+CurrentAreaIs("Jaemal",5019)
+CurrentAreaIs("Jaemal",5020)
+CurrentAreaIs("Jaemal",5021)
+CurrentAreaIs("Jaemal",5022)
+CurrentAreaIs("Jaemal",5023)
+CurrentAreaIs("Jaemal",5024)
+CurrentAreaIs("Jaemal",5025)
+CurrentAreaIs("Jaemal",5026)
+CurrentAreaIs("Jaemal",5027)
+CurrentAreaIs("Jaemal",5028)
+CurrentAreaIs("Jaemal",5029)
+CurrentAreaIs("Jaemal",5030)
+CurrentAreaIs("Jaemal",2000)
+CurrentAreaIs("Jaemal",2000)
+CurrentAreaIs("Jaemal",2100)
+CurrentAreaIs("Jaemal",2101)
+CurrentAreaIs("Jaemal",2102)
+CurrentAreaIs("Jaemal",4000)
+CurrentAreaIs("Jaemal",5000)
+CurrentAreaIs("Jaemal",5001)
+CurrentAreaIs("Jaemal",5004)
+CurrentAreaIs("Jaemal",5100)
+CurrentAreaIs("Jaemal",5303)
+CurrentAreaIs("Jaemal",6002)
+CurrentAreaIs("Jaemal",6050)
+CurrentAreaIs("Jaemal",6100)
+CurrentAreaIs("Jaemal",6201)
+Global("P#JaemalFlirtLate","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFlirtLate","GLOBAL",2)
+SetGlobalTimer("P#JaemalFlirtRoll","GLOBAL",5)
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalFlirtLateTime","GLOBAL")
+Global("P#JaemalFlirtLate","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#JaemalFlirtLateTime","GLOBAL",1)
+SetGlobal("P#JaemalFlirtLate","GLOBAL",1)
+END
+
+
+IF 
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalLT("P#JaemalFlirtLate","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFlirtLate","GLOBAL",4)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalFlirtRoll","GLOBAL")
+Global("P#JaemalFlirtLate","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFlirtLate","GLOBAL",3)
+SetGlobalTimer("P#JaemalFlirtLateTime","GLOBAL",587)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalFlirtRoll","GLOBAL")
+Global("P#JaemalFlirtMedium","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFlirtMedium","GLOBAL",3)
+SetGlobalTimer("P#JaemalFlirtMediumTime","GLOBAL",587)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalFlirtRoll","GLOBAL")
+Global("P#JaemalFlirtEarly","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFlirtEarly","GLOBAL",3)
+SetGlobalTimer("P#JaemalFlirtEarlyTime","GLOBAL",587)
+END
+
+

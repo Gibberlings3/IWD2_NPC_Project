@@ -1,0 +1,1385 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat("Diriel",0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat("Diriel",FATIGUE,1,SET)
+END
+
+//Chapter
+
+//Chapter 1 Logging Village
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Diriel",2001)
+GlobalGT("SR_Rescue_Villagers","GLOBAL",0)
+GlobalLT("SR_Rescue_Villagers","GLOBAL",4)
+!Global("SR_Orc_Guards_Dead","GLOBAL",1)
+Global("P#DirielCh1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh1","GLOBAL",1)
+SetGlobalTimer("P#DirielCh1Time","GLOBAL",10)
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+CurrentAreaIs("Diriel",2001)
+GlobalTimerExpired("P#DirielCh1Time","GLOBAL")
+Global("P#DirielCh1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh1","GLOBAL",0)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",2001)
+Global("P#DirielCh1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh1","GLOBAL",2)
+END
+
+//Chapter 2 1st Level of Ice Temple
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Diriel",4100)
+Global("P#DirielCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh2","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",4100)
+Global("P#DirielCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh2","GLOBAL",2)
+END
+
+//Chapter 3 Fell Wood 1
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Diriel",5010)
+Global("P#DirielCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh3","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",5010)
+Global("P#DirielCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh3","GLOBAL",2)
+END
+
+//Chapter 4 - with Despana handled from dialogue file
+
+//Chapter 5 Crossroads
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+Global("Know_Crossroads","GLOBAL",1)
+GlobalLT("Crossroads_Quest","GLOBAL",2)
+OR(11)
+CurrentAreaIs("Diriel",6000)
+CurrentAreaIs("Diriel",6001)
+CurrentAreaIs("Diriel",6002)
+CurrentAreaIs("Diriel",6003)
+CurrentAreaIs("Diriel",6004)
+CurrentAreaIs("Diriel",6005)
+CurrentAreaIs("Diriel",6006)
+CurrentAreaIs("Diriel",6007)
+CurrentAreaIs("Diriel",6008)
+CurrentAreaIs("Diriel",6009)
+CurrentAreaIs("Diriel",6010)
+Global("P#DirielCh5","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh5","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",6000)
+!CurrentAreaIs("Diriel",6001)
+!CurrentAreaIs("Diriel",6002)
+!CurrentAreaIs("Diriel",6003)
+!CurrentAreaIs("Diriel",6004)
+!CurrentAreaIs("Diriel",6005)
+!CurrentAreaIs("Diriel",6006)
+!CurrentAreaIs("Diriel",6007)
+!CurrentAreaIs("Diriel",6008)
+!CurrentAreaIs("Diriel",6009)
+!CurrentAreaIs("Diriel",6010)
+Global("P#DirielCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielCh5","GLOBAL",2)
+END
+
+//Scenery
+
+//AR6104, Dragon's Eye Level 4
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("Chapter","GLOBAL",5)
+!AnyPCSeesEnemy()
+CurrentAreaIs("diriel",6104)
+Global("61CurrentDay","GLOBAL",4)
+Global("P#DirielPremonition","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielPremonition","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("nikosh")
+!CurrentAreaIs("nikosh",6104)
+Global("P#DirielPremonition","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielPremonition","GLOBAL",2)
+END
+
+//Chapter 5 Diriel Seduction in Kuldahar
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,FEMALE)
+Race(Player1,ELF)
+!Subrace(Player1,ELF_DROW)
+OR(2)
+Global("P#DirielSeduction","GLOBAL",6)
+Global("P#DirielSeduction","GLOBAL",0)
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+GlobalGT("AR6100_Revealed","GLOBAL",0)
+CurrentAreaIs("Diriel",6001)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielSeduction","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+END
+
+//beetles
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+OR(2)
+CurrentAreaIs("Diriel",4000)
+CurrentAreaIs("Diriel",4001)
+Global("Chapter","GLOBAL",2)
+Global("4000Visited","MYAREA",1)
+Global("40BeetleAttackOver","GLOBAL",0)
+Global("BeetleNest_dead","GLOBAL",0)
+Dead("40BetBor")
+Global("P#DirielBeetles","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielBeetles","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",4000)
+!CurrentAreaIs("Diriel",4001)
+Global("P#DirielBeetles","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielBeetles","GLOBAL",2)
+END
+
+//AR2101 Malarites Talk
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+Global("P#DirielMalaritesAR2101","GLOBAL",0)
+CurrentAreaIs("Diriel",2101)
+Dead("Malarite High Priest")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielMalaritesAR2101","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",2101)
+Global("P#DirielMalaritesAR2101","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielMalaritesAR2101","GLOBAL",2)
+END
+
+//LG Village Resolutions
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Diriel",2001)
+Global("SR_Orc_Guards_Dead","GLOBAL",1)
+Global("SR_Villagers_Dead","GLOBAL",0)
+Global("SR_Rescue_Villagers","GLOBAL",5)
+Global("P#DirielLV_Saved","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielLV_Saved","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",2001)
+Global("P#DirielLV_Saved","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielLV_Saved","GLOBAL",2)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Diriel",2001)
+Global("SR_Villagers_Dead","GLOBAL", 4)
+Global("SR_Dead_Villager","GLOBAL",12)
+GlobalLT("SR_Rescue_Villagers","GLOBAL", 5)
+Global("P#DirielLV_Doom","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielLV_Doom","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",2001)
+Global("P#DirielLV_Doom","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielLV_Doom","GLOBAL",2)
+END
+
+//Destroys Potions of Invisibility
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+Global("P#DirielLVPotion","GLOBAL",0)
+CurrentAreaIs("Diriel",2001)
+Global("P#KaitlinKnowPotion","GLOBAL",1)
+PartyHasItem("00POTN34")
+Global("P#DirielCh1","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielLVPotion","GLOBAL",1)
+TakePartyItem("00POTN34")
+DestroyItem("00POTN34")
+ActionOverride("diriel",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("P#DirielLVPotion","GLOBAL",1)
+!CurrentAreaIs("Diriel",2001)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielLVPotion","GLOBAL",2)
+END
+
+//Targos Palisade - Nolan
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("Diriel",1201)
+OR(2)
+Global("12Heard_Nature","GLOBAL",1)
+Global("12Heard_ Nature","GLOBAL",1)
+Global("P#DirielNolan","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielNolan","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",1201)
+Global("P#DirielNolan","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielNolan","GLOBAL",2)
+END
+
+//Targos Palisade - Isherwood
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("Diriel",1200)
+Global("P#DirielIsherwood","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielIsherwood","GLOBAL",2)
+ActionOverride("diriel",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",1200)
+Global("P#DirielIsherwood","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielIsherwood","GLOBAL",3)
+END
+
+//Targos Town
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("Diriel",1101)
+Global("P#DirielElytharra","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielElytharra","GLOBAL",2)
+ActionOverride("diriel",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",1101)
+Global("P#DirielElytharra","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielElytharra","GLOBAL",3)
+END
+
+//Targos Docks
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Know_Arm","GLOBAL",1)
+Global("Reig_Quest","GLOBAL",1)
+Global("Reig_Heal_Priest","GLOBAL",0)
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("Diriel",1000)
+Global("P#DirielReig","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielReig","GLOBAL",1)
+ActionOverride("diriel",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",1000)
+Global("P#DirielReig","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielReig","GLOBAL",2)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Reig_Heal_Priest","GLOBAL",1)
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("Diriel",1000)
+Global("P#DirielReig","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielReig","GLOBAL",3)
+ActionOverride("diriel",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!CurrentAreaIs("Diriel",1000)
+Global("P#DirielReig","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielReig","GLOBAL",4)
+END
+
+//Romantic Aerie
+
+IF
+!AnyPCSeesEnemy()
+InParty("charbase")
+See("charbase",0)
+InParty("Diriel") 
+!Dead("Diriel") 
+IsPlayerNumber("charbase",1)
+Gender(Player1,FEMALE)
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+Global("P#DirielRomanceActive","GLOBAL",2)
+!StateCheck("Diriel",STATE_SLEEPING)
+!StateCheck("Diriel",STATE_DEAD)
+!StateCheck("Diriel",STATE_ACID_DEATH)
+!StateCheck("Diriel",STATE_FLAME_DEATH )
+!StateCheck("Diriel",STATE_EXPLODING_DEATH)             
+!StateCheck("Diriel",STATE_STONE_DEATH)
+!StateCheck("Diriel",STATE_FROZEN_DEATH)
+!StateCheck("Diriel",STATE_HELPLESS)
+!StateCheck("Diriel",STATE_INVISIBLE)
+!StateCheck("Diriel",STATE_STUNNED)
+!StateCheck("Diriel",STATE_PANIC)
+!StateCheck("Diriel",STATE_BERSERK)
+!StateCheck("Diriel",STATE_CHARMED)
+!StateCheck("Diriel",STATE_BLIND)
+!StateCheck("Diriel",STATE_FEEBLEMINDED)
+!StateCheck("Diriel",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("Diriel",STATE_CONFUSED)
+!StateCheck("charbase",STATE_SLEEPING)
+!StateCheck("charbase",STATE_DEAD)
+!StateCheck("charbase",STATE_ACID_DEATH)
+!StateCheck("charbase",STATE_FLAME_DEATH )
+!StateCheck("charbase",STATE_EXPLODING_DEATH)             
+!StateCheck("charbase",STATE_STONE_DEATH)
+!StateCheck("charbase",STATE_FROZEN_DEATH)
+!StateCheck("charbase",STATE_HELPLESS)
+!StateCheck("charbase",STATE_INVISIBLE)
+!StateCheck("charbase",STATE_STUNNED)
+!StateCheck("charbase",STATE_PANIC)
+!StateCheck("charbase",STATE_BERSERK)
+!StateCheck("charbase",STATE_CHARMED)
+!StateCheck("charbase",STATE_BLIND)
+!StateCheck("charbase",STATE_FEEBLEMINDED)
+!StateCheck("charbase",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("charbase",STATE_CONFUSED)
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Diriel",6703)
+Global("P#DirielAerie","GLOBAL",0)
+Global("Unhide_Buvai","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielAerie","GLOBAL",1)
+ActionOverride("Diriel",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Diriel")
+!CurrentAreaIs("Diriel",6703)
+Global("P#DirielAerie","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#DirielAerie","GLOBAL",2)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("P#SetDirielBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetDirielBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("P#SetDirielBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetDirielBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("P#SetDirielBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetDirielBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("P#SetDirielBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetDirielBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("P#SetDirielBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetDirielBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("P#SetDirielBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetDirielBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+Global("P#SetDirielBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetDirielBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//NPC Banter
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+InParty("Nord")
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+InParty("Salomeya")
+!Race(Player1,ELF)
+!Race(Player1,HALF_ELF)
+Global("P#DIHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIJA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIJA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIJA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DINI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DINI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DINI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DINI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+InParty("Salomeya")
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DINI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DINI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+Global("P#NordIdentity","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DINO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DINO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+Global("P#SADI1","GLOBAL",2)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DISA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DISA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIPE2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIPE2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIPR1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIPR1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIPR2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIPR2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("prachi"))
+END
+
+//Rizdaer
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIRI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIRI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+GlobalGT("Chapter","GLOBAL",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIRI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIRI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+GlobalGT("Chapter","GLOBAL",1)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIRI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIRI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+GlobalGT("Chapter","GLOBAL",4)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIRI4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIRI4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+CheckStat("Diriel",0,FATIGUE)
+Global("P#VADI1","GLOBAL",2)
+Global("P#DIVA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIVA1","GLOBAL",1)
+ChangeStat("Diriel",FATIGUE,1,SET)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("valeero"))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+GlobalGT("Chapter","GLOBAL",2)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+CheckStat("Diriel",0,FATIGUE)
+Global("P#VADI2","GLOBAL",2)
+Global("P#DIVA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DIVA2","GLOBAL",1)
+ChangeStat("Diriel",FATIGUE,1,SET)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet("valeero"))
+END
+
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING) !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+OR(2)
+Race(Player1,HUMAN)
+Race(Player1,HALF_ELF)
+Global("P#DirielTalk0A","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DirielTalk0A","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+OR(2)
+Race(Player1,GNOME)
+Race(Player1,HALFLING)
+Global("P#DirielTalk0B","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DirielTalk0B","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+OR(2)
+Race(Player1,DWARF)
+Race(Player1,HALFORC)
+Global("P#DirielTalk0C","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",7200)
+IncrementGlobal("P#DirielTalk0C","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalTimerExpired("P#DirielTimer","GLOBAL")
+Subrace(Player1,ELF_DROW)
+Global("P#DirielTalk0D","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielTimer","GLOBAL",5200)
+IncrementGlobal("P#DirielTalk0D","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+//The Elven PC talks//
+
+//In Prologue or later
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Race(Player1,ELF)
+Subrace(Player1,ELF_DROW)
+Global("P#DirielTalk0D","GLOBAL",2)
+Global("P#DirielPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobal("P#DirielELFMatch","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",5200)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Race(Player1,ELF)
+!Subrace(Player1,ELF_DROW)
+Global("P#DirielPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobal("P#DirielELFMatch","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",5200)
+END
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#DirielPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DirielELFMatch","GLOBAL",1)
+OR(2)
+Global("P#DirielPCTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1 (Global to 5)
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DirielELFMatch","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#DirielPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2 (Global to 9)
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#DirielELFMatch","GLOBAL",1)
+OR(59)
+CurrentAreaIs("Diriel",1000)
+CurrentAreaIs("Diriel",1100)
+CurrentAreaIs("Diriel",1200)
+CurrentAreaIs("Diriel",2001)
+CurrentAreaIs("Diriel",3000)
+CurrentAreaIs("Diriel",3100)
+CurrentAreaIs("Diriel",4100)
+CurrentAreaIs("Diriel",5200)
+CurrentAreaIs("Diriel",6000)
+CurrentAreaIs("Diriel",6001)
+CurrentAreaIs("Diriel",6701)
+CurrentAreaIs("Diriel",6702)
+CurrentAreaIs("Diriel",6703)
+CurrentAreaIs("Diriel",6601)
+CurrentAreaIs("Diriel",6602)
+CurrentAreaIs("Diriel",6603)
+CurrentAreaIs("Diriel",6501)
+CurrentAreaIs("Diriel",6502)
+CurrentAreaIs("Diriel",6503)
+CurrentAreaIs("Diriel",6401)
+CurrentAreaIs("Diriel",6402)
+CurrentAreaIs("Diriel",6403)
+CurrentAreaIs("Diriel",5010)
+CurrentAreaIs("Diriel",5011)
+CurrentAreaIs("Diriel",5012)
+CurrentAreaIs("Diriel",5013)
+CurrentAreaIs("Diriel",5014)
+CurrentAreaIs("Diriel",5015)
+CurrentAreaIs("Diriel",5016)
+CurrentAreaIs("Diriel",5017)
+CurrentAreaIs("Diriel",5018)
+CurrentAreaIs("Diriel",5019)
+CurrentAreaIs("Diriel",5020)
+CurrentAreaIs("Diriel",5021)
+CurrentAreaIs("Diriel",5022)
+CurrentAreaIs("Diriel",5023)
+CurrentAreaIs("Diriel",5024)
+CurrentAreaIs("Diriel",5025)
+CurrentAreaIs("Diriel",5026)
+CurrentAreaIs("Diriel",5027)
+CurrentAreaIs("Diriel",5028)
+CurrentAreaIs("Diriel",5029)
+CurrentAreaIs("Diriel",5030)
+CurrentAreaIs("Diriel",2000)
+CurrentAreaIs("Diriel",2000)
+CurrentAreaIs("Diriel",2100)
+CurrentAreaIs("Diriel",2101)
+CurrentAreaIs("Diriel",2102)
+CurrentAreaIs("Diriel",4000)
+CurrentAreaIs("Diriel",5000)
+CurrentAreaIs("Diriel",5001)
+CurrentAreaIs("Diriel",5004)
+CurrentAreaIs("Diriel",5100)
+CurrentAreaIs("Diriel",5303)
+CurrentAreaIs("Diriel",6002)
+CurrentAreaIs("Diriel",6050)
+CurrentAreaIs("Diriel",6100)
+CurrentAreaIs("Diriel",6201)
+CurrentAreaIs("Diriel",6300)
+GlobalGT("Chapter","GLOBAL",1)
+OR(2)
+Global("P#DirielPCTalk","GLOBAL",5)
+Global("P#DirielPCTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3 (Global to 13)
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#DirielELFMatch","GLOBAL",1)
+OR(37)
+CurrentAreaIs("Diriel",5010)
+CurrentAreaIs("Diriel",5011)
+CurrentAreaIs("Diriel",5012)
+CurrentAreaIs("Diriel",5013)
+CurrentAreaIs("Diriel",5014)
+CurrentAreaIs("Diriel",5015)
+CurrentAreaIs("Diriel",5016)
+CurrentAreaIs("Diriel",5017)
+CurrentAreaIs("Diriel",5018)
+CurrentAreaIs("Diriel",5019)
+CurrentAreaIs("Diriel",5020)
+CurrentAreaIs("Diriel",5021)
+CurrentAreaIs("Diriel",5022)
+CurrentAreaIs("Diriel",5023)
+CurrentAreaIs("Diriel",5024)
+CurrentAreaIs("Diriel",5025)
+CurrentAreaIs("Diriel",5026)
+CurrentAreaIs("Diriel",5027)
+CurrentAreaIs("Diriel",5028)
+CurrentAreaIs("Diriel",5029)
+CurrentAreaIs("Diriel",5030)
+CurrentAreaIs("Diriel",2000)
+CurrentAreaIs("Diriel",2000)
+CurrentAreaIs("Diriel",2100)
+CurrentAreaIs("Diriel",2101)
+CurrentAreaIs("Diriel",2102)
+CurrentAreaIs("Diriel",4000)
+CurrentAreaIs("Diriel",5000)
+CurrentAreaIs("Diriel",5001)
+CurrentAreaIs("Diriel",5004)
+CurrentAreaIs("Diriel",5100)
+CurrentAreaIs("Diriel",5303)
+CurrentAreaIs("Diriel",6002)
+CurrentAreaIs("Diriel",6050)
+CurrentAreaIs("Diriel",6100)
+CurrentAreaIs("Diriel",6201)
+CurrentAreaIs("Diriel",6300)
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#DirielPCTalk","GLOBAL",9)
+Global("P#DirielPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4 (Global to 17)
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#DirielELFMatch","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",3)
+OR(2)
+Global("P#DirielPCTalk","GLOBAL",13)
+Global("P#DirielPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5  (Global to 19)
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#DirielELFMatch","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",4)
+!CurrentAreaIs(Myself,6050)
+Global("P#DirielPCTalk","GLOBAL",17)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6 (Global to 21)
+
+IF
+InParty("Diriel") !Dead("Diriel") !StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DirielELFMatch","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#DirielPCTalk","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DirielPCTalk","GLOBAL",1)
+SetGlobalTimer("P#DirielPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("diriel",StartDialogueNoSet(Player1))
+END
+
+

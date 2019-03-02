@@ -1,0 +1,106 @@
+//Salomeya's Dresses
+
+IF
+InParty(Myself)
+!Dead(Myself)
+!StateCheck(Myself,STATE_SLEEPING)
+  Global("P#SalomeyaDress","GLOBAL",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",1)
+END
+
+IF
+  GlobalTimerExpired("P#SalomeyaDressTime","GLOBAL")
+  Global("P#SalomeyaDress","GLOBAL",1)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",2)
+    ReallyForceSpellRES("P#SARE01",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",3)
+    ReallyForceSpellRES("P#SARE02",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",4)
+    ReallyForceSpellRES("P#SARE03",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",5)
+    ReallyForceSpellRES("P#SARE04",Myself)
+END
+
+IF
+  GlobalTimerExpired("P#SalomeyaDressTime","GLOBAL")
+  Global("P#SalomeyaDress","GLOBAL",2)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",3)
+    ReallyForceSpellRES("P#SARE02",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",4)
+    ReallyForceSpellRES("P#SARE03",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",5)
+    ReallyForceSpellRES("P#SARE04",Myself)
+END
+
+IF
+  GlobalTimerExpired("P#SalomeyaDressTime","GLOBAL")
+  Global("P#SalomeyaDress","GLOBAL",3)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",2)
+    ReallyForceSpellRES("P#SARE01",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",4)
+    ReallyForceSpellRES("P#SARE03",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",5)
+    ReallyForceSpellRES("P#SARE04",Myself)
+END
+
+IF
+  GlobalTimerExpired("P#SalomeyaDressTime","GLOBAL")
+  Global("P#SalomeyaDress","GLOBAL",4)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",2)
+    ReallyForceSpellRES("P#SARE01",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",3)
+    ReallyForceSpellRES("P#SARE02",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",5)
+    ReallyForceSpellRES("P#SARE04",Myself)
+END
+
+IF
+  GlobalTimerExpired("P#SalomeyaDressTime","GLOBAL")
+  Global("P#SalomeyaDress","GLOBAL",5)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",2)
+    ReallyForceSpellRES("P#SARE01",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",3)
+    ReallyForceSpellRES("P#SARE02",Myself)
+  RESPONSE #50
+    SetGlobalTimer("P#SalomeyaDressTime","GLOBAL",3000)
+    SetGlobal("P#SalomeyaDress","GLOBAL",4)
+    ReallyForceSpellRES("P#SARE03",Myself)
+END

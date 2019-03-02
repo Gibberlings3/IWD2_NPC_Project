@@ -1,0 +1,20 @@
+IF
+True()
+THEN
+RESPONSE #100
+StopJoinRequests()
+CutSceneId("Jaemal")
+MultiPlayerSync()
+HideGUI()
+Wait(1)
+SpellHitEffectSprite("jaemal","jaemal",DIMENSION_DOOR_ORIGIN,0)
+SpellHitEffectSprite(Player1,Player1,DIMENSION_DOOR_ORIGIN,0)
+FadeToColor([0.0],0)
+Wait(1)
+ActionOverride(Player1,LeaveAreaLUA("AR6703","LOAD6000",[334.737],2))
+ActionOverride("Jaemal",LeaveAreaLUA("AR6703","LOAD6000",[362.712],2))
+SetGlobal("P#JaemalAerie","GLOBAL",8)
+Wait(3)
+EndCutSceneMode()
+END
+

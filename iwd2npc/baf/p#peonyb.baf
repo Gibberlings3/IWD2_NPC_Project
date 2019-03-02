@@ -1,0 +1,25 @@
+IF
+OR(2)
+IsAnimationID("peony",25108) 
+IsAnimationID("peony",25107)
+THEN
+RESPONSE #100
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#peonav")
+END
+
+IF
+IsPlayerNumber("charbase",1)
+Gender("charbase",FEMALE)
+Race("charbase",GNOME)
+ClassEx("charbase",MAGE_ALL)
+OR(2)
+IsAnimationID("charbase",25108)
+IsAnimationID("charbase",25107)
+THEN
+RESPONSE #100
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#gnfmav")
+END

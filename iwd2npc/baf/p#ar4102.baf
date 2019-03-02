@@ -1,0 +1,37 @@
+IF
+AnyPCSeesEnemy()
+InParty("Hildury")
+Global("Chapter","GLOBAL",2)
+Global("KillMirrorTrap","AR4102",1)
+Global("P#HilduryTalisman","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryTalisman","GLOBAL",1)
+ActionOverride("Hildury",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Hildury")
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+Global("CagedFury_dead","GLOBAL",1)
+Global("P#HilduryCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryCh2","GLOBAL",1)
+ActionOverride("Hildury",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya")
+Global("41OriaIsEthereal","GLOBAL",1)
+Global("Chapter","GLOBAL",2)
+Global("P#SalomeyaOriaGhost","GLOBAL",0)
+!Dead("OriaEssence")
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaOriaGhost","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Myself))
+END
+

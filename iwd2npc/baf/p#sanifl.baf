@@ -1,0 +1,51 @@
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#DisableSalomeyaFlirts","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SALT","GLOBAL",6)
+Global("P#SalomeyaFlirtEarly","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#SalomeyaFlirtEarlyTime","GLOBAL",587)
+SetGlobal("P#SalomeyaFlirtEarly","GLOBAL",1)
+END
+
+IF
+GlobalGT("P#SALT","GLOBAL",6)
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#DisableSalomeyaFlirts","GLOBAL",0)
+GlobalTimerExpired("P#SalomeyaFlirtEarlyTime","GLOBAL")
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+Global("P#SalomeyaFlirtEarly","GLOBAL",1)
+THEN
+RESPONSE #50
+SetGlobalTimer("P#SalomeyaFlirtEarlyTime","GLOBAL",587)
+SetGlobal("P#SalomeyaFlirtEarly","GLOBAL",3)
+RESPONSE #50
+SetGlobalTimer("P#SalomeyaFlirtRoll","GLOBAL",5)
+SetGlobal("P#SalomeyaFlirtEarly","GLOBAL",2)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaFlirtEarlyTime","GLOBAL")
+Global("P#SalomeyaFlirtEarly","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#SalomeyaFlirtEarlyTime","GLOBAL",1)
+SetGlobal("P#SalomeyaFlirtEarly","GLOBAL",1)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaFlirtRoll","GLOBAL")
+Global("P#SalomeyaFlirtEarly","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaFlirtEarly","GLOBAL",3)
+SetGlobalTimer("P#SalomeyaFlirtEarlyTime","GLOBAL",587)
+END

@@ -1,0 +1,26 @@
+IF
+Global("Chapter","GLOBAL",0)
+!InParty("nord")
+!Exists("P#nord")
+Global("P#NewNord","GLOBAL",0)
+Global("P#NordDone","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NewNord","GLOBAL",1)
+CreateCreature("P#nord","P#nord",[2264.907],4)
+ActionOverride("P#nord",FaceObject(Player1))
+ActionOverride("P#nord",Dialogue(Player1))
+END
+
+IF
+Global("Chapter","GLOBAL",0)
+!InParty("nord")
+Exists("P#nord")
+Global("P#NewNord","GLOBAL",1)
+Global("P#NordDone","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordDone","GLOBAL",2)
+ActionOverride("P#nord",EscapeArea())
+END

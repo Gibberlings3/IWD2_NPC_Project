@@ -1,0 +1,1315 @@
+//Tis Block cuts out Flomorian giants variable to prevent error in Sherincal's convo
+
+IF
+Global("Goublika_dead", "GLOBAL", 1)
+Global("FomoriansJoinLegion", "GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("FomoriansJoinLegion", "GLOBAL",5)
+END
+
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat("jaemal",0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat("jaemal",FATIGUE,1,SET)
+END
+
+//Chapter Talks
+
+//Chapter 5
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Jaemal",6001)
+Global("P#JaemalCh5","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+GlobalGT("60Twins_Story","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh5","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("Jaemal",6001)
+Global("P#JaemalCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh5","GLOBAL",2)
+END
+
+//Chapter 4
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("jaemal",5300)
+Global("P#JaemalCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Global("P#SornMet","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh4","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",5300)
+Global("P#JaemalCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh4","GLOBAL",2)
+END
+
+
+//Chapter 3 R
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("jaemal",5004)
+PartyHasItem("50GENFRO")
+Global("P#JaemalCh3R","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+Global("P#JaemalRomanceInactive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh3R","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",5004)
+Global("P#JaemalCh3R","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh3R","GLOBAL",2)
+END
+
+//Chapter 3
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("jaemal",5000)
+Global("P#JaemalCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+GlobalGT("50Sorcery","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh3","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",5000)
+Global("P#JaemalCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh3","GLOBAL",2)
+END
+
+//Chapter 2
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("jaemal",4001)
+Global("P#JaemalCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Global("40OswaldAwake", "GLOBAL", 2)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh2","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",4001)
+Global("P#JaemalCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh2","GLOBAL",2)
+END
+
+//Chapter 1
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("jaemal",2102)
+Global("P#JaemalCh1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Dead("21ElfMge")
+Global("P#XukiTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh1","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",2102)
+Global("P#JaemalCh1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh1","GLOBAL",2)
+END
+
+//Scenery
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Jaemal",5000)
+Global("P#JaemalTahvoCompliment","GLOBAL",0)
+OR(2)
+Global("P#PC_WantsComplimentMale","GLOBAL",1)
+Global("P#PC_WantsComplimentFemale","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalTahvoCompliment","GLOBAL",1)
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs(Myself,5000)
+Global("P#JaemalTahvoCompliment","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalTahvoCompliment","GLOBAL",2)
+END
+
+//Pentagram
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!Dead("Jaemal")
+!AnyPCSeesEnemy()
+Global("SH_Tower_Puzzle","GLOBAL",3)
+!Global("AR6401_Visited","GLOBAL",1)
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Jaemal",6400)
+Global("P#JaemalPentagram","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalPentagram","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("Jaemal",6400)
+Global("P#JaemalPentagram","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalPentagram","GLOBAL",2)
+END
+
+//Aerie AR6703
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!Dead("Jaemal")
+CurrentAreaIs("Jaemal",6800)
+Global("P#Jaemal6800","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#Jaemal6800","GLOBAL",1)
+END
+
+IF
+InParty("Jaemal") 
+!Dead("Jaemal") 
+!StateCheck("jaemal",STATE_SLEEPING)
+!StateCheck("jaemal",STATE_DEAD)
+!StateCheck("jaemal",STATE_ACID_DEATH)
+!StateCheck("jaemal",STATE_FLAME_DEATH )
+!StateCheck("jaemal",STATE_EXPLODING_DEATH)             
+!StateCheck("jaemal",STATE_STONE_DEATH)
+!StateCheck("jaemal",STATE_FROZEN_DEATH)
+!StateCheck("jaemal",STATE_HELPLESS)
+!StateCheck("jaemal",STATE_INVISIBLE)
+!StateCheck("jaemal",STATE_STUNNED)
+!StateCheck("jaemal",STATE_PANIC)
+!StateCheck("jaemal",STATE_BERSERK)
+!StateCheck("jaemal",STATE_CHARMED)
+!StateCheck("jaemal",STATE_BLIND)
+!StateCheck("jaemal",STATE_FEEBLEMINDED)
+!StateCheck("jaemal",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("jaemal",STATE_CONFUSED)
+!AnyPCSeesEnemy()
+InParty("charbase")
+See("charbase",0)
+!StateCheck("charbase",STATE_SLEEPING)
+!StateCheck("charbase",STATE_DEAD)
+!StateCheck("charbase",STATE_ACID_DEATH)
+!StateCheck("charbase",STATE_FLAME_DEATH )
+!StateCheck("charbase",STATE_EXPLODING_DEATH)             
+!StateCheck("charbase",STATE_STONE_DEATH)
+!StateCheck("charbase",STATE_FROZEN_DEATH)
+!StateCheck("charbase",STATE_HELPLESS)
+!StateCheck("charbase",STATE_INVISIBLE)
+!StateCheck("charbase",STATE_STUNNED)
+!StateCheck("charbase",STATE_PANIC)
+!StateCheck("charbase",STATE_BERSERK)
+!StateCheck("charbase",STATE_CHARMED)
+!StateCheck("charbase",STATE_BLIND)
+!StateCheck("charbase",STATE_FEEBLEMINDED)
+!StateCheck("charbase",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("charbase",STATE_CONFUSED)
+Global("P#Jaemal6800","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Jaemal",6703)
+Global("P#JaemalAerie","GLOBAL",0)
+Global("Unhide_Buvai","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalAerie","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("Jaemal",6703)
+Global("P#JaemalAerie","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalAerie","GLOBAL",6)
+END
+
+//Mandal Death
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!Dead("Jaemal")
+!AnyPCSeesEnemy()
+Global("P#MandalStoryTold","GLOBAL",1)
+!See("61Mandal",0)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Jaemal",6102)
+Global("P#JaemalMandal","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalMandal","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("Jaemal",6102)
+Global("P#JaemalMandal","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalMandal","GLOBAL",2)
+END
+
+//Waterfall AR6200
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!Dead("Jaemal")
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Jaemal",6200)
+Global("P#JaemalWaterfall","GLOBAL",0)
+Global("Purified_Fields","MYAREA",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+Global("P#JaemalRomanceInactive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalWaterfall","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("Jaemal",6200)
+Global("P#JaemalWaterfall","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalWaterfall","GLOBAL",2)
+END
+
+//Play in Dragon Eye AR6104
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Jaemal",6104)
+GlobalGT("PerformedPlay","MYAREA",0)
+Global("P#JaemalPlay","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalPlay","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("Jaemal",6104)
+Global("P#JaemalPlay","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalPlay","GLOBAL",2)
+END
+
+
+//Robes AR6051
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("jaemal",6051)
+OR(2)
+PartyHasItem("60CLCKIR")
+HasItemInSlot("60CLCKIR",Player1,SLOT_CLOAK)
+Global("P#JaemalCh5Robes","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+GlobalGT("P#JaemalRomanceActive","GLOBAL",0)
+Global("P#JaemalRomanceInactive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh5Robes","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",6051)
+Global("P#JaemalCh5Robes","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalCh5Robes","GLOBAL",2)
+END
+
+//AR6002
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Jaemal",6002)
+Global("P#JaemalAR6002","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalAR6002","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("Jaemal",6002)
+Global("P#JaemalAR6002","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalAR6002","GLOBAL",2)
+END
+
+//Barbarians
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING) !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Jaemal",5001)
+Global("50Barbarians_Leave", "GLOBAL", 1)
+Global("P#JaemalBarbariansLeave","GLOBAL",0)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalBarbariansLeave","GLOBAL",1)
+ActionOverride("Jaemal",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("Jaemal",5001)
+Global("P#JaemalBarbariansLeave","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalBarbariansLeave","GLOBAL",2)
+END
+
+//Jari
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("jaemal",5000)
+Global("50Jari_Gift", "GLOBAL", 2)
+Global("P#JaemalJari","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalJari","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",5000)
+Global("P#JaemalJari","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalJari","GLOBAL",2)
+END
+
+//Pairi
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("jaemal",5000)
+!Global("50Sorcery","GLOBAL",1)
+Global("P#PairiSorcery","GLOBAL",1)
+Global("P#JaemalPairi","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PairiSorcery","GLOBAL",2)
+SetGlobal("P#JaemalPairi","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",5000)
+Global("P#JaemalPairi","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalPairi","GLOBAL",2)
+END
+
+//found Lysara's Journal
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("jaemal",4102)
+PartyHasItem("41BOOKLJ")
+Global("P#JaemalLuskan","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalLuskan","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",4102)
+Global("P#JaemalLuskan","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalLuskan","GLOBAL",2)
+END
+
+//found Amulet
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("jaemal",4100)
+PartyHasItem("41AMULHS")
+Global("P#JaemalFrozenS","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFrozenS","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",4100)
+Global("P#JaemalFrozenS","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalFrozenS","GLOBAL",2)
+END
+
+//LG Village Resolutions
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("jaemal",2001)
+Global("SR_Orc_Guards_Dead","GLOBAL",1)
+Global("SR_Villagers_Dead","GLOBAL",0)
+Global("SR_Rescue_Villagers","GLOBAL",5)
+Global("P#JaemalLV_Saved","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalLV_Saved","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",2001)
+Global("P#JaemalLV_Saved","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalLV_Saved","GLOBAL",2)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("jaemal",2001)
+Global("SR_Villagers_Dead","GLOBAL", 4)
+Global("SR_Dead_Villager","GLOBAL",12)
+GlobalLT("SR_Rescue_Villagers","GLOBAL", 5)
+Global("P#JaemalLV_Doom","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalLV_Doom","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",2001)
+Global("P#JaemalLV_Doom","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalLV_Doom","GLOBAL",2)
+END
+
+//Shaengarne River
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+Global("P#Rescue_Sabrina_Quest","GLOBAL",1)
+Global("P#JaemalSabrinaAbduction","GLOBAL",0)
+CurrentAreaIs("jaemal",2000)
+Global("P#SabrinaCutScene","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalSabrinaAbduction","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",2000)
+Global("P#JaemalSabrinaAbduction","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalSabrinaAbduction","GLOBAL",2)
+END
+
+//Targos Town Oswald's Ship
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("Know_Oswald", "GLOBAL", 1) 
+Global("Know_Oswald_Crash", "GLOBAL", 1)
+Global("P#JaemalOswald1","GLOBAL",0)
+CurrentAreaIs("jaemal",1105)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalOswald1","GLOBAL",1)
+ActionOverride("jaemal",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!CurrentAreaIs("jaemal",1105)
+Global("P#JaemalOswald1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#JaemalOswald1","GLOBAL",2)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#SetJaemalBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetJaemalBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",6000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#SetJaemalBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetJaemalBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#JaemalRomanceTimer","GLOBAL",2900)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",6000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#SetJaemalBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetJaemalBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#JaemalRomanceTimer","GLOBAL",2900)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",1800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#SetJaemalBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetJaemalBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#JaemalRomanceTimer","GLOBAL",2900)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",1800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#SetJaemalBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetJaemalBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#JaemalRomanceTimer","GLOBAL",2900)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",1800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#SetJaemalBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetJaemalBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#JaemalRomanceTimer","GLOBAL",2900)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",1800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+Global("P#SetJaemalBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetJaemalBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#JaemalRomanceTimer","GLOBAL",2900)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",1800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//First mega-banter
+
+IF
+!IsPlayerNumber("charbase",1)
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+Global("P#FirstChat","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#FirstChat","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("nord"))
+END
+
+//Normal NPC banter
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JADI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JADI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JADI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JADI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JADI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JADI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JAHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JAHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JAHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JAHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JANI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JANI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JANO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JANO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JANO2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JANO2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JANO3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JANO3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JAPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JAPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JASA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JASA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+OR(2)
+Global("P#JaemalRomanceActive","GLOBAL",0)
+Global("P#JaemalRomanceInactive","GLOBAL",1)
+OR(5)
+CurrentAreaIs(Myself,6000)
+CurrentAreaIs(Myself,6002)
+CurrentAreaIs(Myself,6050)
+CurrentAreaIs(Myself,6201)
+CurrentAreaIs(Myself,6300)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JASA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JASA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",1)
+Global("P#PRJA1","GLOBAL",2)
+Global("P#JAPR1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JAPR1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#JAPR2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JAPR2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("prachi"))
+END
+
+//Rizdaer
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JARI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JARI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JARI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JARI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JAVA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JAVA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("Valeero"))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JAVA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8000)
+IncrementGlobal("P#JAVA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet("Valeero"))
+END
+
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+//In Prologue or later goes to 2
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#JaemalPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalPCTalk","GLOBAL",1)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",5200)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JaemalPCTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalPCTalk","GLOBAL",1)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1 goes to 4
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#JaemalPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalPCTalk","GLOBAL",1)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2 goes to 8
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",1)
+OR(2)
+Global("P#JaemalPCTalk","GLOBAL",5)
+Global("P#JaemalPCTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalPCTalk","GLOBAL",1)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3 goes to 12
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#JaemalPCTalk","GLOBAL",9)
+Global("P#JaemalPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalPCTalk","GLOBAL",1)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4 goes to 16
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",3)
+OR(2)
+Global("P#JaemalPCTalk","GLOBAL",13)
+Global("P#JaemalPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalPCTalk","GLOBAL",1)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5  goes to 18
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!CurrentAreaIs(Myself,6050)
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#JaemalPCTalk","GLOBAL",17)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalPCTalk","GLOBAL",1)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6  goes to 20
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#JaemalPCTalk","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaemalPCTalk","GLOBAL",1)
+SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+

@@ -1,0 +1,55 @@
+IF
+Dead("Isair2")
+Dead("Madae2")
+GlobalGT("StartCutscene_63cFB06","AR6305",0)
+Global("P#SavedGameExit","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#FinalSave","GLOBAL",10)
+SetGlobal("P#SavedGameExit","GLOBAL",1)
+//SaveGame(@0 /* ~Autosave - Chapter Six, Exiting Severed Hand~ */)
+END
+
+IF
+GlobalTimerExpired("P#FinalSave","GLOBAL")
+Global("P#SavedGameExit","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+Dead("Isair2")
+Dead("Madae2")
+GlobalGT("StartCutscene_63cFB06","AR6305",0)
+OR(4)
+!InParty("Salomeya")
+Dead("Salomeya")
+Global("SalomeyaRomanceInactive","GLOBAL",1)
+Global("SalomeyaRomanceActive","GLOBAL",0)
+Global("P#EpilogueReady","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#EpilogueReady","GLOBAL",1)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("70epilo1")
+END
+
+IF
+GlobalTimerExpired("P#FinalSave","GLOBAL")
+Global("P#SavedGameExit","GLOBAL",1)
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#SaLTO7","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("P#SalomeyaMatch","GLOBAL",1)
+Dead("Isair2")
+Dead("Madae2")
+GlobalGT("StartCutscene_63cFB06","AR6305",0)
+CurrentAreaIs("salomeya",6305)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLTO7","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END

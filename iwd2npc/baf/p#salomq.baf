@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("salomeya")
+		FloatMessage("salomeya",@0 /* ~Adeu, oh paladin's spawn.~ */)
+		SetGlobal("P#salomeyaQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("salomeya","salomeya",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("salomeya",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("jaemal")
+		FloatMessage("jaemal",@0 /* ~I'm not your slave; my road is my own from now on.~ */)
+		SetGlobal("P#jaemalQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("jaemal","jaemal",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("jaemal",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

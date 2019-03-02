@@ -1,0 +1,9 @@
+IF
+      HotKey(P)
+      IsPlayerNumber("charbase",1)
+      IsPlayerNumber(Myself,1)
+      IsScriptName("charbase",Myself)
+THEN
+      RESPONSE #100
+      ActionOverride(Player1,StartDialogueNoSet(Myself))
+    END

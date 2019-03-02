@@ -1,0 +1,20 @@
+IF
+True()
+THEN
+RESPONSE #100
+StopJoinRequests()
+CutSceneId("Diriel")
+MultiPlayerSync()
+HideGUI()
+Wait(1)
+SpellHitEffectSprite("Diriel","Diriel",DIMENSION_DOOR_ORIGIN,0)
+SpellHitEffectSprite(Player1,Player1,DIMENSION_DOOR_ORIGIN,0)
+FadeToColor([0.0],0)
+Wait(1)
+ActionOverride(Player1,LeaveAreaLUA("AR6001","LOAD5000",[1227.906],2)
+ActionOverride("Diriel",LeaveAreaLUA("AR6001","LOAD5000",[1274.945],2))
+Wait(3)
+SetGlobal("P#DirielSeduction","GLOBAL",4)
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+EndCutSceneMode()
+END

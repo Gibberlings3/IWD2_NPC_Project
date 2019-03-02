@@ -1,0 +1,1989 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat("Salomeya",0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat("Salomeya",FATIGUE,1,SET)
+END
+
+//Chapter
+
+//Palisade, Prologue0
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+CurrentAreaIs("Salomeya",1200)
+OR(2)
+Global("Chapter","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+Global("P#SalomeyaPrologue","GLOBAL",0)
+Global("Goblin_Palisade_Quest","GLOBAL",1)
+Global("Shaengarne_Quest", "GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaPrologue","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+//Chapter 1, Drumms
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Salomeya",3000)
+OR(2)
+!Global("31BUGGUT_DEAD","GLOBAL",0)
+Global("SPAWN_LOCK","MYAREA",2)
+OR(3)
+Dead("30drum1")
+Dead("30drum2")
+Dead("30drum3")
+Global("P#SalomeyaCh1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh1","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaCh1","GLOBAL",1)
+!CurrentAreaIs("Salomeya",3000)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh1","GLOBAL",2)
+END
+
+//Belladonna Ch2, Male only
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+OR(2)
+CurrentAreaIs("Salomeya",4000)
+CurrentAreaIs("Salomeya",4100)
+PartyHasItem("40GENBE")
+Gender(Player1,MALE)
+Global("P#SalomeyaLTO1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaLTO1","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaLTO1","GLOBAL",1)
+!CurrentAreaIs("Salomeya",4000)
+!CurrentAreaIs("Salomeya",4100)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaLTO1","GLOBAL",2)
+END
+
+//Limha's Quest, Ch3
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+Global("Chapter","GLOBAL",3)
+OR(3)
+CurrentAreaIs("Salomeya",5002)
+CurrentAreaIs("Salomeya",5001)
+CurrentAreaIs("Salomeya",5000)
+Global("Limha_Dead","GLOBAL",1)
+Global("P#SalomeyaCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh3","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaCh3","GLOBAL",1)
+!CurrentAreaIs("Salomeya",5002)
+!CurrentAreaIs("Salomeya",5001)
+!CurrentAreaIs("Salomeya",5000)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh3","GLOBAL",2)
+END
+
+//The Underdark, Ch4
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Salomeya",5300)
+Global("P#SalomeyaCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh4","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaCh4","GLOBAL",1)
+!CurrentAreaIs("Salomeya",5300)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh4","GLOBAL",2)
+END
+
+//Jungles of Chult, Ch5
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Salomeya",6050)
+Global("P#SalomeyaCh5","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh5","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaCh5","GLOBAL",1)
+!CurrentAreaIs("Salomeya",6050)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh5","GLOBAL",2)
+END
+
+//The Sevred Hand, Ch6
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",6)
+OR(5)
+CurrentAreaIs("Salomeya",6300)
+CurrentAreaIs("Salomeya",6301)
+CurrentAreaIs("Salomeya",6302)
+CurrentAreaIs("Salomeya",6303)
+CurrentAreaIs("Salomeya",6304)
+Global("P#SalomeyaCh6","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh6","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaCh6","GLOBAL",1)
+!CurrentAreaIs("Salomeya",6300)
+!CurrentAreaIs("Salomeya",6301)
+!CurrentAreaIs("Salomeya",6302)
+!CurrentAreaIs("Salomeya",6303)
+!CurrentAreaIs("Salomeya",6304)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh6","GLOBAL",2)
+END
+
+//Scenery
+
+//Romantic Aerie
+
+IF
+!AnyPCSeesEnemy()
+InParty("charbase")
+See("charbase",0)
+InParty("Salomeya") 
+!Dead("Salomeya") 
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+!StateCheck("Salomeya",STATE_DEAD)
+!StateCheck("Salomeya",STATE_ACID_DEATH)
+!StateCheck("Salomeya",STATE_FLAME_DEATH )
+!StateCheck("Salomeya",STATE_EXPLODING_DEATH)             
+!StateCheck("Salomeya",STATE_STONE_DEATH)
+!StateCheck("Salomeya",STATE_FROZEN_DEATH)
+!StateCheck("Salomeya",STATE_HELPLESS)
+!StateCheck("Salomeya",STATE_INVISIBLE)
+!StateCheck("Salomeya",STATE_STUNNED)
+!StateCheck("Salomeya",STATE_PANIC)
+!StateCheck("Salomeya",STATE_BERSERK)
+!StateCheck("Salomeya",STATE_CHARMED)
+!StateCheck("Salomeya",STATE_BLIND)
+!StateCheck("Salomeya",STATE_FEEBLEMINDED)
+!StateCheck("Salomeya",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("Salomeya",STATE_CONFUSED)
+!StateCheck("charbase",STATE_SLEEPING)
+!StateCheck("charbase",STATE_DEAD)
+!StateCheck("charbase",STATE_ACID_DEATH)
+!StateCheck("charbase",STATE_FLAME_DEATH )
+!StateCheck("charbase",STATE_EXPLODING_DEATH)             
+!StateCheck("charbase",STATE_STONE_DEATH)
+!StateCheck("charbase",STATE_FROZEN_DEATH)
+!StateCheck("charbase",STATE_HELPLESS)
+!StateCheck("charbase",STATE_INVISIBLE)
+!StateCheck("charbase",STATE_STUNNED)
+!StateCheck("charbase",STATE_PANIC)
+!StateCheck("charbase",STATE_BERSERK)
+!StateCheck("charbase",STATE_CHARMED)
+!StateCheck("charbase",STATE_BLIND)
+!StateCheck("charbase",STATE_FEEBLEMINDED)
+!StateCheck("charbase",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("charbase",STATE_CONFUSED)
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Salomeya",6703)
+Global("P#SalomeyaRoInt12","GLOBAL",0)
+Global("Unhide_Buvai","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt12","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",6703)
+Global("P#SalomeyaRoInt12","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt12","GLOBAL",2)
+END
+
+//Romantic Defeated Xvim
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Salomeya",6500)
+Global("P#SalomeyaRoInt11","GLOBAL",0)
+Global("SH_Perform_Illmater_Ritual","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt11","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya")
+!CurrentAreaIs("Salomeya",6500)
+Global("P#SalomeyaRoInt11","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt11","GLOBAL",2)
+END
+
+//Romantic Second floor of the SH
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Salomeya",6302)
+Global("P#SalomeyaRoInt10","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt10","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya")
+!CurrentAreaIs("Salomeya",6302)
+Global("P#SalomeyaRoInt10","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt10","GLOBAL",2)
+END
+
+//Romantic Hiistachi - does not work
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Salomeya",6103)
+IsAnimationID("salomeya",58268)
+IsAnimationID(Player1,58268)
+Global("P#SalomeyaRoInt9","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt9","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya")
+!CurrentAreaIs("Salomeya",6103)
+Global("P#SalomeyaRoInt9","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt9","GLOBAL",2)
+END
+
+//Romantic Mind Flayers
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Salomeya",5302)
+Global("P#MetElder","GLOBAL",1)
+Global("P#SalomeyaRoInt8","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt8","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya")
+!CurrentAreaIs("Salomeya",5302)
+Global("P#SalomeyaRoInt8","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt8","GLOBAL",2)
+END
+
+//Romantic Iselore
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Salomeya",6001)
+GlobalGT("60Twins_Story","GLOBAL",1)
+Global("P#SalomeyaRoInt7","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt7","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya")
+!CurrentAreaIs("Salomeya",6001)
+Global("P#SalomeyaRoInt7","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt7","GLOBAL",2)
+END
+
+//Romantic Driders
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Salomeya",5300)
+Global("Viciscamera_Dead","GLOBAL",1)
+Global("P#SalomeyaRoInt6","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt6","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya")
+!CurrentAreaIs("Salomeya",5300)
+Global("P#SalomeyaRoInt6","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt6","GLOBAL",2)
+END
+
+//Romantic Dolon
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+Gender(Player1,MALE)
+IsPlayerNumber("charbase",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Salomeya",5201)
+Global("52Aruma_Gone", "GLOBAL", 1)
+Global("P#SalomeyaRoInt5","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt5","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5201)
+Global("P#SalomeyaRoInt5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt5","GLOBAL",2)
+END
+
+//Romantic, Jari
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+Gender(Player1,MALE)
+IsPlayerNumber("charbase",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Salomeya",5000)
+Global("50Jari_Gift", "GLOBAL", 2)
+Global("P#SalomeyaRoInt4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt4","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5000)
+Global("P#SalomeyaRoInt4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt4","GLOBAL",2)
+END
+
+//Romantic, triplets innuendo
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+Gender(Player1,MALE)
+IsPlayerNumber("charbase",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Salomeya",4101)
+Global("P#KnowTriplets","GLOBAL",1)
+Global("P#SalomeyaRoInt3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt3","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",4101)
+Global("P#SalomeyaRoInt3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt3","GLOBAL",2)
+END
+
+
+//Romantic, made Vreck leave
+
+IF
+Global("30gobVun_leave","GLOBAL",1)
+Global("P#GobVunCutscene","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#GobVunCutscene","GLOBAL",1)
+SetGlobalTimer("P#GobVunCutsceneTime","GLOBAL",10)
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+Gender(Player1,MALE)
+IsPlayerNumber("charbase",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Salomeya",3001)
+Global("30gobVun_leave","GLOBAL",1)
+GlobalTimerExpired("P#GobVunCutsceneTime","GLOBAL")
+Global("P#SalomeyaRoInt2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt2","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",3001)
+Global("P#SalomeyaRoInt2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt2","GLOBAL",2)
+END
+
+//Romantic, Phaen is revealed as traitor
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+Gender(Player1,MALE)
+IsPlayerNumber("charbase",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("Salomeya",1106)
+GlobalGT("Phaen_Loses_It","GLOBAL",0)
+Dead("Phaen_of_the_Rags")
+Global("P#SalomeyaRoInt1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt1","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",1106)
+Global("P#SalomeyaRoInt1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaRoInt1","GLOBAL",2)
+END
+
+//romantic, Peony-Lothar
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Salomeya",6104)
+Global("LotharOnPatrol","MYAREA",1)
+Global("P#SalomeyaPeonyLothar","GLOBAL",0)
+InParty("Peony")
+!Dead("peony")
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaPeonyLothar","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",6104)
+Global("P#SalomeyaPeonyLothar","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaPeonyLothar","GLOBAL",2)
+END
+
+//romantic Tahvo
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Salomeya",5000)
+Global("P#SalomeyaTahvoCompliment","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Global("P#PC_WantsComplimentMale","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaTahvoCompliment","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5000)
+Global("P#SalomeyaTahvoCompliment","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaTahvoCompliment","GLOBAL",2)
+END
+
+//Kuldahar
+
+IF
+InParty("Salomeya") 
+!Dead("Salomeya") 
+!StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Salomeya",6001)
+Global("Crossroads_Quest","GLOBAL",4)
+Global("P#SalomeyaTree","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaTree","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaTree","GLOBAL",1)
+!CurrentAreaIs("Salomeya",6001)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaTree","GLOBAL",2)
+END
+
+//AR5200
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Salomeya",5200)
+Global("P#SalomeyaAR5200","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaAR5200","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5200)
+Global("P#SalomeyaAR5200","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaAR5200","GLOBAL",2)
+END
+
+//Alchemy
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Salomeya",5301)
+Global("P#SalomeyaAR5301","GLOBAL",0)
+PartyHasItem("53MISCIM")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaAR5301","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5301)
+Global("P#SalomeyaAR5301","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaAR5301","GLOBAL",2)
+END
+
+//Black Urchin Shield
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Salomeya",5203)
+Global("P#SalomeyaAR5203","GLOBAL",0)
+PartyHasItem("00SHLDBU")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaAR5203","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5203)
+Global("P#SalomeyaAR5203","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaAR5203","GLOBAL",2)
+END
+
+//AR5100 killed 2 white dragons
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Salomeya",5101)
+Global("P#SalomeyaFirstWD","GLOBAL",1)
+Dead("00drawy")
+Global("P#SalomeyaWD","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaWD","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5101)
+Global("P#SalomeyaWD","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaWD","GLOBAL",2)
+END
+
+//AR5005 set global
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5005)
+Dead("00drawy")
+Global("P#SalomeyaFirstWD","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaFirstWD","GLOBAL",1)
+END
+
+//AR5000
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Salomeya",5000)
+Global("50Nym","GLOBAL",1)
+Global("P#SalomeyaWV","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaWV","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",5000)
+Global("P#SalomeyaWV","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaWV","GLOBAL",2)
+END
+
+//Oria is Etheral
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("41OriaIsEthereal","GLOBAL",1)
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Salomeya",4102)
+Global("P#SalomeyaOriaGhost","GLOBAL",0)
+!Dead("OriaEssence")
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaOriaGhost","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",4102)
+Global("P#SalomeyaOriaGhost","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaOriaGhost","GLOBAL",2)
+END
+
+//Zack's note
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Salomeya",4100)
+PartyHasItem("41GENZB")
+Global("P#SalomeyaZack","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaZack","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",4100)
+Global("P#SalomeyaZack","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaZack","GLOBAL",2)
+END
+
+//NWN soldiers
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Salomeya",4100)
+PartyHasItem("41AMULHS")
+Global("P#SalomeyaFrozenS","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaFrozenS","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",4100)
+Global("P#SalomeyaFrozenS","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaFrozenS","GLOBAL",2)
+END
+
+
+//AR3001 Salomeya sees dead spiders
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Salomeya",3001)
+IsPlayerNumber("charbase",1)
+OR(2)
+PartyHasItem("30wspidr")
+PartyHasItem("30wspidQ")
+Global("P#SalomeyaSpider","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaSpider","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",3001)
+Global("P#SalomeyaSpider","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaSpider","GLOBAL",2)
+END
+
+//AR2101 Sh. Dam
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Salomeya",2101)
+Dead("Snow Leopard")
+Global("P#SalomeyaLeopard","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaLeopard","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",2101)
+Global("P#SalomeyaLeopard","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaLeopard","GLOBAL",2)
+END
+
+//Logger's Village
+
+//Moonblade comment
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+OR(2)
+CurrentAreaIs("Salomeya",2001)
+CurrentAreaIs("Salomeya",2002)
+GlobalGT("SR_Recover_Blade","GLOBAL",0)
+GlobalLT("SR_Recover_Blade","GLOBAL",4)
+Global("P#SalomeyaMoonblade","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaMoonblade","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",2001)
+!CurrentAreaIs("Salomeya",2002)
+Global("P#SalomeyaMoonblade","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaMoonblade","GLOBAL",2)
+END
+
+//Shaengarne River
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+Global("P#SalomeyaSabrina","GLOBAL",1)
+CurrentAreaIs("Salomeya",2000)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaSabrina","GLOBAL",2)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaSabrina","GLOBAL",2)
+!CurrentAreaIs("Salomeya",2000)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaSabrina","GLOBAL",3)
+END
+
+//Palisade Gable
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("Gable_Quest","GLOBAL",6)
+Global("P#SalomeyaGable","GLOBAL",1)
+CurrentAreaIs("Salomeya",1200)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaGable","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaGable","GLOBAL",1)
+!CurrentAreaIs("Salomeya",1200)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaGable","GLOBAL",2)
+END
+
+//Viera's Ghost Comment
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("Let_Me_Go", "GLOBAL", 1)
+Global("P#SalomeyaViera","GLOBAL",0)
+CurrentAreaIs("Salomeya",1105)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaViera","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SalomeyaViera","GLOBAL",1)
+!CurrentAreaIs("Salomeya",1105)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaViera","GLOBAL",2)
+END
+
+//Targos Town AR1100
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("P#TryAreaCheck","GLOBAL",0)
+CurrentAreaIs("Salomeya",1100)
+THEN
+RESPONSE #100
+SetGlobal("P#TryAreaCheck","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#TryAreaCheck","GLOBAL",1)
+!CurrentAreaIs("Salomeya",1100)
+THEN
+RESPONSE #100
+SetGlobal("P#TryAreaCheck","GLOBAL",2)
+END
+
+//Targos Docks AR1000
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Brogan_Quest","GLOBAL",1)
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("Salomeya",1000)
+Global("P#SalomBrogan","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomBrogan","GLOBAL",1)
+ActionOverride("Salomeya",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!CurrentAreaIs("Salomeya",1000)
+Global("P#SalomBrogan","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomBrogan","GLOBAL",2)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SetSalomeyaBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetSalomeyaBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SetSalomeyaBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetSalomeyaBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",2500)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",3200)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SetSalomeyaBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetSalomeyaBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",2500)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",3200)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SetSalomeyaBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetSalomeyaBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",2500)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",3200)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SetSalomeyaBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetSalomeyaBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",2500)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",3200)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SetSalomeyaBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetSalomeyaBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",2500)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",3200)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+Global("P#SetSalomeyaBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetSalomeyaBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",2500)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",3200)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//Normal NPC banter
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SADI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SADI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Diriel"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SADI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SADI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Diriel"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Hildury"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+Global("P#HINO2","GLOBAL",2)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Hildury"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+InParty("Nord")
+Global("P#NordIdentity","GLOBAL",1)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAHI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAHI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Hildury"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+Global("P#NordIdentity","GLOBAL",1)
+OR(2)
+GlobalLT("P#HilduryRomanceActive","GLOBAL",2)
+Global("P#HilduryRomanceInactive","GLOBAL",1)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAHI3","GLOBAL",2)
+Global("P#SAHI4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAHI4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Hildury"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAJA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAJA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAJA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAJA4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAJA4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAHI4","GLOBAL",2)
+Global("P#SAJA5","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAJA5","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SANI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SANI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Nikosh"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SANI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SANI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Nikosh"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SANO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SANO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Nord"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SANO2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SANO2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Nord"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+OR(2)
+!InParty("Hildury")
+Global("P#HINO2","GLOBAL",2)
+Global("P#JustStarted","GLOBAL",1)
+CheckStat("Salomeya",0,FATIGUE)
+Global("P#SANO3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#SANO3Time","GLOBAL",10)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SANO3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ChangeStat("Salomeya",FATIGUE,1,SET)
+ActionOverride("Salomeya",StartDialogueNoSet("Nord"))
+END
+
+IF
+GlobalTimerExpired("P#SANO3Time","GLOBAL")
+Global("P#SANO3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",0)
+SetGlobal("P#SANO3","GLOBAL",0)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JustStarted","GLOBAL",1)
+CheckStat("Salomeya",0,FATIGUE)
+Global("P#SANO3","GLOBAL",2)
+Global("P#SANO4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SANO4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ChangeStat("Salomeya",FATIGUE,1,SET)
+ActionOverride("Salomeya",StartDialogueNoSet("Nord"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Peony"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalGT("Chapter","GLOBAL",1)
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAPR1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAPR1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Prachi"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAPR2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAPR2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Prachi"))
+END
+
+//Rizdaer
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SARI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SARI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SARI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SARI2","GLOBAL",1)
+SetMusic(9,0)
+ActionOverride("Salomeya",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SARI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SARI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalGT("Chapter","GLOBAL",1)
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAVA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAVA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Valeero"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VASA2","GLOBAL",2)
+Global("P#SAVA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAVA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Valeero"))
+END
+
+//Salomeya's Songs
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAHISong1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAHISong1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Hildury"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SANOSong1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SANOSong1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Nord"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SANISong1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SANISong1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Nikosh"))
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalGT("Chapter","GLOBAL",3)
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#SAPRSong1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#SalomeyaTimer","GLOBAL",3600)
+IncrementGlobal("P#SAPRSong1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet("Prachi"))
+END
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+//In Prologue or later
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#SalomeyaPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaPCTalk","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",3200)
+END
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#SalomeyaPCTalkTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#SalomeyaPCTalk","GLOBAL",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaPCTalk","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#SalomeyaPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#SalomeyaPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaPCTalk","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#SalomeyaPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+OR(2)
+Global("P#SalomeyaPCTalk","GLOBAL",5)
+Global("P#SalomeyaPCTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaPCTalk","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#SalomeyaPCTalk","GLOBAL",9)
+Global("P#SalomeyaPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaPCTalk","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+OR(2)
+Global("P#SalomeyaPCTalk","GLOBAL",13)
+Global("P#SalomeyaPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaPCTalk","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!CurrentAreaIs("Salomeya",6050)
+Global("P#SalomeyaPCTalk","GLOBAL",17)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaPCTalk","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6
+
+IF
+InParty("Salomeya") !Dead("Salomeya") !StateCheck("Salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#SalomeyaPCTalk","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SalomeyaPCTalk","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END

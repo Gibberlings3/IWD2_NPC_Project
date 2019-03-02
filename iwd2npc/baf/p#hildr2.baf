@@ -1,0 +1,15 @@
+IF
+True()
+THEN
+RESPONSE #100
+CutSceneId("hildury")
+Wait(2)
+SetGlobal("P#HildPlot","GLOBAL",1)
+ChangeRace(Myself,ELF)
+ActionOverride("diriel",MoveToObject(Myself))
+PlayDead(60)
+SpellHitEffectSprite(Myself,Myself,RIGHTEOUS_WRATH_OF_THE_FAITHFUL_GROUND,0)
+DisplayString(Myself,@0 /* ~Hildury is reincarnated as an elf.~ */)
+ReallyForceSpellRES("P#HIHEEL",Myself)
+EndCutSceneMode()
+END

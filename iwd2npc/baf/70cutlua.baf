@@ -1,0 +1,62 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+		LeaveAreaLUA("AR6007","LOAD6000",[335.241],12)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player2)
+		LeaveAreaLUA("AR6007","LOAD6000",[399.247],12)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player3)
+		LeaveAreaLUA("AR6007","LOAD6000",[257.259],12)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player4)
+		LeaveAreaLUA("AR6007","LOAD6000",[151.178],12)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player5)
+		LeaveAreaLUA("AR6007","LOAD6000",[487.259],12)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player6)
+		LeaveAreaLUA("AR6007","LOAD6000",[85.200],12)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId(Player1)
+LeaveAreaLUA("AR6007","LOAD6000",[399.247],12)
+ActionOverride(Player2,LeaveAreaLUA("AR6007","LOAD6000",[399.247],12))
+ActionOverride(Player3,LeaveAreaLUA("AR6007","LOAD6000",[399.247],12))
+ActionOverride(Player4,LeaveAreaLUA("AR6007","LOAD6000",[399.247],12))
+ActionOverride(Player5,LeaveAreaLUA("AR6007","LOAD6000",[399.247],12))
+ActionOverride(Player6,LeaveAreaLUA("AR6007","LOAD6000",[399.247],12))
+END
+
+

@@ -1,0 +1,1222 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat("nord",0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat("nord",FATIGUE,1,SET)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("P#SetNordBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNordBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("P#SetNordBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNordBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",6800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("P#SetNordBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNordBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",6800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("P#SetNordBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNordBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",6800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("P#SetNordBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNordBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",6800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("P#SetNordBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNordBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",6800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("P#SetNordBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNordBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",6800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//Chapter
+
+//Chapter 1
+
+//Targos Palisade
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("nord",1200)
+Global("Chapter","GLOBAL",0)
+Global("P#NordPrologue1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordPrologue1","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") 
+!Dead("nord") 
+!StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",1200)
+Global("P#NordPrologue1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordPrologue1","GLOBAL",2)
+END
+
+//Chapter 2
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+OR(3)
+CurrentAreaIs("nord",4101)
+CurrentAreaIs("nord",4102)
+CurrentAreaIs("nord",4103)
+OR(2)
+Global("41ExplainedLegion", "GLOBAL", 1)
+Global("41ExplainedLegion", "GLOBAL", 1)
+Global("P#NordCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCh2","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",4101)
+!CurrentAreaIs("nord",4102)
+!CurrentAreaIs("nord",4103)
+Global("P#NordCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCh2","GLOBAL",2)
+END
+
+//Chapter 3
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("nord",5102)
+Global("P#HarshoMet","GLOBAL",1)
+Global("P#NordCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCh3","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",5102)
+Global("P#NordCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCh3","GLOBAL",2)
+END
+
+//Chapter 4
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("nord",5201)
+Global("52Salisam_Offer", "GLOBAL", 1)
+Global("P#NordCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCh4","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",5201)
+Global("P#NordCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCh4","GLOBAL",2)
+END
+
+//Chapter 5
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("nord",6002)
+Global("P#NordCh5","GLOBAL",0)
+PartyHasItem("60SWDLHA")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCh5","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",6002)
+Global("P#NordCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCh5","GLOBAL",2)
+END
+
+//Scenery
+
+//Nord LostFollowers
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("nord",6103)
+Global("P#NordLostFollowers","GLOBAL",0)
+PartyHasItem("61AMULLF")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordLostFollowers","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",6103)
+Global("P#NordLostFollowers","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordLostFollowers","GLOBAL",2)
+END
+
+//Robes
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+!ClassEx(Player1,PALADIN)
+IsPlayerNumber("charbase",1)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("nord",6050)
+PartyHasItem("60CLCKIR")
+Global("P#NordRobe","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NordRobe","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",6050)
+Global("P#NordRobe","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordRobe","GLOBAL",2)
+END
+
+//Hiepherus showed up
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Nord",6000)
+GlobalGT("Hiepherus_Intro", "GLOBAL",0)
+Global("P#NordHIEPHE60","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NordHIEPHE60","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("Nord",6000)
+Global("P#NordHIEPHE60","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordHIEPHE60","GLOBAL",2)
+END
+
+//AR5301 visiocamera destroyed
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs(Myself,5301)
+Global("Viciscamera_Dead","GLOBAL",1)
+Global("P#NordCamera","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCamera","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs(Myself,5301)
+Global("P#NordCamera","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordCamera","GLOBAL",2)
+END
+
+//Twins Attacked
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("nord",5000)
+Global("50Twins_Attack", "Global", 2)
+Global("50Twins_Venla", "Global", 1)
+Global("P#NordTwinsAttack","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NordTwinsAttack","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",5000)
+Global("P#NordTwinsAttack","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordTwinsAttack","GLOBAL",2)
+END
+
+//NWN soldiers
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("nord",4100)
+PartyHasItem("41AMULHS")
+Global("P#NordFrozenS","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordFrozenS","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",4100)
+Global("P#NordFrozenS","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordFrozenS","GLOBAL",2)
+END
+
+//Saw Sherincal
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("nord",3101)
+Global("P#HearSherincal","GLOBAL",1)
+Global("P#NordSherincal","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordSherincal","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",3101)
+Global("P#NordSherincal","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordSherincal","GLOBAL",2)
+END
+
+//AR2102 Sh. Bridge
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("nord",2102)
+Global("P#XukiChimera","GLOBAL",1)
+Global("P#NordXuki","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NordXuki","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",2102)
+Global("P#NordXuki","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordXuki","GLOBAL",2)
+END
+
+//AR2101 Sh. Dam
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("nord",2101)
+OR(2)
+CheckDoorFlags("AR2102_Bridge",DOOROPEN)
+CheckDoorFlags("AR2101_Door1_Bridge",DOOROPEN)
+Global("P#NordBeam","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NordBeam","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",2101)
+Global("P#NordBeam","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordBeam","GLOBAL",2)
+END
+
+//LG Village Resolutions
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("nord",2001)
+Global("SR_Orc_Guards_Dead","GLOBAL",1)
+Global("SR_Villagers_Dead","GLOBAL",0)
+Global("P#NordLV_Saved","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordLV_Saved","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",2001)
+Global("P#NordLV_Saved","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordLV_Saved","GLOBAL",2)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("nord",2001)
+GlobalLT("SR_Villagers_Dead","GLOBAL", 4)
+Global("SR_Dead_Villager","GLOBAL", 12)
+GlobalLT("SR_Rescue_Villagers","GLOBAL", 5)
+Global("P#NordLV_Doom","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordLV_Doom","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",2001)
+Global("P#NordLV_Doom","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordLV_Doom","GLOBAL",2)
+END
+
+//Know about Kaitlin's Potion
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+Global("P#NordLVPotion","GLOBAL",0)
+CurrentAreaIs("nord",2001)
+Global("P#KaitlinKnowPotion","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordLVPotion","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+Global("P#NordLVPotion","GLOBAL",1)
+!CurrentAreaIs("nord",2001)
+THEN
+RESPONSE #100
+SetGlobal("P#NordLVPotion","GLOBAL",2)
+END
+
+//Shaengarn River
+
+IF
+InParty("nord") 
+!Dead("nord") 
+!StateCheck("nord",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+Global("SR_Sabrina_Freed","GLOBAL",4)
+Global("P#NordSabrinaAbduction","GLOBAL",0)
+CurrentAreaIs("nord",2000)
+Global("P#SabrinaCutScene","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordSabrinaAbduction","GLOBAL",1)
+ActionOverride("nord",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!CurrentAreaIs("nord",2000)
+Global("P#NordSabrinaAbduction","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordSabrinaAbduction","GLOBAL",2)
+END
+
+//Targos Docks, off the boat
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!InParty("Jaemal")
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("nord",1000)
+Global("P#NordPrologue","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordPrologue","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+InParty("Jaemal")
+OR(2)
+!InParty("Salomeya")
+!InParty("Hildury")
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("nord",1000)
+Global("P#NordPrologue","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordPrologue","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+InParty("Jaemal")
+Global("P#FirstChat","GLOBAL",2)
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("nord",1000)
+Global("P#NordPrologue","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NordPrologue","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+
+//NPC banter
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NODI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NODI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Diriel"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NODI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NODI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Diriel"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NOHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Hildury"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+Global("P#SAHI4","GLOBAL",2)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NOHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Hildury"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8800)
+IncrementGlobal("P#NOJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOJA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8800)
+IncrementGlobal("P#NOJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOJA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",8800)
+IncrementGlobal("P#NOJA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NONI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NONI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Nikosh"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+InParty("Hildury")
+GlobalGT("Chapter","GLOBAL",1)
+Global("P#NIHI2","GLOBAL",2)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NONI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NONI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Nikosh"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NONI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NONI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Nikosh"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOPR1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NOPR1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOPR2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NOPR2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOPR3","GLOBAL",0)
+Global("P#PRNO1","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NOPR3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NOPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("peony"))
+END
+
+//Rizdaer
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+OR(37)
+CurrentAreaIs("nord",5010)
+CurrentAreaIs("nord",5011)
+CurrentAreaIs("nord",5012)
+CurrentAreaIs("nord",5013)
+CurrentAreaIs("nord",5014)
+CurrentAreaIs("nord",5015)
+CurrentAreaIs("nord",5016)
+CurrentAreaIs("nord",5017)
+CurrentAreaIs("nord",5018)
+CurrentAreaIs("nord",5019)
+CurrentAreaIs("nord",5020)
+CurrentAreaIs("nord",5021)
+CurrentAreaIs("nord",5022)
+CurrentAreaIs("nord",5023)
+CurrentAreaIs("nord",5024)
+CurrentAreaIs("nord",5025)
+CurrentAreaIs("nord",5026)
+CurrentAreaIs("nord",5027)
+CurrentAreaIs("nord",5028)
+CurrentAreaIs("nord",5029)
+CurrentAreaIs("nord",5030)
+CurrentAreaIs("nord",2000)
+CurrentAreaIs("nord",2000)
+CurrentAreaIs("nord",2100)
+CurrentAreaIs("nord",2101)
+CurrentAreaIs("nord",2102)
+CurrentAreaIs("nord",4000)
+CurrentAreaIs("nord",5000)
+CurrentAreaIs("nord",5001)
+CurrentAreaIs("nord",5004)
+CurrentAreaIs("nord",5100)
+CurrentAreaIs("nord",5303)
+CurrentAreaIs("nord",6002)
+CurrentAreaIs("nord",6050)
+CurrentAreaIs("nord",6100)
+CurrentAreaIs("nord",6201)
+CurrentAreaIs("nord",6300)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NORI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NORI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NORI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NORI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#NordTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NOVA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NordTimer","GLOBAL",8800)
+IncrementGlobal("P#NOVA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet("valeero"))
+END
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+//In Prologue or later goes to 2
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#NordPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NordPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",6800)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalTimerExpired("P#NordPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#NordPCTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NordPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1 goes to 4
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalTimerExpired("P#NordPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+OR(59)
+CurrentAreaIs("nord",1000)
+CurrentAreaIs("nord",1100)
+CurrentAreaIs("nord",1200)
+CurrentAreaIs("nord",2001)
+CurrentAreaIs("nord",3000)
+CurrentAreaIs("nord",3100)
+CurrentAreaIs("nord",4100)
+CurrentAreaIs("nord",6800)
+CurrentAreaIs("nord",6000)
+CurrentAreaIs("nord",6001)
+CurrentAreaIs("nord",6701)
+CurrentAreaIs("nord",6702)
+CurrentAreaIs("nord",6703)
+CurrentAreaIs("nord",6601)
+CurrentAreaIs("nord",6602)
+CurrentAreaIs("nord",6603)
+CurrentAreaIs("nord",6501)
+CurrentAreaIs("nord",6502)
+CurrentAreaIs("nord",6503)
+CurrentAreaIs("nord",6401)
+CurrentAreaIs("nord",6402)
+CurrentAreaIs("nord",6403)
+CurrentAreaIs("nord",5010)
+CurrentAreaIs("nord",5011)
+CurrentAreaIs("nord",5012)
+CurrentAreaIs("nord",5013)
+CurrentAreaIs("nord",5014)
+CurrentAreaIs("nord",5015)
+CurrentAreaIs("nord",5016)
+CurrentAreaIs("nord",5017)
+CurrentAreaIs("nord",5018)
+CurrentAreaIs("nord",5019)
+CurrentAreaIs("nord",5020)
+CurrentAreaIs("nord",5021)
+CurrentAreaIs("nord",5022)
+CurrentAreaIs("nord",5023)
+CurrentAreaIs("nord",5024)
+CurrentAreaIs("nord",5025)
+CurrentAreaIs("nord",5026)
+CurrentAreaIs("nord",5027)
+CurrentAreaIs("nord",5028)
+CurrentAreaIs("nord",5029)
+CurrentAreaIs("nord",5030)
+CurrentAreaIs("nord",2000)
+CurrentAreaIs("nord",2000)
+CurrentAreaIs("nord",2100)
+CurrentAreaIs("nord",2101)
+CurrentAreaIs("nord",2102)
+CurrentAreaIs("nord",4000)
+CurrentAreaIs("nord",5000)
+CurrentAreaIs("nord",5001)
+CurrentAreaIs("nord",5004)
+CurrentAreaIs("nord",5100)
+CurrentAreaIs("nord",5303)
+CurrentAreaIs("nord",6002)
+CurrentAreaIs("nord",6050)
+CurrentAreaIs("nord",6100)
+CurrentAreaIs("nord",6201)
+CurrentAreaIs("nord",6300)
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#NordPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NordPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2 goes to 8
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalTimerExpired("P#NordPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+OR(2)
+Global("P#NordPCTalk","GLOBAL",5)
+Global("P#NordPCTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NordPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3  Only if Hildury is in the party   still at 8
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+InParty("Hildury")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalTimerExpired("P#NordPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",2)
+Global("P#NordHilduryPCTalk","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NordHilduryPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4 Only if We know that Nord is Filip  still at 8
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+Global("P#NordIdentity","GLOBAL",1)
+Global("P#FilipPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#FilipPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",6800)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+GlobalTimerExpired("P#NordPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+Global("P#NordIdentity","GLOBAL",1)
+OR(2)
+Global("P#FilipPCTalk","GLOBAL",1)
+Global("P#FilipPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#FilipPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5 Normal sequence goes to 10
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+GlobalTimerExpired("P#NordPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#NordIdentity","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#NordPCTalk","GLOBAL",9)
+!CurrentAreaIs(Myself,6050)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NordPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6  Normal Sequence goes to 12
+
+IF
+InParty("nord") !Dead("nord") !StateCheck("nord",STATE_SLEEPING)
+GlobalTimerExpired("P#NordPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#NordIdentity","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#NordPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NordPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NordPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("nord000")
+ActionOverride("nord",StartDialogueNoSet(Player1))
+END
+

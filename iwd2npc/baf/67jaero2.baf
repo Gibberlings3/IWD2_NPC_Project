@@ -1,0 +1,23 @@
+IF
+True()
+THEN
+RESPONSE #100
+StopJoinRequests()
+CutSceneId(Player1)
+MultiPlayerSync()
+ActionOverride("Jaemal",FaceObject(Player1))
+Wait(1)
+FloatMessage("jaemal",@0 /* ~We must leave this enchanted corner.~ */)
+Wait(3)
+MoveToPoint([985.348])
+ActionOverride("Jaemal",MoveToPoint([950.340]))
+MoveViewObject(NearestPC,INSTANT)
+Wait(3)
+FloatMessage("jaemal",@1 /* ~Ah, back to our war.~ */)
+Wait(1)
+SetGlobal("P#JaemalAerie","GLOBAL",6)
+Wait(1)
+ActionOverride("Jaemal",FaceObject(Player1))
+ActionOverride("Jaemal",StartDialogueNoSet(Player1))
+END
+

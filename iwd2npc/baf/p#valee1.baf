@@ -1,0 +1,1264 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat(Myself,0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat(Myself,FATIGUE,1,SET)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("P#SetValeeroBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetValeeroBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",6400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("P#SetValeeroBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetValeeroBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",4400)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",6400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("P#SetValeeroBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetValeeroBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",4400)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",6400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("P#SetValeeroBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetValeeroBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",4400)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",6400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("P#SetValeeroBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetValeeroBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",4400)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",6400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("P#SetValeeroBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetValeeroBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",4400)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",6400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("P#SetValeeroBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetValeeroBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",4400)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",6400)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//Scenery
+
+//Chapter Talks
+
+//Chapter 1, Helped Emma
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2001)
+Global("P#EmmaGreatful","GLOBAL",1)
+Global("P#ValeeroCh1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh1","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("Valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2001)
+Global("P#ValeeroCh1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh1","GLOBAL",2)
+END
+
+//Chapter 2
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs(Myself,4100)
+Global("41Rahm","GLOBAL",0)
+Global("P#IgnoreValeeroIngrat","GLOBAL",1)
+Global("P#ValeeroCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh2","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("Valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,4100)
+Global("P#ValeeroCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh2","GLOBAL",2)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs(Myself,4100)
+Global("41Rahm","GLOBAL",2)
+OR(2)
+Global("P#ValeeroHero","GLOBAL",1)
+Global("P#ValeeroDeserter","GLOBAL",1)
+Global("P#ValeeroCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh2","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("Valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,4100)
+Global("P#ValeeroCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh2","GLOBAL",2)
+END
+
+//Chapter 3
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs(Myself,5010)
+Global("P#ValeeroCh3","GLOBAL",0)
+Global("50HGhost","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh3","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("Valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,5010)
+Global("P#ValeeroCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh3","GLOBAL",2)
+END
+
+//Chapter 4
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs(Myself,5302)
+Global("P#ValeeroCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh4","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("Valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,5302)
+Global("P#ValeeroCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh4","GLOBAL",2)
+END
+
+//Chapter 5
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs(Myself,6002)
+Global("P#ValeeroCh5","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Global("StatueXP","AR6002",0)
+GlobalGT("Kuldahar_6002_UndeadKilled","GLOBAL",0)
+!Kit(Player1,CLERIC_ILMATER)
+		!Kit(Player2,CLERIC_ILMATER)
+		!Kit(Player3,CLERIC_ILMATER)
+		!Kit(Player4,CLERIC_ILMATER)
+		!Kit(Player5,CLERIC_ILMATER)
+		!Kit(Player6,CLERIC_ILMATER)
+		!Kit(Player1,PALADIN_ILMATER)
+		!Kit(Player2,PALADIN_ILMATER)
+		!Kit(Player3,PALADIN_ILMATER)
+		!Kit(Player4,PALADIN_ILMATER)
+		!Kit(Player5,PALADIN_ILMATER)
+		!Kit(Player6,PALADIN_ILMATER)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh5","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("Valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,6002)
+Global("P#ValeeroCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroCh5","GLOBAL",2)
+END
+
+//Scenery
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs(Myself,5203)
+Global("P#ValeeroBarudBetrayal","GLOBAL",0)
+Global("50DUERGAR_DESTROY","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroBarudBetrayal","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("Valeero",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,5203)
+Global("P#ValeeroBarudBetrayal","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroBarudBetrayal","GLOBAL",2)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!Dead("valeero")
+!StateCheck("valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("valeero",5000)
+Global("P#valeeroVenlaRaiseDead","GLOBAL",0)
+Global("50Twins_Venla", "Global", 1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#valeeroVenlaRaiseDead","GLOBAL",1)
+ActionOverride("valeero",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING) !Dead("valeero") !StateCheck("valeero",STATE_SLEEPING)
+!CurrentAreaIs("valeero",5000)
+Global("P#valeeroVenlaRaiseDead","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#valeeroVenlaRaiseDead","GLOBAL",2)
+END
+
+//Old Orc
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!Dead("valeero") 
+!StateCheck("valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("valeero",3101)
+Global("P#valeeroOldOrc","GLOBAL",0)
+Dead("Old_orc")
+PartyHasItem("30KEYDGU")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#valeeroOldOrc","GLOBAL",1)
+ActionOverride("valeero",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING) !Dead("valeero") !StateCheck("valeero",STATE_SLEEPING)
+!CurrentAreaIs("valeero",3101)
+Global("P#valeeroOldOrc","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#valeeroOldOrc","GLOBAL",2)
+END
+
+//AR3100
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,3100)
+Global("P#ValeeroAR3100","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroAR3100","GLOBAL",1)
+ActionOverride("Valeero",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,3100)
+Global("P#ValeeroAR3100","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroAR3100","GLOBAL",2)
+END
+
+//bACK IN tRAGOS
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+OR(3)
+CurrentAreaIs(Myself,1000)
+CurrentAreaIs(Myself,1100)
+CurrentAreaIs(Myself,1200)
+Global("Shaengarne_Bridge_Cleared", "GLOBAL", 1)
+Global("P#ValeeroBackTargos","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroBackTargos","GLOBAL",1)
+ActionOverride("Valeero",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,1000)
+!CurrentAreaIs(Myself,1100)
+!CurrentAreaIs(Myself,1200)
+Global("P#ValeeroBackTargos","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroBackTargos","GLOBAL",2)
+END
+
+//Destoryed bridge
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2102)
+Global("Shaengarne_Quest", "GLOBAL", 2)
+Global("Shaengarne_Bridge_Destroyed","GLOBAL",2)
+Global("P#ValeeroBridgeDestroyed","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroBridgeDestroyed","GLOBAL",1)
+ActionOverride("Valeero",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2102)
+Global("P#ValeeroBridgeDestroyed","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroBridgeDestroyed","GLOBAL",2)
+END
+
+//Saved the bridge
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2102)
+Global("Shaengarne_Quest", "GLOBAL", 2)
+Global("Shaengarne_Bridge_Cleared", "GLOBAL", 1)
+GlobalLT("Shaengarne_Bridge_Destroyed","GLOBAL",2)
+Global("P#ValeeroBridgeSaved","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroBridgeSaved","GLOBAL",1)
+ActionOverride("Valeero",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2102)
+Global("P#ValeeroBridgeSaved","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroBridgeSaved","GLOBAL",2)
+END
+
+//Logging Village Resolution
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2001)
+Global("SR_Orc_Guards_Dead","GLOBAL",1)
+Global("SR_Villagers_Dead","GLOBAL",0)
+Global("SR_Rescue_Villagers","GLOBAL",5)
+Global("P#ValeeroLV_Saved","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroLV_Saved","GLOBAL",1)
+ActionOverride("Valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2001)
+Global("P#ValeeroLV_Saved","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroLV_Saved","GLOBAL",2)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2001)
+Global("SR_Villagers_Dead","GLOBAL", 4)
+Global("SR_Dead_Villager","GLOBAL",12)
+GlobalLT("SR_Rescue_Villagers","GLOBAL", 5)
+Global("P#ValeeroLV_Doom","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroLV_Doom","GLOBAL",1)
+ActionOverride("Valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2001)
+Global("P#ValeeroLV_Doom","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroLV_Doom","GLOBAL",2)
+END
+
+//Valeero Targos Docks Reig
+
+IF
+InParty("Valeero")
+!Dead("Valeero") 
+!StateCheck("Valeero",STATE_SLEEPING)
+Global("Reig_Quest","GLOBAL",1)
+CurrentAreaIs(Myself,1001)
+Global("#NoExtraPotion","GLOBAL",0)
+!PartyHasItem("00Potn04")
+THEN
+RESPONSE #100
+SetGlobal("#NoExtraPotion","GLOBAL",1)
+END
+
+IF
+InParty("Valeero")
+!Dead("Valeero") 
+!StateCheck("Valeero",STATE_SLEEPING)
+Global("Reig_Quest","GLOBAL",1)
+CurrentAreaIs(Myself,1001)
+Global("#NoExtraPotion","GLOBAL",1)
+PartyHasItem("00Potn04")
+THEN
+RESPONSE #100
+SetGlobal("#NoExtraPotion","GLOBAL",2)
+END
+
+IF
+InParty("Valeero") 
+!Dead("Valeero") 
+!StateCheck("Valeero",STATE_SLEEPING)
+Global("#NoExtraPotion","GLOBAL",2)
+PartyHasItem("00Potn04")
+IsPlayerNumber("charbase",1)
+Global("Reig_Quest","GLOBAL",1)
+Global("Chapter","GLOBAL",0)
+OR(2)
+CurrentAreaIs(Myself,1001)
+CurrentAreaIs(Myself,1000)
+Global("P#ValeeroTargosPotion","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroTargosPotion","GLOBAL",1)
+ActionOverride("valeero",StartDialogueNoSet("valeero"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,1000)
+!CurrentAreaIs(Myself,1001)
+Global("P#ValeeroTargosPotion","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroTargosPotion","GLOBAL",2)
+END
+
+//Valeero Death Bane
+
+IF
+InParty("Valeero") 
+!Dead("Valeero") 
+!StateCheck("Valeero",STATE_SLEEPING)
+Global("P#ValeeroDeathBane","GLOBAL",0)
+PartyHasItem("00SWDLDB")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroDeathBane","GLOBAL",1)
+ActionOverride("valeero",StartDialogueNoSet("valeero"))
+END
+
+//Valeero Alchemist Notes
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs(Myself,6102)
+Global("P#ValeeroAlchemistNotes","GLOBAL",0)
+PartyHasItem("61GENDN")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroAlchemistNotes","GLOBAL",1)
+ActionOverride("valeero",StartDialogueNoSet("valeero"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,6102)
+Global("P#ValeeroAlchemistNotes","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroAlchemistNotes","GLOBAL",2)
+END
+
+
+//Valeero LostFollowers
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs(Myself,6103)
+Global("P#ValeeroLostFollowers","GLOBAL",0)
+PartyHasItem("61AMULLF")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroLostFollowers","GLOBAL",1)
+ActionOverride("valeero",StartDialogueNoSet("valeero"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,6103)
+Global("P#ValeeroLostFollowers","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroLostFollowers","GLOBAL",2)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs(Myself,4100)
+PartyHasItem("41AMULHS")
+Global("P#ValeeroFrozenS","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroFrozenS","GLOBAL",1)
+ActionOverride("valeero",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!CurrentAreaIs(Myself,4100)
+Global("P#ValeeroFrozenS","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#ValeeroFrozenS","GLOBAL",2)
+END
+
+//NPC-NPC Banter
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VADI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VADI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIVA1","GLOBAL",2)
+CheckStat(Myself,0,FATIGUE)
+Global("P#VADI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VADI2","GLOBAL",1)
+ChangeStat(Myself,FATIGUE,1,SET)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#DIVA2","GLOBAL",2)
+CheckStat(Myself,0,FATIGUE)
+Global("P#VADI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VADI3","GLOBAL",1)
+ChangeStat(Myself,FATIGUE,1,SET)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VADI3","GLOBAL",2)
+Global("P#VADI4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VADI4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VAHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VAHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAHI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VAHI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VAJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAJA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VAJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nikosh")
+See("Nikosh",0)
+!StateCheck("Nikosh",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VANI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VANI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#VANO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VANO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VANO2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VANO2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VANO3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VANO3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VAPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAPR1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VAPR1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VAPR2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VAPR2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VASA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VASA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VASA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VASA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VARI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VARI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+OR(37)
+CurrentAreaIs(Myself,5010)
+CurrentAreaIs(Myself,5011)
+CurrentAreaIs(Myself,5012)
+CurrentAreaIs(Myself,5013)
+CurrentAreaIs(Myself,5014)
+CurrentAreaIs(Myself,5015)
+CurrentAreaIs(Myself,5016)
+CurrentAreaIs(Myself,5017)
+CurrentAreaIs(Myself,5018)
+CurrentAreaIs(Myself,5019)
+CurrentAreaIs(Myself,5020)
+CurrentAreaIs(Myself,5021)
+CurrentAreaIs(Myself,5022)
+CurrentAreaIs(Myself,5023)
+CurrentAreaIs(Myself,5024)
+CurrentAreaIs(Myself,5025)
+CurrentAreaIs(Myself,5026)
+CurrentAreaIs(Myself,5027)
+CurrentAreaIs(Myself,5028)
+CurrentAreaIs(Myself,5029)
+CurrentAreaIs(Myself,5030)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2100)
+CurrentAreaIs(Myself,2101)
+CurrentAreaIs(Myself,2102)
+CurrentAreaIs(Myself,4000)
+CurrentAreaIs(Myself,5000)
+CurrentAreaIs(Myself,5001)
+CurrentAreaIs(Myself,5004)
+CurrentAreaIs(Myself,5100)
+CurrentAreaIs(Myself,5303)
+CurrentAreaIs(Myself,6002)
+CurrentAreaIs(Myself,6050)
+CurrentAreaIs(Myself,6100)
+CurrentAreaIs(Myself,6201)
+CurrentAreaIs(Myself,6300)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VARI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VARI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#ValeeroTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#VARI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
+IncrementGlobal("P#VARI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("vale",StartDialogueNoSet("rizdaer"))
+END
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+//In Prologue or later
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#ValeeroPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#ValeeroPCTalk","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",4400)
+END
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#ValeeroPCTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#ValeeroPCTalk","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#ValeeroPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#ValeeroPCTalk","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",1)
+OR(2)
+Global("P#ValeeroPCTalk","GLOBAL",5)
+Global("P#ValeeroPCTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#ValeeroPCTalk","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#ValeeroPCTalk","GLOBAL",9)
+Global("P#ValeeroPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#ValeeroPCTalk","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",3)
+OR(2)
+Global("P#ValeeroPCTalk","GLOBAL",13)
+Global("P#ValeeroPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#ValeeroPCTalk","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#ValeeroPCTalk","GLOBAL",17)
+!CurrentAreaIs(Myself,6050)
+THEN
+RESPONSE #100
+IncrementGlobal("P#ValeeroPCTalk","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6
+
+IF
+InParty("Valeero") !Dead("Valeero") !StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#ValeeroPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#ValeeroPCTalk","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#ValeeroPCTalk","GLOBAL",1)
+SetGlobalTimer("P#ValeeroPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("vale000")
+ActionOverride("valeero",StartDialogueNoSet(Player1))
+END

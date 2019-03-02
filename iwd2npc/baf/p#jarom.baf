@@ -1,0 +1,1346 @@
+//Match-not set for now//
+
+//Jaemal's Romance
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#JaLT","GLOBAL",0)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("P#JaemalPCTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#JaemalRomanceTimer","GLOBAL",1000)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL") 
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+Global("P#JaLT","GLOBAL",1)
+OR(59)
+CurrentAreaIs(Myself,1000)
+CurrentAreaIs(Myself,1100)
+CurrentAreaIs(Myself,1200)
+CurrentAreaIs(Myself,2001)
+CurrentAreaIs(Myself,3000)
+CurrentAreaIs(Myself,3100)
+CurrentAreaIs(Myself,4100)
+CurrentAreaIs(Myself,5200)
+CurrentAreaIs(Myself,6000)
+CurrentAreaIs(Myself,6001)
+CurrentAreaIs(Myself,6701)
+CurrentAreaIs(Myself,6702)
+CurrentAreaIs(Myself,6703)
+CurrentAreaIs(Myself,6601)
+CurrentAreaIs(Myself,6602)
+CurrentAreaIs(Myself,6603)
+CurrentAreaIs(Myself,6501)
+CurrentAreaIs(Myself,6502)
+CurrentAreaIs(Myself,6503)
+CurrentAreaIs(Myself,6401)
+CurrentAreaIs(Myself,6402)
+CurrentAreaIs(Myself,6403)
+CurrentAreaIs(Myself,5010)
+CurrentAreaIs(Myself,5011)
+CurrentAreaIs(Myself,5012)
+CurrentAreaIs(Myself,5013)
+CurrentAreaIs(Myself,5014)
+CurrentAreaIs(Myself,5015)
+CurrentAreaIs(Myself,5016)
+CurrentAreaIs(Myself,5017)
+CurrentAreaIs(Myself,5018)
+CurrentAreaIs(Myself,5019)
+CurrentAreaIs(Myself,5020)
+CurrentAreaIs(Myself,5021)
+CurrentAreaIs(Myself,5022)
+CurrentAreaIs(Myself,5023)
+CurrentAreaIs(Myself,5024)
+CurrentAreaIs(Myself,5025)
+CurrentAreaIs(Myself,5026)
+CurrentAreaIs(Myself,5027)
+CurrentAreaIs(Myself,5028)
+CurrentAreaIs(Myself,5029)
+CurrentAreaIs(Myself,5030)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2100)
+CurrentAreaIs(Myself,2101)
+CurrentAreaIs(Myself,2102)
+CurrentAreaIs(Myself,4000)
+CurrentAreaIs(Myself,5000)
+CurrentAreaIs(Myself,5001)
+CurrentAreaIs(Myself,5004)
+CurrentAreaIs(Myself,5100)
+CurrentAreaIs(Myself,5303)
+CurrentAreaIs(Myself,6002)
+CurrentAreaIs(Myself,6050)
+CurrentAreaIs(Myself,6100)
+CurrentAreaIs(Myself,6201)
+CurrentAreaIs(Myself,6300)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  
+SetMusic(9,0)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",0)
+OR(2)
+Global("P#JaLT","GLOBAL",3)
+Global("P#JaLT","GLOBAL",5)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",1)
+OR(2)
+Global("P#JaLT","GLOBAL",7)
+Global("P#JaLT","GLOBAL",9)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//Salomeya is in the party OR PC is Male, LT 6 happens
+
+IF
+InParty("Jaemal") 
+!Dead("Jaemal") 
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+InParty("Salomeya")
+Gender(Player1,MALE)
+Global("P#JaLT","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//Salomeya is not in the party, LT 6 is skipped, and go directly into LT7
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",2)
+!InParty("Salomeya")
+Gender(Player1,FEMALE)
+Global("P#JaLT","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",2)
+SetGlobalTimer("P#JaemalRomanceTimer","GLOBAL",10)
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",2)
+Global("P#JaLT","GLOBAL",13)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+OR(2)
+Global("P#JaLT","GLOBAL",15)
+Global("P#JaLT","GLOBAL",17)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//Female 3 talks//
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+Gender(Player1,FEMALE)
+OR(2)
+Global("P#JaLT","GLOBAL",19)
+Global("P#JaLT","GLOBAL",21)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+CheckStat("jaemal",0,FATIGUE)
+Gender(Player1,FEMALE)
+Global("P#JaLT","GLOBAL",23)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ChangeStat("jaemal",FATIGUE,1,SET)
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//Male 3 talks//
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+Gender(Player1,MALE)
+Global("P#JaLT","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",1)
+Global("P#JaemalMatch","GLOBAL",1)
+Gender(Player1,MALE)
+CheckStat("jaemal",0,FATIGUE)
+Global("P#JaLT","GLOBAL",21)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+ChangeStat("jaemal",FATIGUE,1,SET)
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+Gender(Player1,MALE)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",2)
+Global("P#JaemalMatch","GLOBAL",1)
+Global("P#JaLT","GLOBAL",23)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//
+
+IF
+InParty("Jaemal") !Dead("Jaemal") !StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",5)
+!Global("P#JaemalRomanceInactive","GLOBAL",1)
+Global("P#JaemalRomanceActive","GLOBAL",2)
+Global("P#JaemalMatch","GLOBAL",1)
+Global("P#JaLT","GLOBAL",25)
+THEN
+RESPONSE #100
+IncrementGlobal("P#JaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("jaem000")
+ActionOverride("jaemal",StartDialogueNoSet(Player1))
+END
+
+//Romance Script - Rizdaer
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,FEMALE)
+Global("P#RiLT","GLOBAL",0)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+GlobalGT("P#RizdaerPCTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#RizdaerRomanceTimer","GLOBAL",1500)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RiLT","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("rizd000")
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",0)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+OR(2)
+Global("P#RiLT","GLOBAL",3)
+Global("P#RiLT","GLOBAL",5)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("rizd000")
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",1)
+Global("P#RizdaerMatch","GLOBAL",1)
+OR(2)
+Global("P#RiLT","GLOBAL",7)
+Global("P#RiLT","GLOBAL",9)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("rizd000")
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",2)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",1)
+Global("P#RizdaerMatch","GLOBAL",1)
+OR(2)
+Global("P#RiLT","GLOBAL",11)
+Global("P#RiLT","GLOBAL",13)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("rizd000")
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",1)
+Global("P#RizdaerMatch","GLOBAL",1)
+OR(2)
+Global("P#RiLT","GLOBAL",15)
+Global("P#RiLT","GLOBAL",17)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("rizd000")
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",1)
+Global("P#RizdaerMatch","GLOBAL",1)
+OR(2)
+Global("P#RiLT","GLOBAL",19)
+Global("P#RiLT","GLOBAL",21)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("rizd000")
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",1)
+Global("P#RizdaerMatch","GLOBAL",1)
+CheckStat("rizdaer",0,FATIGUE)
+Global("P#RiLT","GLOBAL",23)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("rizd000")
+ChangeStat("rizdaer",FATIGUE,1,SET)
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",5)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",2)
+Global("P#RizdaerMatch","GLOBAL",1)
+Global("P#RiLT","GLOBAL",25)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("rizd000")
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END   
+
+//Romance Script - Peony
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#PeLT","GLOBAL",0)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyPCTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#PeonyRomanceTimer","GLOBAL",500)
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+Global("P#PeLT","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("peon000")
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("Chapter","GLOBAL",0)
+OR(2)
+Global("P#PeLT","GLOBAL",3)
+Global("P#PeLT","GLOBAL",5)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("peon000")
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+Global("P#PeonyMatch","GLOBAL",1)
+OR(2)
+Global("P#PeLT","GLOBAL",7)
+Global("P#PeLT","GLOBAL",9)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("peon000")
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",2)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+Global("P#PeonyMatch","GLOBAL",1)
+OR(2)
+Global("P#PeLT","GLOBAL",11)
+Global("P#PeLT","GLOBAL",13)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("peon000")
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+Global("P#PeonyMatch","GLOBAL",1)
+Global("P#PeLT","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("peon000")
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+Global("P#PeonyMatch","GLOBAL",1)
+CheckStat("peony",0,FATIGUE)
+Global("P#PeLT","GLOBAL",17)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("peon000")
+ChangeStat("peony",FATIGUE,1,SET)
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+Global("P#PeonyMatch","GLOBAL",1)
+OR(3)
+Global("P#PeLT","GLOBAL",19)
+Global("P#PeLT","GLOBAL",21)
+Global("P#PeLT","GLOBAL",23)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("peon000")
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
+GlobalTimerExpired("P#PeonyRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",5)
+!Global("P#PeonyRomanceInactive","GLOBAL",1)
+GlobalGT("P#PeonyRomanceActive","GLOBAL",0)
+Global("P#PeonyMatch","GLOBAL",1)
+Global("P#PeLT","GLOBAL",25)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PeLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("peon000")
+ActionOverride("Peony",StartDialogueNoSet(Player1))
+END
+
+//Romance Script - Salomeya
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#SaLT","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaPCTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLT","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",750)
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+Global("P#SaLT","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+Global("P#SaLT","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+Global("P#SaLT","GLOBAL",5)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",2)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("P#SaLT","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("P#SalomeyaMatch","GLOBAL",1)
+Global("P#SaLT","GLOBAL",9)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLT","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",33)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#SalomeyaRomanceTimer","GLOBAL")
+!AnyPCSeesEnemy()  GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("P#SalomeyaMatch","GLOBAL",1)
+Global("P#SaLT","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLT","GLOBAL",1)
+SetGlobalTimer("P#SalomeyaRomanceTimer","GLOBAL",33)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+//Salomeya Event Related talks//
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#SaLTO1","GLOBAL",0)
+Global("SR_Torak_Dead","GLOBAL",1)
+CurrentAreaIs("salomeya",2001)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLTO1","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#SaLTO2","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+Global("CagedFury_dead", "GLOBAL", 1)
+CurrentAreaIs("salomeya",4101)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLTO2","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#SaLTO3","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("P#SalomeyaMatch","GLOBAL",1)
+Global("50Twins_Venla", "Global", 1)
+CurrentAreaIs("salomeya",5000)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLTO3","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#SaLTO4","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("P#SalomeyaMatch","GLOBAL",1)
+Global("AR5003_DARK_TREE_CLEAR","GLOBAL",2)
+CurrentAreaIs("salomeya",5015)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLTO4","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#SaLTO5","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("P#SalomeyaMatch","GLOBAL",1)
+GlobalGT("Crossroads_Quest","GLOBAL",2)
+CurrentAreaIs("salomeya",6001)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLTO5","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0) 
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("salomeya") !Dead("salomeya") !StateCheck("salomeya",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,MALE)
+Global("P#SaLTO6","GLOBAL",0)
+!Global("P#SalomeyaRomanceInactive","GLOBAL",1)
+GlobalGT("P#SalomeyaRomanceActive","GLOBAL",0)
+Global("P#SalomeyaMatch","GLOBAL",1)
+CurrentAreaIs("salomeya",6200)
+THEN
+RESPONSE #100
+IncrementGlobal("P#SaLTO6","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  SetMusic(9,0)
+PlaySound("salo000")
+ActionOverride("Salomeya",StartDialogueNoSet(Player1))
+END
+
+/////////////////////////////////////////////
+///////////DIRIEL///////////////////////////
+/////////////////////////////////////////////
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Gender(Player1,FEMALE)
+Race(Player1,ELF)
+!Subrace(Player1,ELF_DROW)
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#DiLT","GLOBAL",0)
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+GlobalGT("P#DirielPCTalk","GLOBAL",2)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DiLT","GLOBAL",1)
+SetGlobalTimer("P#DirielRomanceTimer","GLOBAL",4000)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielRomanceTimer","GLOBAL") 
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#DirielSeduction","GLOBAL",0)
+OR(2)
+Global("P#DiLT","GLOBAL",1)
+Global("P#DiLT","GLOBAL",3)
+OR(58)
+CurrentAreaIs(Myself,1000)
+CurrentAreaIs(Myself,1100)
+CurrentAreaIs(Myself,1200)
+CurrentAreaIs(Myself,2001)
+CurrentAreaIs(Myself,3000)
+CurrentAreaIs(Myself,3100)
+CurrentAreaIs(Myself,4100)
+CurrentAreaIs(Myself,5200)
+CurrentAreaIs(Myself,6000)
+CurrentAreaIs(Myself,6001)
+CurrentAreaIs(Myself,6701)
+CurrentAreaIs(Myself,6702)
+CurrentAreaIs(Myself,6703)
+CurrentAreaIs(Myself,6601)
+CurrentAreaIs(Myself,6602)
+CurrentAreaIs(Myself,6603)
+CurrentAreaIs(Myself,6501)
+CurrentAreaIs(Myself,6502)
+CurrentAreaIs(Myself,6503)
+CurrentAreaIs(Myself,6401)
+CurrentAreaIs(Myself,6402)
+CurrentAreaIs(Myself,6403)
+CurrentAreaIs(Myself,5010)
+CurrentAreaIs(Myself,5011)
+CurrentAreaIs(Myself,5012)
+CurrentAreaIs(Myself,5013)
+CurrentAreaIs(Myself,5014)
+CurrentAreaIs(Myself,5015)
+CurrentAreaIs(Myself,5016)
+CurrentAreaIs(Myself,5017)
+CurrentAreaIs(Myself,5018)
+CurrentAreaIs(Myself,5019)
+CurrentAreaIs(Myself,5020)
+CurrentAreaIs(Myself,5021)
+CurrentAreaIs(Myself,5022)
+CurrentAreaIs(Myself,5023)
+CurrentAreaIs(Myself,5024)
+CurrentAreaIs(Myself,5025)
+CurrentAreaIs(Myself,5026)
+CurrentAreaIs(Myself,5027)
+CurrentAreaIs(Myself,5028)
+CurrentAreaIs(Myself,5029)
+CurrentAreaIs(Myself,5030)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2100)
+CurrentAreaIs(Myself,2101)
+CurrentAreaIs(Myself,2102)
+CurrentAreaIs(Myself,4000)
+CurrentAreaIs(Myself,5001)
+CurrentAreaIs(Myself,5004)
+CurrentAreaIs(Myself,5100)
+CurrentAreaIs(Myself,5303)
+CurrentAreaIs(Myself,6002)
+CurrentAreaIs(Myself,6050)
+CurrentAreaIs(Myself,6100)
+CurrentAreaIs(Myself,6201)
+CurrentAreaIs(Myself,6300)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielRomanceTimer","GLOBAL") 
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+Global("P#DirielSeduction","GLOBAL",0)
+OR(2)
+Global("P#DiLT","GLOBAL",5)
+Global("P#DiLT","GLOBAL",7)
+OR(58)
+CurrentAreaIs(Myself,1000)
+CurrentAreaIs(Myself,1100)
+CurrentAreaIs(Myself,1200)
+CurrentAreaIs(Myself,2001)
+CurrentAreaIs(Myself,3000)
+CurrentAreaIs(Myself,3100)
+CurrentAreaIs(Myself,4100)
+CurrentAreaIs(Myself,5200)
+CurrentAreaIs(Myself,6000)
+CurrentAreaIs(Myself,6001)
+CurrentAreaIs(Myself,6701)
+CurrentAreaIs(Myself,6702)
+CurrentAreaIs(Myself,6703)
+CurrentAreaIs(Myself,6601)
+CurrentAreaIs(Myself,6602)
+CurrentAreaIs(Myself,6603)
+CurrentAreaIs(Myself,6501)
+CurrentAreaIs(Myself,6502)
+CurrentAreaIs(Myself,6503)
+CurrentAreaIs(Myself,6401)
+CurrentAreaIs(Myself,6402)
+CurrentAreaIs(Myself,6403)
+CurrentAreaIs(Myself,5010)
+CurrentAreaIs(Myself,5011)
+CurrentAreaIs(Myself,5012)
+CurrentAreaIs(Myself,5013)
+CurrentAreaIs(Myself,5014)
+CurrentAreaIs(Myself,5015)
+CurrentAreaIs(Myself,5016)
+CurrentAreaIs(Myself,5017)
+CurrentAreaIs(Myself,5018)
+CurrentAreaIs(Myself,5019)
+CurrentAreaIs(Myself,5020)
+CurrentAreaIs(Myself,5021)
+CurrentAreaIs(Myself,5022)
+CurrentAreaIs(Myself,5023)
+CurrentAreaIs(Myself,5024)
+CurrentAreaIs(Myself,5025)
+CurrentAreaIs(Myself,5026)
+CurrentAreaIs(Myself,5027)
+CurrentAreaIs(Myself,5028)
+CurrentAreaIs(Myself,5029)
+CurrentAreaIs(Myself,5030)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2100)
+CurrentAreaIs(Myself,2101)
+CurrentAreaIs(Myself,2102)
+CurrentAreaIs(Myself,4000)
+CurrentAreaIs(Myself,5001)
+CurrentAreaIs(Myself,5004)
+CurrentAreaIs(Myself,5100)
+CurrentAreaIs(Myself,5303)
+CurrentAreaIs(Myself,6002)
+CurrentAreaIs(Myself,6050)
+CurrentAreaIs(Myself,6100)
+CurrentAreaIs(Myself,6201)
+CurrentAreaIs(Myself,6300)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielRomanceTimer","GLOBAL") 
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",2)
+Global("P#DirielSeduction","GLOBAL",0)
+Global("P#DirielRomanceActive","GLOBAL",1)
+OR(2)
+Global("P#DiLT","GLOBAL",9)
+Global("P#DiLT","GLOBAL",11)
+OR(58)
+CurrentAreaIs(Myself,1000)
+CurrentAreaIs(Myself,1100)
+CurrentAreaIs(Myself,1200)
+CurrentAreaIs(Myself,2001)
+CurrentAreaIs(Myself,3000)
+CurrentAreaIs(Myself,3100)
+CurrentAreaIs(Myself,4100)
+CurrentAreaIs(Myself,5200)
+CurrentAreaIs(Myself,6000)
+CurrentAreaIs(Myself,6001)
+CurrentAreaIs(Myself,6701)
+CurrentAreaIs(Myself,6702)
+CurrentAreaIs(Myself,6703)
+CurrentAreaIs(Myself,6601)
+CurrentAreaIs(Myself,6602)
+CurrentAreaIs(Myself,6603)
+CurrentAreaIs(Myself,6501)
+CurrentAreaIs(Myself,6502)
+CurrentAreaIs(Myself,6503)
+CurrentAreaIs(Myself,6401)
+CurrentAreaIs(Myself,6402)
+CurrentAreaIs(Myself,6403)
+CurrentAreaIs(Myself,5010)
+CurrentAreaIs(Myself,5011)
+CurrentAreaIs(Myself,5012)
+CurrentAreaIs(Myself,5013)
+CurrentAreaIs(Myself,5014)
+CurrentAreaIs(Myself,5015)
+CurrentAreaIs(Myself,5016)
+CurrentAreaIs(Myself,5017)
+CurrentAreaIs(Myself,5018)
+CurrentAreaIs(Myself,5019)
+CurrentAreaIs(Myself,5020)
+CurrentAreaIs(Myself,5021)
+CurrentAreaIs(Myself,5022)
+CurrentAreaIs(Myself,5023)
+CurrentAreaIs(Myself,5024)
+CurrentAreaIs(Myself,5025)
+CurrentAreaIs(Myself,5026)
+CurrentAreaIs(Myself,5027)
+CurrentAreaIs(Myself,5028)
+CurrentAreaIs(Myself,5029)
+CurrentAreaIs(Myself,5030)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2100)
+CurrentAreaIs(Myself,2101)
+CurrentAreaIs(Myself,2102)
+CurrentAreaIs(Myself,4000)
+CurrentAreaIs(Myself,5001)
+CurrentAreaIs(Myself,5004)
+CurrentAreaIs(Myself,5100)
+CurrentAreaIs(Myself,5303)
+CurrentAreaIs(Myself,6002)
+CurrentAreaIs(Myself,6050)
+CurrentAreaIs(Myself,6100)
+CurrentAreaIs(Myself,6201)
+CurrentAreaIs(Myself,6300)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielRomanceTimer","GLOBAL") 
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+Global("P#DirielSeduction","GLOBAL",0)
+Global("P#DirielRomanceActive","GLOBAL",1)
+OR(2)
+Global("P#DiLT","GLOBAL",13)
+Global("P#DiLT","GLOBAL",15)
+OR(58)
+CurrentAreaIs(Myself,1000)
+CurrentAreaIs(Myself,1100)
+CurrentAreaIs(Myself,1200)
+CurrentAreaIs(Myself,2001)
+CurrentAreaIs(Myself,3000)
+CurrentAreaIs(Myself,3100)
+CurrentAreaIs(Myself,4100)
+CurrentAreaIs(Myself,5200)
+CurrentAreaIs(Myself,6000)
+CurrentAreaIs(Myself,6001)
+CurrentAreaIs(Myself,6701)
+CurrentAreaIs(Myself,6702)
+CurrentAreaIs(Myself,6703)
+CurrentAreaIs(Myself,6601)
+CurrentAreaIs(Myself,6602)
+CurrentAreaIs(Myself,6603)
+CurrentAreaIs(Myself,6501)
+CurrentAreaIs(Myself,6502)
+CurrentAreaIs(Myself,6503)
+CurrentAreaIs(Myself,6401)
+CurrentAreaIs(Myself,6402)
+CurrentAreaIs(Myself,6403)
+CurrentAreaIs(Myself,5010)
+CurrentAreaIs(Myself,5011)
+CurrentAreaIs(Myself,5012)
+CurrentAreaIs(Myself,5013)
+CurrentAreaIs(Myself,5014)
+CurrentAreaIs(Myself,5015)
+CurrentAreaIs(Myself,5016)
+CurrentAreaIs(Myself,5017)
+CurrentAreaIs(Myself,5018)
+CurrentAreaIs(Myself,5019)
+CurrentAreaIs(Myself,5020)
+CurrentAreaIs(Myself,5021)
+CurrentAreaIs(Myself,5022)
+CurrentAreaIs(Myself,5023)
+CurrentAreaIs(Myself,5024)
+CurrentAreaIs(Myself,5025)
+CurrentAreaIs(Myself,5026)
+CurrentAreaIs(Myself,5027)
+CurrentAreaIs(Myself,5028)
+CurrentAreaIs(Myself,5029)
+CurrentAreaIs(Myself,5030)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2100)
+CurrentAreaIs(Myself,2101)
+CurrentAreaIs(Myself,2102)
+CurrentAreaIs(Myself,4000)
+CurrentAreaIs(Myself,5001)
+CurrentAreaIs(Myself,5004)
+CurrentAreaIs(Myself,5100)
+CurrentAreaIs(Myself,5303)
+CurrentAreaIs(Myself,6002)
+CurrentAreaIs(Myself,6050)
+CurrentAreaIs(Myself,6100)
+CurrentAreaIs(Myself,6201)
+CurrentAreaIs(Myself,6300)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+END
+
+//set global to 2. DiLT will be 17 at this point, so it is shifted to 19 here as well//
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalGT("P#DirielSeduction","GLOBAL",0)
+Global("P#DirielRomanceActive","GLOBAL",1)
+Global("P#DirielChild","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#DirielRomanceTimer","GLOBAL",4000)
+SetGlobal("P#DirielRomanceActive","GLOBAL",2)
+SetGlobal("P#DiLT","GLOBAL",19)
+DisplayString(Player1,~You are now engaged to be married to Diriel.~)
+END
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielRomanceTimer","GLOBAL") 
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#DirielRomanceActive","GLOBAL",2)
+OR(2)
+Global("P#DiLT","GLOBAL",19)
+Global("P#DiLT","GLOBAL",21)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+END
+
+//LT12, at waking
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielRomanceTimer","GLOBAL") 
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#DirielRomanceActive","GLOBAL",2)
+CheckStat("jaemal",0,FATIGUE)
+Global("P#DiLT","GLOBAL",23)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800) 
+ChangeStat("diriel",FATIGUE,1,SET)
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+END
+
+//LT13, Chapter 6
+
+IF
+InParty("Diriel") 
+!Dead("Diriel") 
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalTimerExpired("P#DirielRomanceTimer","GLOBAL") 
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+!Global("P#DirielRomanceInactive","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#DirielRomanceActive","GLOBAL",2)
+Global("P#DiLT","GLOBAL",25)
+THEN
+RESPONSE #100
+IncrementGlobal("P#DiLT","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)  
+SetMusic(9,0)
+PlaySound("diri000")
+ActionOverride("Diriel",StartDialogueNoSet(Player1))
+END

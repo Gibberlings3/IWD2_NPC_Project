@@ -1,0 +1,8 @@
+IF
+Global("GoHome","LOCALS",1)
+Global("P#Rescue_Sabrina_Quest","GLOBAL",1)
+Global("P#SabrinaCutScene","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SabrinaCutScene","GLOBAL",1)
+END

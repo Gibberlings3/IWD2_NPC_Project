@@ -1,0 +1,17 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		MultiPlayerSync()
+		CutSceneId("Diriel")
+		FadeToColor([0.0],0)
+		ApplySpell("Diriel",CLERIC_DISPEL_MAGIC)
+		JumpToPoint([1962.391])
+		SetGlobal("40OdeaMadeOffer","GLOBAL",2)
+		ActionOverride("Diriel",JumpToPoint([1971.357]))
+		MoveViewPoint([1848.415],INSTANT)
+		FadeFromColor([0.0],0)
+		SetGlobal("P#DirielOnLedge","GLOBAL",1)
+		ActionOverride("Diriel",StartDialogueNoSet(Myself))
+		EndCutSceneMode()
+END

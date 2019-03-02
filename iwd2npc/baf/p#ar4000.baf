@@ -1,0 +1,16 @@
+IF
+GlobalGT("40SherincalAttack", "GLOBAL",0)
+Global("P#DirielOnLedge","GLOBAL",2)
+Global("P#MovePartyAR4000","GLOBAL",0)
+THEN 
+RESPONSE #100
+SetGlobal("P#MovePartyAR4000","GLOBAL",1)
+FadeToColor([0.0],0)
+ActionOverride(Player1,JumpToPoint([1567.607]))
+ActionOverride(Player2,JumpToPoint([1560.607]))
+ActionOverride(Player3,JumpToPoint([1555.607]))
+ActionOverride(Player4,JumpToPoint([1550.607]))
+ActionOverride(Player5,JumpToPoint([1545.607]))
+ActionOverride(Player6,JumpToPoint([1540.607]))
+FadeFromColor([0.0],0)
+END

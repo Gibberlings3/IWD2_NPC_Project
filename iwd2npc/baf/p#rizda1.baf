@@ -1,0 +1,1385 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat("rizdaer",0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat("rizdaer",FATIGUE,1,SET)
+END
+
+//Chapter Talks
+
+//Prologue
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+CurrentAreaIs("rizdaer",1101)
+Global("P#RizdaerFate","GLOBAL",0)
+Global("P#RizdaerPr","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerPr","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!CurrentAreaIs("rizdaer",1101)
+Global("P#RizdaerPr","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerPr","GLOBAL",2)
+END
+
+//Chapter 2
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Rizdaer",4102)
+Global("KillMirrorTrap","AR4102",1)
+Global("P#RizdaerCh2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh2","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+!CurrentAreaIs("Rizdaer",4102)
+Global("P#RizdaerCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh2","GLOBAL",2)
+END
+
+//Chapter 2, Romance
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("P#RizdaerMatch","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Rizdaer",4101)
+Global("P#RizdaerCh2RTimer","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh2RTimer","GLOBAL",1)
+SetGlobalTimer("P#RizdaerIceTimer","GLOBAL",300)
+END
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+OR(2)
+CurrentAreaIs("Rizdaer",4101)
+CurrentAreaIs("Rizdaer",4102)
+Global("P#RizdaerMatch","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#RizdaerIceTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#RizdaerCh2R","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh2R","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+!CurrentAreaIs("Rizdaer",4101)
+!CurrentAreaIs("Rizdaer",4102)
+Global("P#RizdaerCh2R","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh2R","GLOBAL",2)
+END
+
+//Chapter 3
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Rizdaer",5000)
+Global("P#NymUnderdark","GLOBAL",1)
+Global("P#RizdaerCh3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh3","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+!CurrentAreaIs("Rizdaer",5000)
+Global("P#RizdaerCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh3","GLOBAL",2)
+END
+
+//Chapter 4
+
+//Drow Only
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("rizdaer",5300)
+Global("Viciscamera_Dead","GLOBAL",1)
+Global("P#RizdaerCh4Drow","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+Subrace(Player1,ELF_DROW)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh4Drow","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer")
+!CurrentAreaIs("rizdaer",5300)
+Global("P#RizdaerCh4Drow","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh4Drow","GLOBAL",2)
+END
+
+//Normal
+
+IF
+InParty("Rizdaer")
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+OR(2)
+CurrentAreaIs("Rizdaer",5300)
+CurrentAreaIs("Rizdaer",5301)
+Global("P#RizdaerCh4Timer","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh4Timer","GLOBAL",1)
+SetGlobalTimer("P#RizdaerUnderdarkTimer","GLOBAL",300)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+OR(2)
+CurrentAreaIs("Rizdaer",5300)
+CurrentAreaIs("Rizdaer",5301)
+GlobalTimerExpired("P#RizdaerUnderdarkTimer","GLOBAL")
+Global("P#RizdaerCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh4","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer")
+CurrentAreaIs("rizdaer",5302)
+Global("P#RizdaerCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh4","GLOBAL",2)
+END
+
+//Chapter 5
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+OR(2)
+CurrentAreaIs("Rizdaer",6200)
+CurrentAreaIs("Rizdaer",6201)
+Dead("Mdarfein")
+GlobalGT("Purify_Fields","GLOBAL", 0)
+Global("P#RizdaerCh5","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh5","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+!CurrentAreaIs("Rizdaer",6200)
+!CurrentAreaIs("Rizdaer",6201)
+Global("P#RizdaerCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCh5","GLOBAL",2)
+END       
+
+//Scenery
+
+//Romantic Aerie
+
+IF
+!AnyPCSeesEnemy()
+InParty("charbase")
+See("charbase",0)
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+IsPlayerNumber("charbase",1)
+Gender(Player1,FEMALE)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+!Global("P#RizdaerRomanceActive","GLOBAL",3)
+GlobalGT("P#RizdaerRomanceActive","GLOBAL",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!StateCheck("Rizdaer",STATE_DEAD)
+!StateCheck("Rizdaer",STATE_ACID_DEATH)
+!StateCheck("Rizdaer",STATE_FLAME_DEATH )
+!StateCheck("Rizdaer",STATE_EXPLODING_DEATH)             
+!StateCheck("Rizdaer",STATE_STONE_DEATH)
+!StateCheck("Rizdaer",STATE_FROZEN_DEATH)
+!StateCheck("Rizdaer",STATE_HELPLESS)
+!StateCheck("Rizdaer",STATE_INVISIBLE)
+!StateCheck("Rizdaer",STATE_STUNNED)
+!StateCheck("Rizdaer",STATE_PANIC)
+!StateCheck("Rizdaer",STATE_BERSERK)
+!StateCheck("Rizdaer",STATE_CHARMED)
+!StateCheck("Rizdaer",STATE_BLIND)
+!StateCheck("Rizdaer",STATE_FEEBLEMINDED)
+!StateCheck("Rizdaer",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("Rizdaer",STATE_CONFUSED)
+!StateCheck("charbase",STATE_SLEEPING)
+!StateCheck("charbase",STATE_DEAD)
+!StateCheck("charbase",STATE_ACID_DEATH)
+!StateCheck("charbase",STATE_FLAME_DEATH )
+!StateCheck("charbase",STATE_EXPLODING_DEATH)             
+!StateCheck("charbase",STATE_STONE_DEATH)
+!StateCheck("charbase",STATE_FROZEN_DEATH)
+!StateCheck("charbase",STATE_HELPLESS)
+!StateCheck("charbase",STATE_INVISIBLE)
+!StateCheck("charbase",STATE_STUNNED)
+!StateCheck("charbase",STATE_PANIC)
+!StateCheck("charbase",STATE_BERSERK)
+!StateCheck("charbase",STATE_CHARMED)
+!StateCheck("charbase",STATE_BLIND)
+!StateCheck("charbase",STATE_FEEBLEMINDED)
+!StateCheck("charbase",STATE_IMPROVEDINVISIBILITY)
+!StateCheck("charbase",STATE_CONFUSED)
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Rizdaer",6703)
+Global("P#RizdaerRoInt12","GLOBAL",0)
+Global("Unhide_Buvai","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerRoInt12","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!CurrentAreaIs("Rizdaer",6703)
+Global("P#RizdaerRoInt12","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerRoInt12","GLOBAL",2)
+END
+
+//AR6102
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("rizdaer",6102)
+Global("P#RizdaerAR6102","GLOBAL",0)
+Global("61PlayerSawAR6102","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerAR6102","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!CurrentAreaIs("rizdaer",6102)
+Global("P#RizdaerAR6102","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerAR6102","GLOBAL",2)
+END
+
+
+//Sseth Eye
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("rizdaer",6103)
+Global("P#RizdaerSsethEye","GLOBAL",0)
+Global("61PlayerSawSsethEye","GLOBAL",1)
+Global("P#PartyPanicSseth","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerSsethEye","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!CurrentAreaIs("rizdaer",6103)
+Global("P#RizdaerSsethEye","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerSsethEye","GLOBAL",2)
+END
+
+//AR6001 Oak
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("rizdaer",6001)
+Global("P#RizdaerAR6001","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerAR6001","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!CurrentAreaIs("rizdaer",6001)
+Global("P#RizdaerAR6001","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerAR6001","GLOBAL",2)
+END
+
+//AR5301 visiocamera destroyed
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("rizdaer",5301)
+Global("Viciscamera_Dead","GLOBAL",1)
+Global("P#RizdaerCamera","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCamera","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!CurrentAreaIs("rizdaer",5301)
+Global("P#RizdaerCamera","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerCamera","GLOBAL",2)
+END
+
+IF
+InParty("Rizdaer")
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Rizdaer",5000)
+Global("P#RizdaerTahvoCompliment","GLOBAL",0)
+Global("P#PC_WantsComplimentFemale","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerTahvoCompliment","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer")
+!CurrentAreaIs(Myself,5000)
+Global("P#RizdaerTahvoCompliment","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerTahvoCompliment","GLOBAL",2)
+END
+
+//Barbarians
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Rizdaer",5001)
+Global("50Barbarians_Leave", "GLOBAL", 1)
+Global("P#RizdaerBarbariansLeave","GLOBAL",0)
+Global("P#RizdaerRomanceActive","GLOBAL",1)
+!Global("P#RizdaerRomanceInactive","GLOBAL",1)
+GlobalLT("P#RizdaerMistress","GLOBAL",2)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerBarbariansLeave","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Rizdaer")
+!CurrentAreaIs("Rizdaer",5001)
+Global("P#RizdaerBarbariansLeave","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerBarbariansLeave","GLOBAL",2)
+END
+
+
+//Limha Dead
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Rizdaer",5001)
+Global("Limha_Dead", "GLOBAL", 1)
+Global("P#RizdaerLimhaDead","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerLimhaDead","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Rizdaer")
+!CurrentAreaIs("Rizdaer",5001)
+Global("P#RizdaerLimhaDead","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerLimhaDead","GLOBAL",2)
+END
+
+//Battle Squares
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("Rizdaer",4102)
+PartyHasItem("41KEYOT")
+Global("P#RizdaerBattleSq","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerBattleSq","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!CurrentAreaIs("Rizdaer",4102)
+Global("P#RizdaerBattleSq","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerBattleSq","GLOBAL",2)
+END
+
+//Sherincal is dead
+
+IF
+InParty("Rizdaer") 
+!Dead("Rizdaer") 
+!StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+OR(3)
+CurrentAreaIs("rizdaer",4100)
+CurrentAreaIs("rizdaer",4101)
+CurrentAreaIs("rizdaer",4102)
+Dead("sherincal")
+Global("P#SherHostile","GLOBAL",1)
+Global("P#RizdaerSherDead","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerSherDead","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer")
+!CurrentAreaIs("rizdaer",4101)
+!CurrentAreaIs("rizdaer",4102)
+Global("P#RizdaerSherDead","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerSherDead","GLOBAL",2)
+END
+
+//AR4100-4103
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+OR(3)
+CurrentAreaIs("rizdaer",4100)
+CurrentAreaIs("rizdaer",4101)
+CurrentAreaIs("rizdaer",4102)
+PartyHasItem("00ring99")
+Global("P#RizdaerRoW","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerRoW","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Rizdaer")
+!CurrentAreaIs("rizdaer",4100)
+!CurrentAreaIs("rizdaer",4101)
+!CurrentAreaIs("rizdaer",4102)
+Global("P#RizdaerRoW","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerRoW","GLOBAL",2)
+END
+
+//AR3001 spiders for Pondmuk
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("rizdaer",3001)
+Global("30gobPon_Spid","GLOBAL", 1)
+Global("P#RizdaerPondmuk","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerPondmuk","GLOBAL",1)
+ActionOverride("rizdaer",StartDialogueNoSet("rizdaer"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!CurrentAreaIs("rizdaer",3001)
+Global("P#RizdaerPondmuk","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerPondmuk","GLOBAL",2)
+END
+
+//Rizdaer Drums
+
+IF
+InParty("rizdaer")
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("rizdaer",3000)
+OR(2)
+!Global("31BUGGUT_DEAD","GLOBAL",0)
+Global("SPAWN_LOCK","MYAREA",2)
+OR(3)
+Dead("30drum1")
+Dead("30drum2")
+Dead("30drum3")
+Global("P#rizdaerDrums","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#rizdaerDrums","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("rizdaer",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("rizdaer")
+Global("P#rizdaerDrums","GLOBAL",1)
+!CurrentAreaIs("rizdaer",3000)
+THEN
+RESPONSE #100
+SetGlobal("P#rizdaerDrums","GLOBAL",2)
+END
+
+//AR2101 Sh. Dam
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Rizdaer",2101)
+PartyHasItem("21GENWP")
+GlobalGT("P#RizdaerShawfo","GLOBAL",0)
+Global("P#RizdaerBeam","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerBeam","GLOBAL",1)
+ActionOverride("Rizdaer",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Rizdaer")
+!CurrentAreaIs("Rizdaer",2101)
+Global("P#RizdaerBeam","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#RizdaerBeam","GLOBAL",2)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#SetRizdaerBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetRizdaerBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#SetRizdaerBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetRizdaerBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#RizdaerRomanceTimer","GLOBAL",3800)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",8400)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#SetRizdaerBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetRizdaerBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#RizdaerRomanceTimer","GLOBAL",3800)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",8400)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#SetRizdaerBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetRizdaerBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#RizdaerRomanceTimer","GLOBAL",3800)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",8400)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#SetRizdaerBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetRizdaerBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#RizdaerRomanceTimer","GLOBAL",3800)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",8400)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#SetRizdaerBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetRizdaerBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#RizdaerRomanceTimer","GLOBAL",3800)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",8400)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+Global("P#SetRizdaerBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetRizdaerBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#RizdaerRomanceTimer","GLOBAL",3800)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",8400)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//Normal NPC Banter
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RIDI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RIDI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#DIRI1","GLOBAL",2)
+Global("P#DIRI2","GLOBAL",2)
+Global("P#DIRI3","GLOBAL",2)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RIDI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RIDI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RIHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RIHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RIHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RIHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RIJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RIJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RIJA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RIJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("Jaemal"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RINO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RINO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("Nord"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RINO2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RINO2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("Nord"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+OR(37)
+CurrentAreaIs("rizdaer",5010)
+CurrentAreaIs("rizdaer",5011)
+CurrentAreaIs("rizdaer",5012)
+CurrentAreaIs("rizdaer",5013)
+CurrentAreaIs("rizdaer",5014)
+CurrentAreaIs("rizdaer",5015)
+CurrentAreaIs("rizdaer",5016)
+CurrentAreaIs("rizdaer",5017)
+CurrentAreaIs("rizdaer",5018)
+CurrentAreaIs("rizdaer",5019)
+CurrentAreaIs("rizdaer",5020)
+CurrentAreaIs("rizdaer",5021)
+CurrentAreaIs("rizdaer",5022)
+CurrentAreaIs("rizdaer",5023)
+CurrentAreaIs("rizdaer",5024)
+CurrentAreaIs("rizdaer",5025)
+CurrentAreaIs("rizdaer",5026)
+CurrentAreaIs("rizdaer",5027)
+CurrentAreaIs("rizdaer",5028)
+CurrentAreaIs("rizdaer",5029)
+CurrentAreaIs("rizdaer",5030)
+CurrentAreaIs("rizdaer",2000)
+CurrentAreaIs("rizdaer",2000)
+CurrentAreaIs("rizdaer",2100)
+CurrentAreaIs("rizdaer",2101)
+CurrentAreaIs("rizdaer",2102)
+CurrentAreaIs("rizdaer",4000)
+CurrentAreaIs("rizdaer",5000)
+CurrentAreaIs("rizdaer",5001)
+CurrentAreaIs("rizdaer",5004)
+CurrentAreaIs("rizdaer",5100)
+CurrentAreaIs("rizdaer",5303)
+CurrentAreaIs("rizdaer",6002)
+CurrentAreaIs("rizdaer",6050)
+CurrentAreaIs("rizdaer",6100)
+CurrentAreaIs("rizdaer",6201)
+CurrentAreaIs("rizdaer",6300)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RIPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RIPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("Peony"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RISA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RISA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("Salomeya"))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+OR(37)
+CurrentAreaIs("rizdaer",5010)
+CurrentAreaIs("rizdaer",5011)
+CurrentAreaIs("rizdaer",5012)
+CurrentAreaIs("rizdaer",5013)
+CurrentAreaIs("rizdaer",5014)
+CurrentAreaIs("rizdaer",5015)
+CurrentAreaIs("rizdaer",5016)
+CurrentAreaIs("rizdaer",5017)
+CurrentAreaIs("rizdaer",5018)
+CurrentAreaIs("rizdaer",5019)
+CurrentAreaIs("rizdaer",5020)
+CurrentAreaIs("rizdaer",5021)
+CurrentAreaIs("rizdaer",5022)
+CurrentAreaIs("rizdaer",5023)
+CurrentAreaIs("rizdaer",5024)
+CurrentAreaIs("rizdaer",5025)
+CurrentAreaIs("rizdaer",5026)
+CurrentAreaIs("rizdaer",5027)
+CurrentAreaIs("rizdaer",5028)
+CurrentAreaIs("rizdaer",5029)
+CurrentAreaIs("rizdaer",5030)
+CurrentAreaIs("rizdaer",2000)
+CurrentAreaIs("rizdaer",2000)
+CurrentAreaIs("rizdaer",2100)
+CurrentAreaIs("rizdaer",2101)
+CurrentAreaIs("rizdaer",2102)
+CurrentAreaIs("rizdaer",4000)
+CurrentAreaIs("rizdaer",5000)
+CurrentAreaIs("rizdaer",5001)
+CurrentAreaIs("rizdaer",5004)
+CurrentAreaIs("rizdaer",5100)
+CurrentAreaIs("rizdaer",5303)
+CurrentAreaIs("rizdaer",6002)
+CurrentAreaIs("rizdaer",6050)
+CurrentAreaIs("rizdaer",6100)
+CurrentAreaIs("rizdaer",6201)
+CurrentAreaIs("rizdaer",6300)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#RizdaerTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#RIVA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#RizdaerTimer","GLOBAL",9600)
+IncrementGlobal("P#RIVA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet("Valeero"))
+END
+
+//Talks with Player 1, charbase is the script name for joinables
+
+//In Prologue or later
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#RizdaerPCTalk", "GLOBAL",0)
+GlobalGT("P#RizdaerFate","GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",8400)
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+Global("P#RizdaerPCTalk","GLOBAL",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#RizdaerPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+Global("P#RizdaerPCTalk","GLOBAL",5)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",1)
+Global("P#RizdaerPCTalk","GLOBAL",7)
+OR(59)
+CurrentAreaIs("rizdaer",1000)
+CurrentAreaIs("rizdaer",1100)
+CurrentAreaIs("rizdaer",1200)
+CurrentAreaIs("rizdaer",2001)
+CurrentAreaIs("rizdaer",3000)
+CurrentAreaIs("rizdaer",3100)
+CurrentAreaIs("rizdaer",4100)
+CurrentAreaIs("rizdaer",5200)
+CurrentAreaIs("rizdaer",6000)
+CurrentAreaIs("rizdaer",6001)
+CurrentAreaIs("rizdaer",6701)
+CurrentAreaIs("rizdaer",6702)
+CurrentAreaIs("rizdaer",6703)
+CurrentAreaIs("rizdaer",6601)
+CurrentAreaIs("rizdaer",6602)
+CurrentAreaIs("rizdaer",6603)
+CurrentAreaIs("rizdaer",6501)
+CurrentAreaIs("rizdaer",6502)
+CurrentAreaIs("rizdaer",6503)
+CurrentAreaIs("rizdaer",6401)
+CurrentAreaIs("rizdaer",6402)
+CurrentAreaIs("rizdaer",6403)
+CurrentAreaIs("rizdaer",5010)
+CurrentAreaIs("rizdaer",5011)
+CurrentAreaIs("rizdaer",5012)
+CurrentAreaIs("rizdaer",5013)
+CurrentAreaIs("rizdaer",5014)
+CurrentAreaIs("rizdaer",5015)
+CurrentAreaIs("rizdaer",5016)
+CurrentAreaIs("rizdaer",5017)
+CurrentAreaIs("rizdaer",5018)
+CurrentAreaIs("rizdaer",5019)
+CurrentAreaIs("rizdaer",5020)
+CurrentAreaIs("rizdaer",5021)
+CurrentAreaIs("rizdaer",5022)
+CurrentAreaIs("rizdaer",5023)
+CurrentAreaIs("rizdaer",5024)
+CurrentAreaIs("rizdaer",5025)
+CurrentAreaIs("rizdaer",5026)
+CurrentAreaIs("rizdaer",5027)
+CurrentAreaIs("rizdaer",5028)
+CurrentAreaIs("rizdaer",5029)
+CurrentAreaIs("rizdaer",5030)
+CurrentAreaIs("rizdaer",2000)
+CurrentAreaIs("rizdaer",2000)
+CurrentAreaIs("rizdaer",2100)
+CurrentAreaIs("rizdaer",2101)
+CurrentAreaIs("rizdaer",2102)
+CurrentAreaIs("rizdaer",4000)
+CurrentAreaIs("rizdaer",5000)
+CurrentAreaIs("rizdaer",5001)
+CurrentAreaIs("rizdaer",5004)
+CurrentAreaIs("rizdaer",5100)
+CurrentAreaIs("rizdaer",5303)
+CurrentAreaIs("rizdaer",6002)
+CurrentAreaIs("rizdaer",6050)
+CurrentAreaIs("rizdaer",6100)
+CurrentAreaIs("rizdaer",6201)
+CurrentAreaIs("rizdaer",6300)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#RizdaerPCTalk","GLOBAL",9)
+Global("P#RizdaerPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+Global("P#RizdaerPCTalk","GLOBAL",13)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",3)
+OR(59)
+CurrentAreaIs("rizdaer",1000)
+CurrentAreaIs("rizdaer",1100)
+CurrentAreaIs("rizdaer",1200)
+CurrentAreaIs("rizdaer",2001)
+CurrentAreaIs("rizdaer",3000)
+CurrentAreaIs("rizdaer",3100)
+CurrentAreaIs("rizdaer",4100)
+CurrentAreaIs("rizdaer",5200)
+CurrentAreaIs("rizdaer",6000)
+CurrentAreaIs("rizdaer",6001)
+CurrentAreaIs("rizdaer",6701)
+CurrentAreaIs("rizdaer",6702)
+CurrentAreaIs("rizdaer",6703)
+CurrentAreaIs("rizdaer",6601)
+CurrentAreaIs("rizdaer",6602)
+CurrentAreaIs("rizdaer",6603)
+CurrentAreaIs("rizdaer",6501)
+CurrentAreaIs("rizdaer",6502)
+CurrentAreaIs("rizdaer",6503)
+CurrentAreaIs("rizdaer",6401)
+CurrentAreaIs("rizdaer",6402)
+CurrentAreaIs("rizdaer",6403)
+CurrentAreaIs("rizdaer",5010)
+CurrentAreaIs("rizdaer",5011)
+CurrentAreaIs("rizdaer",5012)
+CurrentAreaIs("rizdaer",5013)
+CurrentAreaIs("rizdaer",5014)
+CurrentAreaIs("rizdaer",5015)
+CurrentAreaIs("rizdaer",5016)
+CurrentAreaIs("rizdaer",5017)
+CurrentAreaIs("rizdaer",5018)
+CurrentAreaIs("rizdaer",5019)
+CurrentAreaIs("rizdaer",5020)
+CurrentAreaIs("rizdaer",5021)
+CurrentAreaIs("rizdaer",5022)
+CurrentAreaIs("rizdaer",5023)
+CurrentAreaIs("rizdaer",5024)
+CurrentAreaIs("rizdaer",5025)
+CurrentAreaIs("rizdaer",5026)
+CurrentAreaIs("rizdaer",5027)
+CurrentAreaIs("rizdaer",5028)
+CurrentAreaIs("rizdaer",5029)
+CurrentAreaIs("rizdaer",5030)
+CurrentAreaIs("rizdaer",2000)
+CurrentAreaIs("rizdaer",2000)
+CurrentAreaIs("rizdaer",2100)
+CurrentAreaIs("rizdaer",2101)
+CurrentAreaIs("rizdaer",2102)
+CurrentAreaIs("rizdaer",4000)
+CurrentAreaIs("rizdaer",5000)
+CurrentAreaIs("rizdaer",5001)
+CurrentAreaIs("rizdaer",5004)
+CurrentAreaIs("rizdaer",5100)
+CurrentAreaIs("rizdaer",5303)
+CurrentAreaIs("rizdaer",6002)
+CurrentAreaIs("rizdaer",6050)
+CurrentAreaIs("rizdaer",6100)
+CurrentAreaIs("rizdaer",6201)
+CurrentAreaIs("rizdaer",6300)
+Global("P#RizdaerPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#RizdaerPCTalk","GLOBAL",17)
+!CurrentAreaIs(Myself,6050)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalGT("P#RizdaerInterest","GLOBAL",6)
+!Global("P#RizdaerRomanceActive","GLOBAL",1)
+!Global("P#RizdaerRomanceActive","GLOBAL",2)
+Global("P#RizdaerPCTalk","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Rizdaer") !Dead("Rizdaer") !StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#RizdaerPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalGT("P#RizdaerInterest","GLOBAL",6)
+OR(2)
+Global("P#RizdaerRomanceActive","GLOBAL",1)
+Global("P#RizdaerRomanceActive","GLOBAL",2)
+Global("P#RizdaerRomanceInactive","GLOBAL",1)
+Global("P#RizdaerPCTalk","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#RizdaerPCTalk","GLOBAL",1)
+SetGlobalTimer("P#RizdaerPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+StartMusic(9,1)
+PlaySound("rizd000")
+ActionOverride("rizdaer",StartDialogueNoSet(Player1))
+END

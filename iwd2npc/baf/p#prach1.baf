@@ -1,0 +1,1254 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat(Myself,0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat(Myself,FATIGUE,1,SET)
+END
+
+//Chapter Dialogues
+
+//Chapter 1 Disable Drums
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,3000)
+Global("P#PrachiEnneli","GLOBAL",1)
+Global("P#PrachiCh1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh1","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,3000)
+Global("P#PrachiCh1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh1","GLOBAL",2)
+END
+
+//Chapter 2 Sees Temple
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs(Myself,4100)
+Global("P#PrachiCh2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh2","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,4100)
+Global("P#PrachiCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh2","GLOBAL",2)
+END
+
+//Chapter 3
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Prachi",5004)
+PartyHasItem("50GENFRO")
+Global("P#PrachiCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh3","GLOBAL",1)
+ActionOverride("Prachi",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("Prachi",5004)
+Global("P#PrachiCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh3","GLOBAL",2)
+END
+
+//Chapter 4
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs("Prachi",5201)
+Global("52Aruma_Gone","GLOBAL",1)
+Global("P#PrachiCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh4","GLOBAL",1)
+ActionOverride("Prachi",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("Prachi",5201)
+Global("P#PrachiCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh4","GLOBAL",2)
+END
+
+//Chapter 5
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Prachi",6104)
+GlobalGT("PyrosCalmLothar","MYAREA",0)
+Global("P#PrachiCh5","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh5","GLOBAL",1)
+ActionOverride("Prachi",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("Prachi",6104)
+Global("P#PrachiCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiCh5","GLOBAL",2)
+END
+
+
+//Scenery Dialogues
+
+//AR6101
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("prachi",6101)
+Global("P#PrachiAR6101","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiAR6101","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("prachi",6101)
+Global("61PlayerSawAR6101","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiAR6101","GLOBAL",2)
+END
+
+//Mandal's Sword
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("prachi",6103)
+Global("P#PrachiMandalSword","GLOBAL",0)
+Global("61PlayerFoundMandalSword","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiMandalSword","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("prachi",6103)
+Global("61PlayerSawMandalSword","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiMandalSword","GLOBAL",2)
+END
+
+//Sseth Eye
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Prachi",6103)
+Global("P#PartyPanicSseth","GLOBAL",1)
+Global("P#PrachiSsethEye","GLOBAL",0)
+Global("61PlayerSawSsethEye","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiSsethEye","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("Prachi",6103)
+Global("P#PrachiSsethEye","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiSsethEye","GLOBAL",2)
+END
+
+//Drider Den
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs(Myself,5301)
+Global("P#PrachiAR5301","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiAR5301","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("prachi",5301)
+Global("P#PrachiAR5301","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiAR5301","GLOBAL",2)
+END
+
+//Black Raven Monastery
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs(Myself,5200)
+Global("P#PrachiAR5200","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiAR5200","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("prachi",5200)
+Global("P#PrachiAR5200","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiAR5200","GLOBAL",2)
+END
+
+//Battle Squares
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("prachi",4102)
+PartyHasItem("41KEYOT")
+Global("P#PrachiBattleSq","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiBattleSq","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("prachi",4102)
+Global("P#PrachiBattleSq","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiBattleSq","GLOBAL",2)
+END
+
+//Lysara dead
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("prachi",4101)
+Global("P#LysaraDead","GLOBAL",1)
+Global("P#PrachiLysaraDead","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiLysaraDead","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("prachi",4101)
+Global("P#PrachiLysaraDead","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiLysaraDead","GLOBAL",2)
+END
+
+//NWN soldiers
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs(Myself,4100)
+PartyHasItem("41AMULHS")
+Global("P#PrachiFrozenS","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiFrozenS","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,4100)
+Global("P#PrachiFrozenS","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiFrozenS","GLOBAL",2)
+END
+
+//AR3002 Vunrag left
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,3001)
+Global("P#PrachiVunrag","GLOBAL",0)
+GlobalGT("30gobVun_leave", "GLOBAL", 0)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiVunrag","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,3001)
+Global("P#PrachiVunrag","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiVunrag","GLOBAL",2)
+END
+
+//AR3001 Venomomous Dagger
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("Prachi",3001)
+PartyHasItem("00DAGG99")
+Global("P#PrachiVDagger","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiVDagger","GLOBAL",1)
+ActionOverride("Prachi",StartDialogueNoSet("Prachi"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs("Prachi",3001)
+Global("P#PrachiVDagger","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiVDagger","GLOBAL",2)
+END
+
+//Sh. Bridge
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2102)
+Global("P#PrachiXuki","GLOBAL",0)
+PartyHasItem("00HBAG01")
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiXuki","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2102)
+Global("P#PrachiXuki","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiXuki","GLOBAL",2)
+END
+
+//Shaengarn Ford
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2100)
+Global("P#PrachiFordPath","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiFordPath","GLOBAL",2)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2100)
+Global("P#PrachiFordPath","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiFordPath","GLOBAL",3)
+END
+
+//Logging Village Resolution
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2001)
+Global("SR_Orc_Guards_Dead","GLOBAL",1)
+Global("SR_Villagers_Dead","GLOBAL",0)
+Global("SR_Rescue_Villagers","GLOBAL",5)
+Global("P#PrachiLV_Saved","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiLV_Saved","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2001)
+Global("P#PrachiLV_Saved","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiLV_Saved","GLOBAL",2)
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2001)
+Global("SR_Villagers_Dead","GLOBAL", 4)
+Global("SR_Dead_Villager","GLOBAL",12)
+GlobalLT("SR_Rescue_Villagers","GLOBAL", 5)
+Global("P#PrachiLV_Doom","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiLV_Doom","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2001)
+Global("P#PrachiLV_Doom","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiLV_Doom","GLOBAL",2)
+END
+
+//Moonblade Comment
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+OR(2)
+CurrentAreaIs(Myself,2001)
+CurrentAreaIs(Myself,2002)
+GlobalGT("SR_Recover_Blade","GLOBAL",0)
+GlobalLT("SR_Recover_Blade","GLOBAL",4)
+PartyHasItem("00SWDL09")
+Global("P#PrachiMoonblade","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiMoonblade","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!CurrentAreaIs(Myself,2001)
+!CurrentAreaIs(Myself,2002)
+Global("P#PrachiMoonblade","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiMoonblade","GLOBAL",2)
+END
+
+//Shaengarn River
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("Chapter","GLOBAL",1)
+Global("P#PrachiLogBlade","GLOBAL",1)
+CurrentAreaIs(Myself,2000)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiLogBlade","GLOBAL",2)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#PrachiLogBlade","GLOBAL",2)
+!CurrentAreaIs(Myself,2000)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiLogBlade","GLOBAL",3)
+END
+
+//Swift Thomas comment
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("Chapter","GLOBAL",0)
+GlobalGT("Jump_Check","GLOBAL",0)
+Global("P#PrachiSwift","GLOBAL",0)
+OR(3)
+CurrentAreaIs(Myself,1000)
+CurrentAreaIs(Myself,1100)
+CurrentAreaIs(Myself,1200)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiSwift","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#PrachiSwift","GLOBAL",1)
+!CurrentAreaIs(Myself,1000)
+!CurrentAreaIs(Myself,1100)
+!CurrentAreaIs(Myself,1200)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiSwift","GLOBAL",2)
+END
+
+//Phaen's Treachury
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("Chapter","GLOBAL",0)
+Global("Phaen_Loses_It", "GLOBAL", 1)
+Global("P#PrachiPhaen","GLOBAL",0)
+CurrentAreaIs(Myself,1106)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiPhaen","GLOBAL",1)
+ActionOverride("prachi",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#PrachiPhaen","GLOBAL",1)
+!CurrentAreaIs(Myself,1106)
+THEN
+RESPONSE #100
+SetGlobal("P#PrachiPhaen","GLOBAL",2)
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#SetPrachiBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPrachiBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",7000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#SetPrachiBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPrachiBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",7600)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#SetPrachiBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPrachiBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",7600)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#SetPrachiBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPrachiBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",7600)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#SetPrachiBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPrachiBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",7600)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#SetPrachiBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPrachiBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",7600)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+Global("P#SetPrachiBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetPrachiBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",7600)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//NPC banter initiated by Prachi
+
+//Normal NPC banter
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRDI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRDI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRDI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRDI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRJA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("nikosh")
+See("nikosh",0)
+!StateCheck("prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIPR1","GLOBAL",2)
+Global("P#PRNI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRNI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRNO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRNO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+GlobalGT("Chapter","GLOBAL",2)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+GlobalGT("Chapter","GLOBAL",5)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRPE2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRPE2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+GlobalGT("Chapter","GLOBAL",2)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRSA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRSA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+GlobalGT("Chapter","GLOBAL",4)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRSA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRSA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("salomeya"))
+END
+
+//Rizdaer
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+GlobalGT("Chapter","GLOBAL",1)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRRI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRRI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+GlobalGT("Chapter","GLOBAL",2)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRRI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRRI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+GlobalGT("Chapter","GLOBAL",3)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRRI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRRI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+GlobalGT("Chapter","GLOBAL",4)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRRI4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRRI4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+GlobalGT("Chapter","GLOBAL",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRVA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRVA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("Valeero"))
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+GlobalGT("Chapter","GLOBAL",3)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PRVA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#PrachiTimer","GLOBAL",5600)
+IncrementGlobal("P#PRVA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet("Valeero"))
+END
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+//In Prologue or later goes to 2
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#PrachiPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PrachiPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",7600)
+END
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#PrachiPCTalk","GLOBAL",1)
+!TimeOfDay(DAY)
+OR(59)
+CurrentAreaIs(Myself,1000)
+CurrentAreaIs(Myself,1100)
+CurrentAreaIs(Myself,1200)
+CurrentAreaIs(Myself,2001)
+CurrentAreaIs(Myself,3000)
+CurrentAreaIs(Myself,3100)
+CurrentAreaIs(Myself,4100)
+CurrentAreaIs(Myself,5200)
+CurrentAreaIs(Myself,6000)
+CurrentAreaIs(Myself,6001)
+CurrentAreaIs(Myself,6701)
+CurrentAreaIs(Myself,6702)
+CurrentAreaIs(Myself,6703)
+CurrentAreaIs(Myself,6601)
+CurrentAreaIs(Myself,6602)
+CurrentAreaIs(Myself,6603)
+CurrentAreaIs(Myself,6501)
+CurrentAreaIs(Myself,6502)
+CurrentAreaIs(Myself,6503)
+CurrentAreaIs(Myself,6401)
+CurrentAreaIs(Myself,6402)
+CurrentAreaIs(Myself,6403)
+CurrentAreaIs(Myself,5010)
+CurrentAreaIs(Myself,5011)
+CurrentAreaIs(Myself,5012)
+CurrentAreaIs(Myself,5013)
+CurrentAreaIs(Myself,5014)
+CurrentAreaIs(Myself,5015)
+CurrentAreaIs(Myself,5016)
+CurrentAreaIs(Myself,5017)
+CurrentAreaIs(Myself,5018)
+CurrentAreaIs(Myself,5019)
+CurrentAreaIs(Myself,5020)
+CurrentAreaIs(Myself,5021)
+CurrentAreaIs(Myself,5022)
+CurrentAreaIs(Myself,5023)
+CurrentAreaIs(Myself,5024)
+CurrentAreaIs(Myself,5025)
+CurrentAreaIs(Myself,5026)
+CurrentAreaIs(Myself,5027)
+CurrentAreaIs(Myself,5028)
+CurrentAreaIs(Myself,5029)
+CurrentAreaIs(Myself,5030)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2000)
+CurrentAreaIs(Myself,2100)
+CurrentAreaIs(Myself,2101)
+CurrentAreaIs(Myself,2102)
+CurrentAreaIs(Myself,4000)
+CurrentAreaIs(Myself,5000)
+CurrentAreaIs(Myself,5001)
+CurrentAreaIs(Myself,5004)
+CurrentAreaIs(Myself,5100)
+CurrentAreaIs(Myself,5303)
+CurrentAreaIs(Myself,6002)
+CurrentAreaIs(Myself,6050)
+CurrentAreaIs(Myself,6100)
+CurrentAreaIs(Myself,6201)
+CurrentAreaIs(Myself,6300)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PrachiPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1  goes to 4
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#PrachiPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PrachiPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2   goes to 8
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",1)
+OR(2)
+Global("P#PrachiPCTalk","GLOBAL",5)
+Global("P#PrachiPCTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PrachiPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3  goes to 12
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#PrachiPCTalk","GLOBAL",9)
+Global("P#PrachiPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PrachiPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4 goes to 16
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",3)
+OR(2)
+Global("P#PrachiPCTalk","GLOBAL",13)
+Global("P#PrachiPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PrachiPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5  goes to 18
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",4)
+Global("P#PrachiPCTalk","GLOBAL",17)
+!CurrentAreaIs(Myself,6050)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PrachiPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6  goes to 20
+
+IF
+InParty("Prachi") !Dead("Prachi") !StateCheck("Prachi",STATE_SLEEPING)
+GlobalTimerExpired("P#PrachiPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#PrachiPCTalk","GLOBAL",19)
+THEN
+RESPONSE #100
+IncrementGlobal("P#PrachiPCTalk","GLOBAL",1)
+SetGlobalTimer("P#PrachiPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("prac000")
+ActionOverride("prachi",StartDialogueNoSet(Player1))
+END

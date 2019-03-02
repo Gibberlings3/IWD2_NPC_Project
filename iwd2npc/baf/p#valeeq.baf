@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("valeero")
+		FloatMessage("valeero",@0 /* ~I can't say 'farewell' to you in earnest.~ */)
+		SetGlobal("P#valeeroQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("valeero","valeero",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("valeero",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

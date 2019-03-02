@@ -1,0 +1,85 @@
+//Hildury's Reincarnation Script
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationOrc","GLOBAL",1)
+Global("P#HildPlot","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#hildr1")
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationElf","GLOBAL",1)
+Global("P#HildPlot","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#hildr2")
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationHalfelf","GLOBAL",1)
+Global("P#HildPlot","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#hildr3")
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationHuman","GLOBAL",1)
+Global("P#HildPlot","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#hildr4")
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationDwarf","GLOBAL",1)
+Global("P#HildPlot","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#hildr5")
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationHalfling","GLOBAL",1)
+Global("P#HildPlot","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#hildr6")
+END
+
+IF
+Global("P#HilduryReincarnation","GLOBAL",3)
+Global("P#HilduryReincarnationGnome","GLOBAL",1)
+Global("P#HildPlot","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#HilduryReincarnation","GLOBAL",4)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("p#hildr7")
+END

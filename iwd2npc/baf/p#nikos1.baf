@@ -1,0 +1,1409 @@
+//This Block enables the PartyRested()
+
+IF
+Global("P#JustStarted","GLOBAL",0)
+CheckStat("nikosh",0,FATIGUE)
+THEN
+RESPONSE #100
+SetGlobal("P#JustStarted","GLOBAL",1)
+ChangeStat("nikosh",FATIGUE,1,SET)
+END
+
+//Chapter
+
+//Chapter 1 recovered the Moonblade
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+!AnyPCSeesEnemy()
+OR(2)
+CurrentAreaIs("nikosh",2001)
+CurrentAreaIs("nikosh",2002)
+GlobalGT("SR_Recover_Blade","GLOBAL",0)
+GlobalLT("SR_Recover_Blade","GLOBAL",4)
+PartyHasItem("00SWDL09")
+Global("P#NikoshCh1","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh1","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",2001)
+!CurrentAreaIs("nikosh",2002)
+Global("P#NikoshCh1","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh1","GLOBAL",2)
+END
+
+//Chapter 2 Met Nickodemius
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+!AnyPCSeesEnemy()
+OR(2)
+CurrentAreaIs("nikosh",4101)
+CurrentAreaIs("nikosh",4102)
+GlobalGT("41NickAwaken", "MYAREA", 1)
+Global("P#NikoshCh2","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh2","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",4101)
+!CurrentAreaIs("nikosh",4102)
+Global("P#NikoshCh2","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh2","GLOBAL",2)
+END
+
+//Chapter 3
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+!AnyPCSeesEnemy()
+CurrentAreaIs("nikosh",5000)
+Global("50Wight_Horn","GLOBAL",2)
+Global("P#NikoshCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh3","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",5000)
+Global("P#NikoshCh3","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh3","GLOBAL",2)
+END
+
+//Chapter 4
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+!AnyPCSeesEnemy()
+CurrentAreaIs("nikosh",5301)
+PartyHasItem("53AMULBS")
+Global("P#NikoshCh4","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh4","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",5301)
+Global("P#NikoshCh4","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh4","GLOBAL",2)
+END
+
+//Chapter 5
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+!AnyPCSeesEnemy()
+CurrentAreaIs("Nikosh",6104)
+Global("61CurrentDay","GLOBAL",2)
+Global("P#NikoshCh5","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh5","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",6104)
+Global("P#NikoshCh5","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshCh5","GLOBAL",2)
+END
+
+//Chapter 6, in Romance
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy() !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",6)
+CurrentAreaIs("Nikosh",6304)
+OR(2)
+Global("P#NikoshRomanceActive","GLOBAL",2)
+Global("P#NikoshRomanceActive","GLOBAL",1)
+!Global("P#NikoshRomanceInactive","GLOBAL",1)
+Global("P#TalkedCook","GLOBAL",1)
+Global("P#NikoshKitchen","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshKitchen","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",6304)
+Global("P#NikoshKitchen","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshKitchen","GLOBAL",2)
+END
+
+//Scenery
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+!AnyPCSeesEnemy()
+CurrentAreaIs("nikosh",5011)
+PartyHasItem("50GenDH")
+Global("P#NikoshDrinkingHorn","GLOBAL",0)
+Global("P#NikoshCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshDrinkingHorn","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",5011)
+Global("P#NikoshDrinkingHorn","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshDrinkingHorn","GLOBAL",2)
+END
+
+//Traps in AR6100
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Nikosh",6100)
+Global("P#NikoshTraps","GLOBAL",0)
+Global("P#InAR6100","GLOBAL",1)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshTraps","GLOBAL",1)
+ActionOverride("Nikosh",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("Nikosh",6100)
+Global("P#NikoshTraps","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshTraps","GLOBAL",2)
+END
+
+//Modified Root
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",5)
+CurrentAreaIs("Nikosh",6102)
+Global("P#NikoshModifiedRoot","GLOBAL",0)
+OR(2)
+PartyHasItem("61GENMM")
+PartyHasItem("61HFGNMM")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshModifiedRoot","GLOBAL",1)
+ActionOverride("Nikosh",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("Nikosh",6102)
+Global("P#NikoshModifiedRoot","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshModifiedRoot","GLOBAL",2)
+END
+
+
+//Black Raven Monastery
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+CurrentAreaIs(Myself,5200)
+Global("P#NikoshAR5200","GLOBAL",0)
+PartyHasItem("00MISC40")
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshAR5200","GLOBAL",1)
+ActionOverride("Nikosh",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("Nikosh",5200)
+Global("P#NikoshAR5200","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshAR5200","GLOBAL",2)
+END
+
+//Nikosh on blue stone kept
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",4)
+!AnyPCSeesEnemy()
+CurrentAreaIs("nikosh",5300)
+Global("53Stone_Quest","GLOBAL",2)
+PartyHasItem("53AMULBS")
+Global("P#NikoshBSKept","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshBSKept","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",5300)
+Global("P#NikoshBSKept","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshBSKept","GLOBAL",2)
+END
+
+//Nikosh on killing Shambler
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Nikosh",5101)
+Global("P#NikoshShambler","GLOBAL",0)
+Dead("10_51sha_01")
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshShambler","GLOBAL",1)
+ActionOverride("Nikosh",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("Nikosh",5101)
+Global("P#NikoshShambler","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshShambler","GLOBAL",2)
+END
+
+//Nikosh on killing the dragon
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("Nikosh",5101)
+Global("P#NikoshWD","GLOBAL",0)
+Dead("00drawy")
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshWD","GLOBAL",1)
+ActionOverride("Nikosh",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("Nikosh",5101)
+Global("P#NikoshWD","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshWD","GLOBAL",2)
+END
+
+//Venla
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",3)
+CurrentAreaIs("nikosh",5000)
+Global("50Twins_Venla","Global",1)
+Global("P#NikoshVenla","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshVenla","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",5000)
+Global("P#NikoshVenla","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshVenla","GLOBAL",2)
+END
+
+//NWN soldiers
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",2)
+CurrentAreaIs("nikosh",4100)
+PartyHasItem("41AMULHS")
+Global("P#NikoshFrozenS","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshFrozenS","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",4100)
+Global("P#NikoshFrozenS","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshFrozenS","GLOBAL",2)
+END
+
+//Sh. Bridge destroyed
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs(Myself,2102)
+Global("Shaengarne_Quest", "GLOBAL", 2)
+Global("Shaengarne_Bridge_Destroyed","GLOBAL",2)
+Global("P#NikoshBridgeDestroyed","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshBridgeDestroyed","GLOBAL",1)
+ActionOverride("Nikosh",StartDialogueNoSet(Myself))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs(Myself,2102)
+Global("P#NikoshBridgeDestroyed","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshBridgeDestroyed","GLOBAL",2)
+END
+
+//Shaengarn Ford
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+CurrentAreaIs("nikosh",2100)
+See("210gr",1)
+Global("P#NikoshHarpies","GLOBAL",0)
+InParty("Salomeya")
+!Dead("Salomeya")
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshHarpies","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!CurrentAreaIs("nikosh",2100)
+Global("P#NikoshHarpies","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshHarpies","GLOBAL",2)
+END
+
+//Recovered Potion of Invisibility
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",1)
+!AnyPCSeesEnemy()
+Global("P#NikoshLVPotion","GLOBAL",0)
+CurrentAreaIs("nikosh",2001)
+Global("P#KaitlinKnowPotion","GLOBAL",1)
+PartyHasItem("00POTN34")
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshLVPotion","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#NikoshLVPotion","GLOBAL",1)
+!CurrentAreaIs("nikosh",2001)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshLVPotion","GLOBAL",2)
+END
+
+//Koluhm's house
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("P#NikoshAR1107","GLOBAL",0)
+CurrentAreaIs("nikosh",1107)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshAR1107","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#NikoshAR1107","GLOBAL",1)
+!CurrentAreaIs("nikosh",1107)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshAR1107","GLOBAL",2)
+END
+
+//Targos Town Inn
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Chapter","GLOBAL",0)
+Global("P#NikoshTargosInn","GLOBAL",0)
+CurrentAreaIs("nikosh",1104)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshTargosInn","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet("nikosh"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("P#NikoshTargosInn","GLOBAL",1)
+!CurrentAreaIs("nikosh",1104)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshTargosInn","GLOBAL",2)
+END
+
+//Targos Docks
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+Global("Magdar_Barrel_Q","GLOBAL",1)
+Global("Chapter","GLOBAL",0)
+Global("P#NikoshMagdar","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#NikoshMagdar","GLOBAL",1)
+ActionOverride("nikosh",StartDialogueNoSet("nikosh"))
+END
+
+//Set up Banter Timer//
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#SetNikoshBanterTimer","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNikoshBanterTimer","GLOBAL",1)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#SetNikoshBanterTimer1","GLOBAL",0)
+Global("Chapter","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNikoshBanterTimer1","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#SetNikoshBanterTimer2","GLOBAL",0)
+Global("Chapter","GLOBAL",2)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNikoshBanterTimer2","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#SetNikoshBanterTimer3","GLOBAL",0)
+Global("Chapter","GLOBAL",3)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNikoshBanterTimer3","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#SetNikoshBanterTimer4","GLOBAL",0)
+Global("Chapter","GLOBAL",4)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNikoshBanterTimer4","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#SetNikoshBanterTimer5","GLOBAL",0)
+Global("Chapter","GLOBAL",5)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNikoshBanterTimer5","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+Global("P#SetNikoshBanterTimer6","GLOBAL",0)
+Global("Chapter","GLOBAL",6)
+THEN
+RESPONSE #100
+SetGlobal("P#SetNikoshBanterTimer6","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",5200)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+END
+
+//NPC banter
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIDI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIDI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Diriel")
+See("Diriel",0)
+!StateCheck("Diriel",STATE_SLEEPING)
+Global("P#JADI2","GLOBAL",2)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIDI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIDI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("diriel"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIHI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIHI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIHI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIHI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+Global("P#JustStarted","GLOBAL",1)
+CheckStat("nikosh",0,FATIGUE)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIHI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIHI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ChangeStat("nikosh",FATIGUE,1,SET)
+ActionOverride("nikosh",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Hildury")
+See("Hildury",0)
+!StateCheck("Hildury",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+!Global("P#NikoshRomanceActive","GLOBAL",1)
+!Global("P#NikoshRomanceActive","GLOBAL",2)
+Global("P#HilduryReincarnation","GLOBAL",4)
+OR(2)
+Global("P#HilduryReincarnationHalfling","GLOBAL",1)
+Global("P#HilduryReincarnationGnome","GLOBAL",1)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIHI4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIHI4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("hildury"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIJA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",4000)
+IncrementGlobal("P#NIJA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",5)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIJA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",4000)
+IncrementGlobal("P#NIJA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Jaemal")
+See("Jaemal",0)
+!StateCheck("Jaemal",STATE_SLEEPING)
+InParty("Salomeya")
+Global("P#NISA1","GLOBAL",2)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#JaemalTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIJA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#JaemalTimer","GLOBAL",4000)
+IncrementGlobal("P#NIJA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("jaemal"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Nord")
+See("Nord",0)
+!StateCheck("Nord",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NINO1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NINO1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("nord"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NISA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NISA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Salomeya")
+See("Salomeya",0)
+!StateCheck("Salomeya",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NISA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NISA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("salomeya"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIPR1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIPR1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIPR2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIPR2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Prachi")
+See("Prachi",0)
+!StateCheck("Prachi",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#JustStarted","GLOBAL",1)
+CheckStat("nikosh",0,FATIGUE)
+Global("P#NIPR3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIPR3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ChangeStat("nikosh",FATIGUE,1,SET)
+ActionOverride("nikosh",StartDialogueNoSet("prachi"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIPE1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIPE1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("peony"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Peony")
+See("Peony",0)
+!StateCheck("Peony",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIPE2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIPE2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("peony"))
+END
+
+//Rizdaer
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIRI1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIRI1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",2)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIRI2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIRI2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIRI3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIRI3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Rizdaer")
+See("Rizdaer",0)
+!StateCheck("Rizdaer",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",4)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIRI4","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIRI4","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("Rizdaer"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",0)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIVA1","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIVA1","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("Valeero"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",1)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIVA1","GLOBAL",2)
+Global("P#NIVA2","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIVA2","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("Valeero"))
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+InParty("Valeero")
+See("Valeero",0)
+!StateCheck("Valeero",STATE_SLEEPING)
+GlobalGT("Chapter","GLOBAL",3)
+GlobalTimerExpired("P#NikoshTimer","GLOBAL")
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+Global("P#NIVA3","GLOBAL",0)
+THEN
+RESPONSE #100
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetGlobalTimer("P#NikoshTimer","GLOBAL",4000)
+IncrementGlobal("P#NIVA3","GLOBAL",1)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet("Valeero"))
+END
+
+//Talks with Player 1, charbase is the script name for joinables//
+
+//In prologue or later goes to 2
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+Global("P#NikoshPCTalk", "GLOBAL",0)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NikoshPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",2000)
+END
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+GlobalTimerExpired("P#NikoshPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+IsPlayerNumber("charbase",1)
+OR(37)
+CurrentAreaIs("nikosh",5010)
+CurrentAreaIs("nikosh",5011)
+CurrentAreaIs("nikosh",5012)
+CurrentAreaIs("nikosh",5013)
+CurrentAreaIs("nikosh",5014)
+CurrentAreaIs("nikosh",5015)
+CurrentAreaIs("nikosh",5016)
+CurrentAreaIs("nikosh",5017)
+CurrentAreaIs("nikosh",5018)
+CurrentAreaIs("nikosh",5019)
+CurrentAreaIs("nikosh",5020)
+CurrentAreaIs("nikosh",5021)
+CurrentAreaIs("nikosh",5022)
+CurrentAreaIs("nikosh",5023)
+CurrentAreaIs("nikosh",5024)
+CurrentAreaIs("nikosh",5025)
+CurrentAreaIs("nikosh",5026)
+CurrentAreaIs("nikosh",5027)
+CurrentAreaIs("nikosh",5028)
+CurrentAreaIs("nikosh",5029)
+CurrentAreaIs("nikosh",5030)
+CurrentAreaIs("nikosh",2000)
+CurrentAreaIs("nikosh",2000)
+CurrentAreaIs("nikosh",2100)
+CurrentAreaIs("nikosh",2101)
+CurrentAreaIs("nikosh",2102)
+CurrentAreaIs("nikosh",4000)
+CurrentAreaIs("nikosh",5000)
+CurrentAreaIs("nikosh",5001)
+CurrentAreaIs("nikosh",5004)
+CurrentAreaIs("nikosh",5100)
+CurrentAreaIs("nikosh",5303)
+CurrentAreaIs("nikosh",6002)
+CurrentAreaIs("nikosh",6050)
+CurrentAreaIs("nikosh",6100)
+CurrentAreaIs("nikosh",6201)
+CurrentAreaIs("nikosh",6300)
+Global("P#NikoshPCTalk","GLOBAL",1)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NikoshPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 1 goes to 4
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+GlobalTimerExpired("P#NikoshPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+OR(59)
+CurrentAreaIs("nikosh",1000)
+CurrentAreaIs("nikosh",1100)
+CurrentAreaIs("nikosh",1200)
+CurrentAreaIs("nikosh",2001)
+CurrentAreaIs("nikosh",3000)
+CurrentAreaIs("nikosh",3100)
+CurrentAreaIs("nikosh",4100)
+CurrentAreaIs("nikosh",5200)
+CurrentAreaIs("nikosh",6000)
+CurrentAreaIs("nikosh",6001)
+CurrentAreaIs("nikosh",6701)
+CurrentAreaIs("nikosh",6702)
+CurrentAreaIs("nikosh",6703)
+CurrentAreaIs("nikosh",6601)
+CurrentAreaIs("nikosh",6602)
+CurrentAreaIs("nikosh",6603)
+CurrentAreaIs("nikosh",6501)
+CurrentAreaIs("nikosh",6502)
+CurrentAreaIs("nikosh",6503)
+CurrentAreaIs("nikosh",6401)
+CurrentAreaIs("nikosh",6402)
+CurrentAreaIs("nikosh",6403)
+CurrentAreaIs("nikosh",5010)
+CurrentAreaIs("nikosh",5011)
+CurrentAreaIs("nikosh",5012)
+CurrentAreaIs("nikosh",5013)
+CurrentAreaIs("nikosh",5014)
+CurrentAreaIs("nikosh",5015)
+CurrentAreaIs("nikosh",5016)
+CurrentAreaIs("nikosh",5017)
+CurrentAreaIs("nikosh",5018)
+CurrentAreaIs("nikosh",5019)
+CurrentAreaIs("nikosh",5020)
+CurrentAreaIs("nikosh",5021)
+CurrentAreaIs("nikosh",5022)
+CurrentAreaIs("nikosh",5023)
+CurrentAreaIs("nikosh",5024)
+CurrentAreaIs("nikosh",5025)
+CurrentAreaIs("nikosh",5026)
+CurrentAreaIs("nikosh",5027)
+CurrentAreaIs("nikosh",5028)
+CurrentAreaIs("nikosh",5029)
+CurrentAreaIs("nikosh",5030)
+CurrentAreaIs("nikosh",2000)
+CurrentAreaIs("nikosh",2000)
+CurrentAreaIs("nikosh",2100)
+CurrentAreaIs("nikosh",2101)
+CurrentAreaIs("nikosh",2102)
+CurrentAreaIs("nikosh",4000)
+CurrentAreaIs("nikosh",5000)
+CurrentAreaIs("nikosh",5001)
+CurrentAreaIs("nikosh",5004)
+CurrentAreaIs("nikosh",5100)
+CurrentAreaIs("nikosh",5303)
+CurrentAreaIs("nikosh",6002)
+CurrentAreaIs("nikosh",6050)
+CurrentAreaIs("nikosh",6100)
+CurrentAreaIs("nikosh",6201)
+CurrentAreaIs("nikosh",6300)
+GlobalGT("Chapter","GLOBAL",0)
+Global("P#NikoshPCTalk","GLOBAL",3)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NikoshPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 2  goes to 8
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+GlobalTimerExpired("P#NikoshPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",1)
+OR(35)
+CurrentAreaIs("nikosh",5010)
+CurrentAreaIs("nikosh",5011)
+CurrentAreaIs("nikosh",5012)
+CurrentAreaIs("nikosh",5013)
+CurrentAreaIs("nikosh",5014)
+CurrentAreaIs("nikosh",5015)
+CurrentAreaIs("nikosh",5016)
+CurrentAreaIs("nikosh",5017)
+CurrentAreaIs("nikosh",5018)
+CurrentAreaIs("nikosh",5019)
+CurrentAreaIs("nikosh",5020)
+CurrentAreaIs("nikosh",5021)
+CurrentAreaIs("nikosh",5022)
+CurrentAreaIs("nikosh",5023)
+CurrentAreaIs("nikosh",5024)
+CurrentAreaIs("nikosh",5025)
+CurrentAreaIs("nikosh",5026)
+CurrentAreaIs("nikosh",5027)
+CurrentAreaIs("nikosh",5028)
+CurrentAreaIs("nikosh",5029)
+CurrentAreaIs("nikosh",5030)
+CurrentAreaIs("nikosh",2000)
+CurrentAreaIs("nikosh",2000)
+CurrentAreaIs("nikosh",2100)
+CurrentAreaIs("nikosh",2101)
+CurrentAreaIs("nikosh",2102)
+CurrentAreaIs("nikosh",4000)
+CurrentAreaIs("nikosh",5001)
+CurrentAreaIs("nikosh",5004)
+CurrentAreaIs("nikosh",5100)
+CurrentAreaIs("nikosh",5303)
+CurrentAreaIs("nikosh",6002)
+CurrentAreaIs("nikosh",6100)
+CurrentAreaIs("nikosh",6201)
+CurrentAreaIs("nikosh",6300)
+OR(2)
+Global("P#NikoshPCTalk","GLOBAL",5)
+Global("P#NikoshPCTalk","GLOBAL",7)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NikoshPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 3 goes to 12
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+GlobalTimerExpired("P#NikoshPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",2)
+OR(2)
+Global("P#NikoshPCTalk","GLOBAL",9)
+Global("P#NikoshPCTalk","GLOBAL",11)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NikoshPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 4  goes to 14
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+GlobalTimerExpired("P#NikoshPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",3)
+Global("P#NikoshPCTalk","GLOBAL",13)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NikoshPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 5 goes to 16
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+GlobalTimerExpired("P#NikoshPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",4)
+!CurrentAreaIs(Myself,6050)
+Global("P#NikoshPCTalk","GLOBAL",15)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NikoshPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+
+//In Chapter 6 goes to 18
+
+IF
+InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSeesEnemy()
+GlobalTimerExpired("P#NikoshPCTalkTimer","GLOBAL")
+!AnyPCSeesEnemy()
+IsPlayerNumber("charbase",1)
+GlobalTimerExpired("P#AllTimer","GLOBAL")
+GlobalGT("Chapter","GLOBAL",5)
+Global("P#NikoshPCTalk","GLOBAL",17)
+THEN
+RESPONSE #100
+IncrementGlobal("P#NikoshPCTalk","GLOBAL",1)
+SetGlobalTimer("P#NikoshPCTalkTimer","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",1800)
+SetMusic(9,0)
+PlaySound("laof000")
+ActionOverride("nikosh",StartDialogueNoSet(Player1))
+END
+

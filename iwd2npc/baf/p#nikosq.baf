@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("nikosh")
+		FloatMessage("nikosh",@0 /* ~I uhm... I'll be goin' then.~ */)
+		SetGlobal("P#nikoshQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("nikosh","nikosh",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("nikosh",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

@@ -1,0 +1,12 @@
+//This script will happen after the party is teleported by 70epilo1 and 70cutlua
+//It will be assigned to ar6007 and will just start dialogues by Salomeya and by MULTIG
+
+IF
+Global("P#EpilogueReady","GLOBAL",1)
+THEN
+RESPONSE #100
+SetGlobal("P#EpilogueReady","GLOBAL",2)
+ClearAllActions()
+StartCutsceneMode()
+StartCutscene("70cunhid")
+END

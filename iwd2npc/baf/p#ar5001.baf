@@ -1,0 +1,12 @@
+IF
+InParty("salomeya")
+Global("Chapter","GLOBAL",3)
+Global("Limha_Dead","GLOBAL",1)
+Global("P#SalomeyaCh3","GLOBAL",0)
+IsPlayerNumber("charbase",1)
+THEN
+RESPONSE #100
+SetGlobal("P#SalomeyaCh3","GLOBAL",1)
+SetGlobalTimer("P#AllTimer","GLOBAL",450)
+ActionOverride("salomeya",StartDialogueNoSet(Player1))
+END

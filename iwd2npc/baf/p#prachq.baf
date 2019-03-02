@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("prachi")
+		FloatMessage("prachi",@0 /* ~I shall find the Release on another path.~ */)
+		SetGlobal("P#prachiQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("prachi","prachi",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("prachi",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

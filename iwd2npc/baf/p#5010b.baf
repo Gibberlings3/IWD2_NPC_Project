@@ -1,0 +1,19 @@
+//To Barrow Wight's Horn
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		StopJoinRequests()
+		SetGlobal("P#DirielWight","GLOBAL",1)
+		CutSceneId(Protagonist)
+		MultiPlayerSync()
+		FadeToColor([0.0],0)
+		ActionOverride(Player1,LeaveAreaLUA("AR5011","LOAD3000",[307.530],2))
+		ActionOverride(Player2,LeaveAreaLUA("AR5011","LOAD3000",[307.530],2))
+		ActionOverride(Player3,LeaveAreaLUA("AR5011","LOAD3000",[307.530],2))
+		ActionOverride(Player4,LeaveAreaLUA("AR5011","LOAD3000",[307.530],2))
+		ActionOverride(Player5,LeaveAreaLUA("AR5011","LOAD3000",[307.530],2))
+		ActionOverride(Player6,LeaveAreaLUA("AR5011","LOAD3000",[307.530],2))
+		EndCutSceneMode()
+END

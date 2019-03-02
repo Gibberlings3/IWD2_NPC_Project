@@ -1,0 +1,16 @@
+IF
+	True()
+THEN
+	RESPONSE #100
+		CutSceneId("rizdaer")
+		FloatMessage("rizdaer",@0 /* ~I'd rather strike on my own.~ */)
+		SetGlobal("P#rizdaerQuit","GLOBAL",3)
+		Wait(1)
+		SpellHitEffectSprite("rizdaer","rizdaer",DIMENSION_DOOR_ORIGIN,0)
+		Wait(1)
+		HideCreature("rizdaer",TRUE)
+                EndCutSceneMode()
+                EscapeArea()
+		DestroySelf()
+END
+

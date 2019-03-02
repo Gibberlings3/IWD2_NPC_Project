@@ -1,0 +1,144 @@
+IF
+	CombatCounter(0)
+	AreaType(DUNGEON)
+	!ModalState(DETECTTRAPS)
+	Delay(4)
+THEN
+	RESPONSE #100
+		FindTraps()
+		DisplayStringHead(Myself,~Looking for traps~) 
+END
+
+IF
+	CombatCounter(0)
+	!StateCheck("Azure",STATE_DEAD)
+	Delay(6)
+THEN
+	RESPONSE #100
+            MoveToObjectFollow("Azure")
+END
+
+IF
+	CombatCounter(0)
+	StateCheck("Azure",STATE_DEAD)
+	Delay(6)
+THEN
+	RESPONSE #100
+		MoveToObjectFollow(Protagonist)
+END
+
+IF
+	AttackedBy([ANYONE],DEFAULT)
+THEN
+	RESPONSE #100
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+	StateCheck("Azure",STATE_DEAD)
+	See(NearestEnemyOf(Protagonist))
+	Range(NearestEnemyOf(Protagonist),8)
+THEN
+	RESPONSE #100
+		AttackOneRound(NearestEnemyOf(Protagonist))
+END
+
+IF
+	!StateCheck("Azure",STATE_DEAD)
+	See(NearestEnemyOf("Azure"))
+	Range(NearestEnemyOf("Azure"),8)
+THEN
+	RESPONSE #100
+		AttackOneRound(NearestEnemyOf("Azure"))
+END
+
+
+IF
+  	!StateCheck(Myself,STATE_INVISIBLE)
+	!StateCheck("Azure",STATE_DEAD)
+	See(NearestEnemyOf("Azure"))
+	!Range(NearestEnemyOf("Azure"),8)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,WIZARD_INVISIBILITY)
+		DisplayStringHead(Myself,~Invisible~) 
+END
+
+IF
+  	!StateCheck(Myself,STATE_INVISIBLE)
+	StateCheck("Azure",STATE_DEAD)
+	See(NearestEnemyOf(Protagonist))
+	!Range(NearestEnemyOf(Protagonist),8)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,WIZARD_INVISIBILITY)
+		DisplayStringHead(Myself,~Invisible~) 
+END
+
+IF
+	!StateCheck("Azure",STATE_DEAD)
+	StateCheck(Myself,STATE_INVISIBLE)
+	See(NearestEnemyOf("Azure"))
+THEN
+	RESPONSE #100
+		AttackOneRound(NearestEnemyOf("Azure"))
+END
+
+IF
+	StateCheck(Myself,STATE_INVISIBLE)
+	StateCheck("Azure",STATE_DEAD)
+	See(NearestEnemyOf(Protagonist))
+THEN
+	RESPONSE #100
+		AttackOneRound(NearestEnemyOf(Protagonist))
+END
+
+
+IF
+	!StateCheck("Azure",STATE_DEAD)
+	See("Azure")
+	HPPercentLT("Azure",50)
+THEN
+	RESPONSE #100
+		ReallyForceSpell("Azure",CLERIC_CURE_CRITICAL_WOUNDS)
+		DisplayStringHead(Myself,~Azure was cured~) 
+END
+
+IF
+	StateCheck("Azure",STATE_DEAD)
+	See(Protagonist)
+	HPPercentLT(Protagonist,50)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Protagonist,CLERIC_CURE_CRITICAL_WOUNDS)
+		DisplayStringHead(Myself,~Protagonist was cured~) 
+END
+
+
+IF
+	!StateCheck("Azure",STATE_DEAD)
+	See("Azure")
+	HPPercentLT("Azure",25)
+THEN
+	RESPONSE #100
+		ReallyForceSpell("Azure",CLERIC_HEAL)
+		DisplayStringHead(Myself,~Azure was healed~) 
+END
+
+IF
+	HPPercentLT(Myself,25)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,CLERIC_HEAL)
+		DisplayStringHead(Myself,~Sharo healed~) 
+END
+
+IF
+	StateCheck("Azure",STATE_DEAD)
+	See(Protagonist)
+	HPPercentLT(Protagonist,25)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Protagonist,CLERIC_HEAL)
+		DisplayStringHead(Myself,~Protagonist was healed~) 
+END
