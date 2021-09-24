@@ -1,17 +1,20 @@
 /////////////////////////
-///IWD2NPC - Version 5////
+///IWD2NPC ////
 /////////////////////////
 
 BACKUP ~IWD2NPC/backup~
-AUTHOR ~domi_sotto@gibberlings3.net~
+SUPPORT ~https://www.gibberlings3.net/forums/forum/116-iwd2-npc-project/~
+//AUTHOR ~domi_sotto@gibberlings3.net~
 
-VERSION ~v5~
+VERSION ~v6~
 
 README ~IWD2NPC/readme-iwd2npc.html~
 
 AUTO_TRA ~IWD2NPC/%s~
 
 LANGUAGE ~English~   ~English~ ~IWD2NPC/English/Setup-IWD2NPC.tra~
+
+LANGUAGE ~Russian~   ~Russian~ ~IWD2NPC/Russian/Setup-IWD2NPC.tra~
 
 BEGIN @0
 
@@ -259,14 +262,14 @@ EXTEND_TOP ~AR1000.bcs~ ~IWD2NPC/baf/P#AR1000.baf~
 
 //This copies over CHR and RES
 
-COPY ~IWD2NPC/CHR/RES~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/RES~ ~Characters~
 
-COPY ~IWD2NPC/CHR/RIZDAER.CHR~ ~Characters~
-     ~IWD2NPC/CHR/RIZDAE03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/RIZDAE06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/RIZDAE09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/RIZDAE12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/RIZDAE15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/RIZDAER.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE15.CHR~ ~Characters~
 SAY 0x2d0 @33  
 SAY 0x2d4 @34 
 SAY 0x2d8 @35  
@@ -311,12 +314,12 @@ SAY 0x370 @73
 SAY 0x374 @74  
 SAY 0x378 @75  
 
-COPY ~IWD2NPC/CHR/VALEERO.CHR~ ~Characters~
-     ~IWD2NPC/CHR/VALEER03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/VALEER06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/VALEER09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/VALEER12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/VALEER15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/VALEERO.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/VALEER03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/VALEER06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/VALEER09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/VALEER12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/VALEER15.CHR~ ~Characters~
 SAY 0x2d0 @76 
 SAY 0x2d4 @77  
 SAY 0x2d8 @78  
@@ -361,12 +364,12 @@ SAY 0x370 @116
 SAY 0x374 @117  
 SAY 0x378 @118 
 
-COPY ~IWD2NPC/CHR/PEONY.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PEONY03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PEONY06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PEONY09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PEONY12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PEONY15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/PEONY.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PEONY03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PEONY06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PEONY09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PEONY12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PEONY15.CHR~ ~Characters~
 SAY 0x2d0 @119 
 SAY 0x2d4 @120  
 SAY 0x2d8 @121  
@@ -411,12 +414,12 @@ SAY 0x370 @159
 SAY 0x374 @160  
 SAY 0x378 @161 
 
-COPY ~IWD2NPC/CHR/SALOMEYA.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SALOM03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SALOM06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SALOM09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SALOM12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SALOM15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/SALOMEYA.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SALOM03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SALOM06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SALOM09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SALOM12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SALOM15.CHR~ ~Characters~
 SAY 0x2d0 @162 
 SAY 0x2d4 @163  
 SAY 0x2d8 @164  
@@ -461,12 +464,12 @@ SAY 0x370 @201
 SAY 0x374 @202 
 SAY 0x378 @203 
 
-COPY ~IWD2NPC/CHR/PRACHI.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PRACHI03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PRACHI06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PRACHI09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PRACHI12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/PRACHI15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/PRACHI.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI15.CHR~ ~Characters~
 SAY 0x2d0 @204  
 SAY 0x2d4 @205  
 SAY 0x2d8 @206  
@@ -511,12 +514,12 @@ SAY 0x370 @244
 SAY 0x374 @245  
 SAY 0x378 @246  
 
-COPY ~IWD2NPC/CHR/SIR_NORD.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SIR_NO03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SIR_NO06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SIR_NO09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SIR_NO12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/SIR_NO15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/SIR_NORD.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO15.CHR~ ~Characters~
 SAY 0x2d0 @247  
 SAY 0x2d4 @248  
 SAY 0x2d8 @249  
@@ -561,12 +564,12 @@ SAY 0x370 @287
 SAY 0x374 @288  
 SAY 0x378 @289  
 
-COPY ~IWD2NPC/CHR/NIKOSH_B.CHR~ ~Characters~
-     ~IWD2NPC/CHR/NIKOSH03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/NIKOSH06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/NIKOSH09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/NIKOSH12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/NIKOSH15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH_B.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH15.CHR~ ~Characters~
 SAY 0x2d0 @290 
 SAY 0x2d4 @291 
 SAY 0x2d8 @292  
@@ -611,12 +614,12 @@ SAY 0x370 @330
 SAY 0x374 @331 
 SAY 0x378 @332 
 
-COPY ~IWD2NPC/CHR/JAEMAL.CHR~ ~Characters~
-     ~IWD2NPC/CHR/JAEMAL03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/JAEMAL06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/JAEMAL09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/JAEMAL12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/JAEMAL15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL15.CHR~ ~Characters~
 SAY 0x2d0 @333  
 SAY 0x2d4 @334 
 SAY 0x2d8 @335  
@@ -661,12 +664,12 @@ SAY 0x370 @373
 SAY 0x374 @374  
 SAY 0x378 @375  
 
-COPY ~IWD2NPC/CHR/HILDURY.CHR~ ~Characters~
-     ~IWD2NPC/CHR/HILDUR03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/HILDUR06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/HILDUR09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/HILDUR12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/HILDUR15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/HILDURY.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR15.CHR~ ~Characters~
 SAY 0x2d0 @376  
 SAY 0x2d4 @377  
 SAY 0x2d8 @378  
@@ -711,12 +714,12 @@ SAY 0x370 @416
 SAY 0x374 @417  
 SAY 0x378 @418  
 
-COPY ~IWD2NPC/CHR/DIRIEL.CHR~ ~Characters~
-     ~IWD2NPC/CHR/DIRIEL03.CHR~ ~Characters~
-     ~IWD2NPC/CHR/DIRIEL06.CHR~ ~Characters~
-     ~IWD2NPC/CHR/DIRIEL09.CHR~ ~Characters~
-     ~IWD2NPC/CHR/DIRIEL12.CHR~ ~Characters~
-     ~IWD2NPC/CHR/DIRIEL15.CHR~ ~Characters~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL03.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL06.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL09.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL12.CHR~ ~Characters~
+     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL15.CHR~ ~Characters~
 SAY 0x2d0 @419 
 SAY 0x2d4 @420 
 SAY 0x2d8 @421 
@@ -782,13 +785,13 @@ EXTEND_TOP ~dplayer3.bcs~ ~IWD2NPC/d3/P#PID.baf~
 //This adds Nord's Company as a custom Party
 
 COPY ~party.ini~ ~party.ini~
-  APPEND_FILE ~IWD2NPC/party.txt~
+  APPEND_FILE ~IWD2NPC/%LANGUAGE%/party.txt~
   SET "index" = (0 - 1)
   REPLACE_EVALUATE ~^\[Party \([0-9]+\)\]~ BEGIN
     SET "index" = ("%index%" + 1)
   END
   ~[Party %index%]~
-  
+
 //Convert OGG to WAV
 LAF HANDLE_AUDIO END
 
@@ -812,12 +815,12 @@ END
 BEGIN @463
 SUBCOMPONENT @464
 COPY ~IWD2NPC/gnomeav/P#PEELF1.spl~ ~override/P#gnomea.spl~
-COPY ~IWD2NPC/CHR/EPEONY.CHR~ ~Characters/PEONY.CHR~
-     ~IWD2NPC/CHR/EPEONY03.CHR~ ~Characters/PEONY03.CHR~
-     ~IWD2NPC/CHR/EPEONY06.CHR~ ~Characters/PEONY06.CHR~
-     ~IWD2NPC/CHR/EPEONY09.CHR~ ~Characters/PEONY09.CHR~
-     ~IWD2NPC/CHR/EPEONY12.CHR~ ~Characters/PEONY12.CHR~
-     ~IWD2NPC/CHR/EPEONY15.CHR~ ~Characters/PEONY15.CHR~
+COPY ~IWD2NPC/%LANGUAGE%/CHR/EPEONY.CHR~ ~Characters/PEONY.CHR~
+     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY03.CHR~ ~Characters/PEONY03.CHR~
+     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY06.CHR~ ~Characters/PEONY06.CHR~
+     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY09.CHR~ ~Characters/PEONY09.CHR~
+     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY12.CHR~ ~Characters/PEONY12.CHR~
+     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY15.CHR~ ~Characters/PEONY15.CHR~
 
 BEGIN @465
 SUBCOMPONENT @464
@@ -827,5 +830,3 @@ EXTEND_TOP ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#PEONYB.baf~
 BEGIN @466
 SUBCOMPONENT @464
 COPY ~IWD2NPC/gnomeav/P#PEELF3.spl~ ~override/P#gnomea.spl~
-  
-
