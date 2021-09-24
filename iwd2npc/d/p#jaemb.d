@@ -767,7 +767,7 @@ END
 
 IF ~Global("P#JaemalPCTalk","GLOBAL",12)~ THEN BEGIN JaemalPC6
 SAY @318 /* ~What makes one a man?~ */
-++ @319 /* ~Such a question at this time of day!~ */ + P#JaPC6.1
+++ @319 /* ~Such a question at this time of day!~ */ DO ~IncrementGlobal("P#JaemalPCTalk","GLOBAL",1) SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",6000) SetGlobalTimer("P#AllTimer","GLOBAL",1800)~ + P#JaPC6.1
 +~InParty("SALOMEYA")~+ @320 /* ~I'm not Salomeya to tell you that it boils down to one's ability to copulate with women.~ */ DO ~IncrementGlobal("P#JaemalPCTalk","GLOBAL",1) SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",6000) SetGlobalTimer("P#AllTimer","GLOBAL",1800)~ + P#JaPC6.2
 +~!InParty("SALOMEYA")~+ @321 /* ~Whatever it is, it does not boil down to the ability to copulate with women.~ */ DO ~IncrementGlobal("P#JaemalPCTalk","GLOBAL",1) SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",6000) SetGlobalTimer("P#AllTimer","GLOBAL",1800)~ + P#JaPC6.3
 ++ @322 /* ~I don't know, Jaemal. What do you think?~ */ DO ~IncrementGlobal("P#JaemalPCTalk","GLOBAL",1) SetGlobalTimer("P#JaemalPCTalkTimer","GLOBAL",6000) SetGlobalTimer("P#AllTimer","GLOBAL",1800)~ + P#JaPC6.4
