@@ -19,7 +19,7 @@ REM /* the audio_folder is where your sox and oggdec.exe utilities are stored (l
 REM /* the tispack_folder is the root directory that contains the win32, osx, and unix subfolders where your tisunpack utilities are stored (leave alone if you have no tilesets)  */
 REM /* the iconv_folder is where your iconv.exe utility is stored (leave alone if you are not converting charsets for BGEE) */
 REM /* the mod_readme link should point to the online readme and work fine as-is if the mod uses the standard G3 naming scheme */
-set ico_folder=%mod_folder%\style
+set ico_folder=%mod_folder%\backup
 set audio_folder=%mod_folder%\audio
 set tispack_folder=%mod_folder%\tiz
 set tile2ee_folder=%mod_folder%\tools\tile2ee
