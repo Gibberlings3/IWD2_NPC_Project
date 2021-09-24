@@ -348,7 +348,6 @@ SAY @180 /* ~No, not here of course, but our progress through the North reminds 
 ++ @169 /* ~Just don't forget to invite me to the wedding! ~ */ + P#NiPC10.7
 ++ @177 /* ~But why a wife? A friend or a lover should suffice. Marriage is so... permanent. ~ */ + P#NiPC10.9
 ++ @183 /* ~So, do you plan to engage in the quest of finding yourself a bride? ~ */ + P#NiPC10.6
-++ @169 /* ~Just don't forget to invite me to the wedding! ~ */ + P#NiPC10.7
 + ~Global("P#NikoshRomanceActive","GLOBAL",1) !Global("P#NikoshRomanceInactive","GLOBAL",1)~ + @179 /* ~Is that the conclusion you've come to, Mr. Bracegirdle? That a wife is good for bailing you out?~ */ + P#NiPC10.10
 END
 

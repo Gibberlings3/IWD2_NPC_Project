@@ -1060,7 +1060,7 @@ SAY @479 /* ~The illusion starts when I take my perception and give it the statu
 = @480 /* ~In the real, absolute world, the stars are neither bright, nor remote, nor silvery-blue. They are not mathematical points, not separated by certain distances that an astronomer can measure with his tools.~ */
 ++ @481 /* ~How so?~ */ + P#PrPC6.12
 ++ @482 /* ~And that is the great illusion. You know, this actually has practical implications. For example, when people argue, they waste their time because they give the status of "real thing" to their own position. Which is an illusion.~ */ + P#PrPC6.13
-++ @483 /* ~My head is hurting.~ */ + P#PrPC6.10
+++ @483 /* ~My head is hurting.~ */ + P#PrPC6.3
 END
 
 IF ~~ P#PrPC6.10

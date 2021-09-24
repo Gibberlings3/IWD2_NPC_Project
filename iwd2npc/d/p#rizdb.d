@@ -516,7 +516,7 @@ IF WEIGHT #2
 == P#RIZDB IF ~Global("P#RizdaerRomanceActive","GLOBAL",2) ~ THEN @285 /* ~Yes, just hers.~ */
 == P#PRACB IF ~Global("P#RizdaerRomanceActive","GLOBAL",2) ~ THEN @286 /* ~You're selective. On one hand I admire it, but on another you isolate your mind and soul so... I don't know, I must meditate on this.~ */
 == P#RIZDB IF ~!Global("P#RizdaerRomanceActive","GLOBAL",1) !Global("P#RizdaerRomanceActive","GLOBAL",2)~ THEN @125 /* ~Right.~ */
-== P#RIZDB IF ~!Global("P#RizdaerRomanceActive","GLOBAL",1) !Global("P#RizdaerRomanceActive","GLOBAL",2)~ THEN @287 /* ~You commit yourself to such solitude of mind and soul - and all for naught. For you're not studying self; you just want... isolation.~ */
+== P#PRACB IF ~!Global("P#RizdaerRomanceActive","GLOBAL",1) !Global("P#RizdaerRomanceActive","GLOBAL",2)~ THEN @287 /* ~You commit yourself to such solitude of mind and soul - and all for naught. For you're not studying self; you just want... isolation.~ */
 EXIT
 
 //Ch5
