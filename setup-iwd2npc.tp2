@@ -798,20 +798,21 @@ LAF HANDLE_AUDIO END
 /*
 COPY_EXISTING ~IWD2NPC\party.txt~ ~override/IWD2NPCSounds.g3~
 PRINT @462
+*/
 
 // sounds
-ACTION_IF ("%WEIDU_ARCH%" STRING_COMPARE_CASE "x86" = 0) THEN BEGIN // if Windows
+COPY_EXISTING_REGEXP ~DIRI.*.wav~ ~Sounds/Diriel~
+COPY_EXISTING_REGEXP ~HILD.*.wav~ ~Sounds/Hildury~
+COPY_EXISTING_REGEXP ~JAEM.*.wav~ ~Sounds/Jaemal~
+COPY_EXISTING_REGEXP ~LAOF.*.wav~ ~Sounds/Nikosh~
+COPY_EXISTING_REGEXP ~PEON.*.wav~ ~Sounds/Peony~
+COPY_EXISTING_REGEXP ~PRAC.*.wav~ ~Sounds/Prachi~
+COPY_EXISTING_REGEXP ~RIZD.*.wav~ ~Sounds/Rizdaer~
+COPY_EXISTING_REGEXP ~SALO.*.wav~ ~Sounds/Salomeya~
+COPY_EXISTING_REGEXP ~NORD.*.wav~ ~Sounds/Sir_Nord~
+COPY_EXISTING_REGEXP ~VALE.*.wav~ ~Sounds/Valeero~
 
-  AT_NOW                   ~IWD2NPC/audio_install.bat~   // install...
-  AT_INTERACTIVE_UNINSTALL ~IWD2NPC/audio_uninstall.bat~ // ... and uninstall
 
-END ELSE BEGIN // linux or OS X
-
-  AT_NOW                   ~sh IWD2NPC/audio_install.bat.sh~   // install...
-  AT_INTERACTIVE_UNINSTALL ~sh IWD2NPC/audio_uninstall.bat.sh~ // ... and uninstall
-
-END
-*/  
 BEGIN @463
 SUBCOMPONENT @464
 COPY ~IWD2NPC/gnomeav/P#PEELF1.spl~ ~override/P#gnomea.spl~
