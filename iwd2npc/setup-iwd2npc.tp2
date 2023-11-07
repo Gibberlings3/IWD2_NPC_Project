@@ -43,20 +43,12 @@ WRITE_SHORT 0x384 ~128~// Enemy to Neutral
 //This adds Global to 61SSEEYE.BCS
 
 COPY_EXISTING ~61sseeye.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
+              ~63sseeye.bcs~ ~override~ //This adds Global to 63.BCS [cam: does some mod add this? not in base game so adding IF_EXISTS]
+  DECOMPILE_BCS_TO_BAF
     REPLACE_TEXTUALLY ~!IsAnimationID(LastMarkedObject,Mummy.+~ ~!IsAnimationID(LastMarkedObject,58268)~
     REPLACE_TEXTUALLY ~ActionOverride(LastMarkedObject,MakeUnselectable(10))~ ~ActionOverride(LastMarkedObject,MakeUnselectable(10)) SetGlobal("P#PartyPanicSseth","GLOBAL",1)~
-    COMPILE_BAF_TO_BCS
-BUT_ONLY_IF_IT_CHANGES
-
-//This adds Global to 63.BCS
-
-COPY_EXISTING ~61sseeye.bcs~ ~override~
-    DECOMPILE_BCS_TO_BAF
-    REPLACE_TEXTUALLY ~!IsAnimationID(LastMarkedObject,Mummy.+~ ~!IsAnimationID(LastMarkedObject,58268)~
-    REPLACE_TEXTUALLY ~ActionOverride(LastMarkedObject,MakeUnselectable(10))~ ~ActionOverride(LastMarkedObject,MakeUnselectable(10)) SetGlobal("P#PartyPanicSseth","GLOBAL",1)~
-    COMPILE_BAF_TO_BCS
-BUT_ONLY_IF_IT_CHANGES
+  COMPILE_BAF_TO_BCS
+  BUT_ONLY IF_EXISTS
 
 //This copies Portraits
 
