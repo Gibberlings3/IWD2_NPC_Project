@@ -21,7 +21,7 @@ IF ~OR(2) !InParty("Nord") Dead("Nord")~ THEN REPLY @5 /* ~I am grateful, Jerre.
 IF ~OR(2) InParty("Nord") !Dead("Nord")~ THEN EXTERN P#WINDB P#HilduryJerreTearsNord
 
 CHAIN P#WINDB P#HilduryJerreTearsNord
-@6 /* ~The Order can't make every man and woman happy, Hildury. But we will be fixing these men's plight, that's for damn sure!~ */
+@6 /* ~The Order can't make every man and woman happy, Hildury. But we will be fixing these men's plight, that's for damn sure!~ */ DO ~SetGlobal("SH_Gave_Tears","GLOBAL",1) GiveItemCreate("63GenTS", Protagonist, 1, 0, 0)~
 EXIT
 
 //Proof-read, 2007-08-11
