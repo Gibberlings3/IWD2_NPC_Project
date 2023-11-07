@@ -1,0 +1,13 @@
+@0    = ~Install Joinable NPCs for IWD2~
+
+// @1 - @461 are in setup.tra
+// @462 is no longer needed, audio handled through HANDLE_AUDIO now
+//@462  = ~The installer will now decode sound. Please stand by after pressing "ENTER".~ 
+
+@463  = ~Use Female Mage Elf Avatars for Female Mage Gnome Avatars~
+@464  = ~Female Gnome Avatars~
+@465  = ~Use Female Thief Halfling Avatars for Female Mage Gnome Avatars~
+@466  = ~Use Male Mage Dwarf Avatars for Female Mage Gnome Avatars (Game default)~
+@467  = ~Use Alternate NWN-Style Portraits for All NPCs~
+@468  = ~This mod is only available for IWD2~
+@469  = ~This component requires the installation of the main Joinable NPCs component~

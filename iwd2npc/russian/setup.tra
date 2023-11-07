@@ -1,4 +1,3 @@
-@0    = ~Install joinable NPCs for IWD2. Warning: despite extensive testing some glitches may remain in this mod. Please report all bugs at www.gibberlings3.net.~
 @1    = ~Мантия сопротивления стихиям Джемала~
 @2    = ~Начиная с эпохи Нетерила, волшебники научились даровать самые разнообразные магические свойства повседневным предметам, которые их окружают. Любимый предмет такого зачарования - обычная мантия. Он лёгкая, доступная и хорошо сохраняет свои чары, что делает её идеальной одеждой для волшебника.~
 @3    = ~Из-за чрезвычайно опасной природы большинства заклинаний, Мантии сопротивления огню - не редкость среди молодых магов и их наставников. Колдун Джемал дополнительно зачаровал свою мантию, чтобы защититься также от холода в преддверии его путешествия в Долину Ледяного Ветра.
@@ -575,10 +574,3 @@
 @459  = ~Следует отметить, что даже самые сложные из нас получают удовольствие от самых простых способов убийства.~ [diri041]
 @460  = ~Это была очень точная оценка.~ [diri042]
 @461  = ~В общем, ни механически, ни магически управляемый полёт невозможен. И точка.~ [diri043]
-@462  = ~The installer will now decode sound. Please stand by after pressing "ENTER".~
-@463  = ~Use Female Mage Elf Avatars for Female Mage Gnome Avatars~
-@464  = ~Female Gnome Avatars~
-@465  = ~Use Female Thief Halfling Avatars for Female Mage Gnome Avatars~
-@466  = ~Use Male Mage Dwarf Avatars for Female Mage Gnome Avatars (Game default)~
-@467  = ~Use Alternate NWN-Style Portraits for All NPCs~
-

@@ -1,4 +1,3 @@
-@0    = ~Install joinable NPCs for IWD2. Warning: despite extensive testing some glitches may remain in this mod. Please report all bugs at www.gibberlings3.net.~
 @1    = ~Jaemal's Robe of Elemental Resistance~
 @2    = ~Since the age of Netheril, wizards have learned to bestow a wide variety of magical properties upon the everyday objects that surround them. A favorite item of such enchantment is the common robe. It is lightweight, affordable, and holds its enchantment well, thereby making it ideal equipment for a wizard.~
 @3    = ~Due to the extremely volatile nature of most magics, Wizard Robes of Fire Resistance are not uncommon among young acolytes and their wizardly tutors. Jaemal the Sorcerer had his outfit enchanted to protect him from cold in anticipation of his journey to Icewind Dale.
@@ -570,9 +569,3 @@ Weight: 0 lb.~
 @459  = ~It must be noted that even the most complex among us draw pleasure from the basest ways of killing.~ [diri041]
 @460  = ~It was a very accurate estimate.~ [diri042]
 @461  = ~Hence, neither mechanically nor magically aided flight is possible. Q.E.D.~ [diri043]
-@462  = ~The installer will now decode sound. Please stand by after pressing "ENTER".~
-@463  = ~Use Female Mage Elf Avatars for Female Mage Gnome Avatars~
-@464  = ~Female Gnome Avatars~
-@465  = ~Use Female Thief Halfling Avatars for Female Mage Gnome Avatars~
-@466  = ~Use Male Mage Dwarf Avatars for Female Mage Gnome Avatars (Game default)~
-@467  = ~Use Alternate NWN-Style Portraits for All NPCs~
