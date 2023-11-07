@@ -10,7 +10,7 @@
 
 ## Overview
 
-The IWD2 NPC mod is a fan-made modification put together for fun, and not for profit. So, don't try to sell it. Two games in particular provided the major source of inspiration for this mod: Baldur's Gate II and Knights of the Old Republic. BioWare developed both of those excellent games.
+The IWD2 NPC Project is a fan-made modification put together for fun, and not for profit. So, don't try to sell it. Two games in particular provided the major source of inspiration for this mod: Baldur's Gate II and Knights of the Old Republic. BioWare developed both of those excellent games.
 
 The main goal of IWD2 NPC is to give an IWD2 player the opportunity to play with joinable NPCs that are not silent. 
 
