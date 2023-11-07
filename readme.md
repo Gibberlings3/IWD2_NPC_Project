@@ -6,7 +6,7 @@
 
 ![The G3 Logo](https://raw.githubusercontent.com/Gibberlings3/.github/master/profile/g3_neutral.png)
 
-# Crossmod Pack for Icewind Dale
+# The IWD2 NPC Project
 
 ## Overview
 
