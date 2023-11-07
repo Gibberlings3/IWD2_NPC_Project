@@ -2,7 +2,7 @@
 ///IWD2NPC ////
 /////////////////////////
 
-BACKUP ~IWD2NPC/backup~
+BACKUP ~weidu_external/iwd2npc/backup~
 SUPPORT ~https://www.gibberlings3.net/forums/forum/116-iwd2-npc-project/~
 //AUTHOR ~domi_sotto@gibberlings3.net~
 
@@ -17,6 +17,7 @@ LANGUAGE ~English~   ~English~ ~IWD2NPC/English/Setup-IWD2NPC.tra~
 LANGUAGE ~Russian~   ~Russian~ ~IWD2NPC/Russian/Setup-IWD2NPC.tra~
 
 BEGIN @0
+LABEL ~p#_iwd2_npc_main~
 
 APPEND ~ACTION.IDS~ ~181 ReallyForceSpellRES(S:RES*,O:Target)~
              UNLESS ~181 ReallyForceSpellRES(S:RES\*,O:Target)~
@@ -815,6 +816,7 @@ COPY_EXISTING_REGEXP ~VALE.*.wav~ ~Sounds/Valeero~
 
 BEGIN @463
 SUBCOMPONENT @464
+LABEL ~p#_iwd2_npc_female_gnome_avatar_elf~
 COPY ~IWD2NPC/gnomeav/P#PEELF1.spl~ ~override/P#gnomea.spl~
 COPY ~IWD2NPC/%LANGUAGE%/CHR/EPEONY.CHR~ ~Characters/PEONY.CHR~
      ~IWD2NPC/%LANGUAGE%/CHR/EPEONY03.CHR~ ~Characters/PEONY03.CHR~
@@ -825,9 +827,11 @@ COPY ~IWD2NPC/%LANGUAGE%/CHR/EPEONY.CHR~ ~Characters/PEONY.CHR~
 
 BEGIN @465
 SUBCOMPONENT @464
+LABEL ~p#_iwd2_npc_female_gnome_avatar_halfling~
 COPY ~IWD2NPC/gnomeav/P#PEELF2.spl~ ~override/P#gnomea.spl~
 EXTEND_TOP ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#PEONYB.baf~
 
 BEGIN @466
 SUBCOMPONENT @464
+LABEL ~p#_iwd2_npc_female_gnome_avatar_male_dwarf~
 COPY ~IWD2NPC/gnomeav/P#PEELF3.spl~ ~override/P#gnomea.spl~
