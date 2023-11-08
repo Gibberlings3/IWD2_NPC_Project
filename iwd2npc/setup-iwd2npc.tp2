@@ -838,7 +838,7 @@ COPY_EXISTING_REGEXP ~VALE.*.wav~ ~Sounds/Valeero~
 
 BEGIN @463 DESIGNATED 1
 SUBCOMPONENT @464
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_elf~
 COPY ~IWD2NPC/gnomeav/P#PEELF1.spl~ ~override/P#gnomea.spl~
 COPY ~IWD2NPC/%LANGUAGE%/CHR/EPEONY.CHR~ ~Characters/PEONY.CHR~
@@ -850,19 +850,19 @@ COPY ~IWD2NPC/%LANGUAGE%/CHR/EPEONY.CHR~ ~Characters/PEONY.CHR~
 
 BEGIN @465 DESIGNATED 2
 SUBCOMPONENT @464
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_halfling~
 COPY ~IWD2NPC/gnomeav/P#PEELF2.spl~ ~override/P#gnomea.spl~
 EXTEND_TOP ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#PEONYB.baf~
 
 BEGIN @466 DESIGNATED 3
 SUBCOMPONENT @464
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_male_dwarf~
 COPY ~IWD2NPC/gnomeav/P#PEELF3.spl~ ~override/P#gnomea.spl~
 
 BEGIN @467 DESIGNATED 4
-REQUIRE_PREDICATE NOT MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
+REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_alt_portrait_set~
 
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_portraits BEGIN
