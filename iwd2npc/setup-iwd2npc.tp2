@@ -1,28 +1,32 @@
-/////////////////////////
-///IWD2NPC ////
-/////////////////////////
-
 BACKUP ~weidu_external/iwd2npc/backup~
 SUPPORT ~https://www.gibberlings3.net/forums/forum/116-iwd2-npc-project/~
 
 VERSION ~v6~
 
-README ~IWD2NPC/readme-iwd2npc.html~
+README ~iwd2npc/readme-iwd2npc.html~
 
-AUTO_TRA ~IWD2NPC/%s~
+AUTO_TRA ~iwd2npc/languages/%s~
 
-LANGUAGE 
-  ~English~   
-  ~english~ 
-  ~iwd2npc/english/setup.tra~
-  ~iwd2npc/english/weidu.tra~
-LANGUAGE 
+LANGUAGE
+  ~English~
+  ~english~
+  ~iwd2npc/languages/english/setup.tra~
+  ~iwd2npc/languages/english/weidu.tra~
+LANGUAGE
   ~Russian~
   ~russian~
-  ~iwd2npc/english/setup.tra~
-  ~iwd2npc/english/weidu.tra~
-  ~iwd2npc/russian/setup.tra~
-  ~iwd2npc/russian/weidu.tra~
+  ~iwd2npc/languages/english/setup.tra~
+  ~iwd2npc/languages/english/weidu.tra~
+  ~iwd2npc/languages/russian/setup.tra~
+  ~iwd2npc/languages/russian/weidu.tra~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// main component                                   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @0 DESIGNATED 0
 REQUIRE_PREDICATE GAME_IS ~iwd2~ @468
@@ -30,15 +34,15 @@ LABEL ~p#_iwd2_npc_main~
 
 APPEND ~ACTION.IDS~ ~181 ReallyForceSpellRES(S:RES*,O:Target)~
              UNLESS ~181 ReallyForceSpellRES(S:RES\*,O:Target)~
-             
+
 //This assigns Script Names to some CRE. ATTN: Flag for incompat!
 
 //COPY_EXISTING ~21HINT.CRE~ ~override/21HINT.CRE~
 //WRITE_ASCII 0x394 ~21bridge~// death variable
 
-COPY_EXISTING ~40GBLKA.CRE~ ~override/40GBLKA.CRE~
-WRITE_ASCII 0x626 ~40GBLKA~// dialogue
-WRITE_SHORT 0x384 ~128~// Enemy to Neutral
+COPY_EXISTING ~40gblka.cre~ ~override~
+  WRITE_ASCII 0x626 ~40gblka~// dialogue
+  WRITE_SHORT 0x384 ~128~    // Enemy to Neutral
 
 //This adds Global to 61SSEEYE.BCS
 
@@ -51,8 +55,7 @@ COPY_EXISTING ~61sseeye.bcs~ ~override~
   BUT_ONLY IF_EXISTS
 
 //This copies Portraits
-
-MKDIR ~Portraits~
+MKDIR ~portraits~
 // over-complicating this so that I can re-use code for the new portrait swap component
 ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_portraits BEGIN
   diri => diriel
@@ -66,6 +69,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_portraits BEGIN
   salo => salome
   vale => valeer
 END
+
 ACTION_FOR_EACH suffix IN l s BEGIN
   ACTION_PHP_EACH cd_portraits AS foo => bar BEGIN
     COPY ~iwd2npc/bmp/orig_%foo%%suffix%.bmp~ ~portraits/%bar%%suffix%.bmp~   // actually used by the CHR
@@ -77,738 +81,737 @@ ACTION_FOR_EACH suffix IN l s BEGIN
        ~iwd2npc/bmp/p#hihee%suffix%.bmp~ ~override~
        ~iwd2npc/bmp/p#hihud%suffix%.bmp~ ~override~
 END
-             
+
 //This copies Items and spells
 
-COPY ~IWD2NPC/spl~ ~Override~
+COPY ~iwd2npc/spl~ ~override~
 
-COPY ~IWD2NPC/itm/avrobeer.itm~ ~override~
-SAY NAME1 @1
-SAY NAME2 @1
-SAY UNIDENTIFIED_DESC @2
-SAY DESC @3
+COPY ~iwd2npc/itm/avrobeer.itm~ ~override~
+  SAY NAME1 @1
+  SAY NAME2 @1
+  SAY UNIDENTIFIED_DESC @2
+  SAY DESC @3
 
-COPY ~IWD2NPC/itm/avringam.itm~ ~override~
-SAY NAME1 @4
-SAY NAME2 @4
-SAY UNIDENTIFIED_DESC @5
-SAY DESC @6
+COPY ~iwd2npc/itm/avringam.itm~ ~override~
+  SAY NAME1 @4
+  SAY NAME2 @4
+  SAY UNIDENTIFIED_DESC @5
+  SAY DESC @6
 
-COPY ~IWD2NPC/itm/avhelmsc.itm~ ~override~
-SAY NAME1 @7
-SAY NAME2 @8
-SAY UNIDENTIFIED_DESC @9
+COPY ~iwd2npc/itm/avhelmsc.itm~ ~override~
+  SAY NAME1 @7
+  SAY NAME2 @8
+  SAY UNIDENTIFIED_DESC @9
+  SAY DESC @10
 
-SAY DESC @10
+COPY ~iwd2npc/itm/avhelms2.itm~ ~override~
+  SAY NAME1 @7
+  SAY NAME2 @8
+  SAY UNIDENTIFIED_DESC @9
+  SAY DESC @11
 
-COPY ~IWD2NPC/itm/avhelms2.itm~ ~override~
-SAY NAME1 @7
-SAY NAME2 @8
-SAY UNIDENTIFIED_DESC @9
+COPY ~iwd2npc/itm/avbracsd.itm~ ~override~
+  SAY NAME1 @12
+  SAY NAME2 @12
+  SAY UNIDENTIFIED_DESC @13
+  SAY DESC @14
 
-SAY DESC @11
+COPY ~iwd2npc/itm/avamulbl.itm~ ~override~
+  SAY NAME1 @15
+  SAY NAME2 @15
+  SAY UNIDENTIFIED_DESC @16
+  SAY DESC @17
 
-COPY ~IWD2NPC/itm/avbracsd.itm~ ~override~
-SAY NAME1 @12
-SAY NAME2 @12
-SAY UNIDENTIFIED_DESC @13
-SAY DESC @14
+COPY ~iwd2npc/bam/ip#garro.bam~ ~override~
+     ~iwd2npc/bam/cp#garro.bam~ ~override~
+COPY ~iwd2npc/itm/avweapga.itm~ ~override~
+  SAY NAME1 @18
+  SAY NAME2 @18
+  SAY DESC @19
 
-COPY ~IWD2NPC/itm/avamulbl.itm~ ~override~
-SAY NAME1 @15
-SAY NAME2 @15
-SAY UNIDENTIFIED_DESC @16
-SAY DESC @17
+COPY ~iwd2npc/itm/avweapg2.itm~ ~override~
+  SAY NAME1 @18
+  SAY NAME2 @18
+  SAY DESC @19
+  SAY 8 @20
+  SAY 12 @20
+  SAY 80 @21
+  SAY 334 @22
+  SAY 430 @23
 
-COPY ~IWD2NPC/itm/IP#GARRO.BAM~ ~override~
-COPY ~IWD2NPC/itm/CP#GARRO.BAM~ ~override~
-COPY ~IWD2NPC/itm/avweapga.itm~ ~override~
-SAY NAME1 @18
-SAY NAME2 @18
-SAY DESC @19
-COPY ~IWD2NPC/itm/avweapg2.itm~ ~override~
-SAY NAME1 @18
-SAY NAME2 @18
-SAY DESC @19
-SAY 8 @20
-SAY 12 @20
-SAY 80 @21
-SAY 334 @22
-SAY 430 @23
+COPY ~iwd2npc/itm/60clckin.itm~ ~override~
+  SAY NAME1 @24
+  SAY NAME2 @24
+  SAY UNIDENTIFIED_DESC @25
+  SAY DESC @26
 
-COPY ~IWD2NPC/itm/60CLCKIN.itm~ ~override~
-SAY NAME1 @24
-SAY NAME2 @24
-SAY UNIDENTIFIED_DESC @25
-SAY DESC @26
+COPY ~iwd2npc/itm/p#shsw01.itm~ ~override~
+  SAY NAME1 @27
+  SAY NAME2 @27
+  SAY UNIDENTIFIED_DESC @28
+  SAY DESC @29
 
-COPY ~IWD2NPC/itm/p#shsw01.itm~ ~override~
-SAY NAME1 @27
-SAY NAME2 @27
-SAY UNIDENTIFIED_DESC @28
-SAY DESC @29
+COPY ~iwd2npc/itm/p#ring01.itm~ ~override~
+  SAY NAME1 @30
+  SAY NAME2 @30
+  SAY UNIDENTIFIED_DESC @5
+  SAY DESC @31
 
-COPY ~IWD2NPC/itm/p#ring01.itm~ ~override~
-SAY NAME1 @30
-SAY NAME2 @30
-SAY UNIDENTIFIED_DESC @5
-SAY DESC @31
-
-COPY ~IWD2NPC/itm/P#RIZBAS.itm~ ~override~
-COPY ~IWD2NPC/itm/P#RIZHAM.itm~ ~override~
+COPY ~iwd2npc/itm/p#rizbas.itm~ ~override~
+     ~iwd2npc/itm/p#rizham.itm~ ~override~
 
 //This compiles D-files for Phase I
 
-COMPILE ~IWD2NPC/d/P#DIRIB.d~
-COMPILE ~IWD2NPC/d/P#PRACB.d~
-COMPILE ~IWD2NPC/d/P#HILDB.d~
-COMPILE ~IWD2NPC/d/P#JAEMB.d~
-COMPILE ~IWD2NPC/d/P#NIKOB.d~
-COMPILE ~IWD2NPC/d/P#SALOB.d~
-COMPILE ~IWD2NPC/d/P#WINDB.d~
-COMPILE ~IWD2NPC/d/P#PEONB.d~
-COMPILE ~IWD2NPC/d/P#RIZDB.d~
-COMPILE ~IWD2NPC/d/P#VALEB.d~
+COMPILE ~iwd2npc/d/p#dirib.d~
+COMPILE ~iwd2npc/d/p#pracb.d~
+COMPILE ~iwd2npc/d/p#hildb.d~
+COMPILE ~iwd2npc/d/p#jaemb.d~
+COMPILE ~iwd2npc/d/p#nikob.d~
+COMPILE ~iwd2npc/d/p#salob.d~
+COMPILE ~iwd2npc/d/p#windb.d~
+COMPILE ~iwd2npc/d/p#peonb.d~
+COMPILE ~iwd2npc/d/p#rizdb.d~
+COMPILE ~iwd2npc/d/p#valeb.d~
 
 //This Compiles d-files for Phase III
 
-COMPILE ~IWD2NPC/d3/P#CONFLICTD.d~
-COMPILE ~IWD2NPC/d3/P#CONFLICTS.d~
-COMPILE ~IWD2NPC/d3/P#JAROM.d~
-COMPILE ~IWD2NPC/d3/P#JAINFL_M.d~
-COMPILE ~IWD2NPC/d3/P#SAROM.d~
-COMPILE ~IWD2NPC/d3/P#PEROM.d~
-COMPILE ~IWD2NPC/d3/P#RIROM.d~
-COMPILE ~IWD2NPC/d3/P#JAINFL.d~
-COMPILE ~IWD2NPC/d3/P#RIINFL.d~
-COMPILE ~IWD2NPC/d3/P#PEINFL.d~
-COMPILE ~IWD2NPC/d3/P#SAINFL.d~
-COMPILE ~IWD2NPC/d3/P#JAROM1.d~
-COMPILE ~IWD2NPC/d3/P#DIROM.d~
-COMPILE ~IWD2NPC/d3/P#DIINFL.d~
+COMPILE ~iwd2npc/d3/p#conflictd.d~
+COMPILE ~iwd2npc/d3/p#conflicts.d~
+COMPILE ~iwd2npc/d3/p#jarom.d~
+COMPILE ~iwd2npc/d3/p#jainfl_m.d~
+COMPILE ~iwd2npc/d3/p#sarom.d~
+COMPILE ~iwd2npc/d3/p#perom.d~
+COMPILE ~iwd2npc/d3/p#rirom.d~
+COMPILE ~iwd2npc/d3/p#jainfl.d~
+COMPILE ~iwd2npc/d3/p#riinfl.d~
+COMPILE ~iwd2npc/d3/p#peinfl.d~
+COMPILE ~iwd2npc/d3/p#sainfl.d~
+COMPILE ~iwd2npc/d3/p#jarom1.d~
+COMPILE ~iwd2npc/d3/p#dirom.d~
+COMPILE ~iwd2npc/d3/p#diinfl.d~
 
 //This compiles D-files for Phase II
 
-COMPILE ~IWD2NPC/d2/P#SCENERY.d~
-COMPILE ~IWD2NPC/d2/P#CHAPTER.d~
+COMPILE ~iwd2npc/d2/p#scenery.d~
+COMPILE ~iwd2npc/d2/p#chapter.d~
 
 //This compiles Cutscenes
 
-COMPILE ~IWD2NPC/baf/p#salom.baf~
-COMPILE ~IWD2NPC/baf/60dirieq.baf~
-COMPILE ~IWD2NPC/baf/40diriel.baf~
-COMPILE ~IWD2NPC/baf/p#hilduq.baf~
-COMPILE ~IWD2NPC/baf/p#jaemaq.baf~
-COMPILE ~IWD2NPC/baf/p#nikosq.baf~
-COMPILE ~IWD2NPC/baf/p#nordwq.baf~
-COMPILE ~IWD2NPC/baf/p#peonyq.baf~
-COMPILE ~IWD2NPC/baf/p#prachq.baf~
-COMPILE ~IWD2NPC/baf/p#salomq.baf~
-COMPILE ~IWD2NPC/baf/p#rizdaq.baf~
-COMPILE ~IWD2NPC/baf/p#valeeq.baf~
+COMPILE ~iwd2npc/baf/p#salom.baf~
+COMPILE ~iwd2npc/baf/60dirieq.baf~
+COMPILE ~iwd2npc/baf/40diriel.baf~
+COMPILE ~iwd2npc/baf/p#hilduq.baf~
+COMPILE ~iwd2npc/baf/p#jaemaq.baf~
+COMPILE ~iwd2npc/baf/p#nikosq.baf~
+COMPILE ~iwd2npc/baf/p#nordwq.baf~
+COMPILE ~iwd2npc/baf/p#peonyq.baf~
+COMPILE ~iwd2npc/baf/p#prachq.baf~
+COMPILE ~iwd2npc/baf/p#salomq.baf~
+COMPILE ~iwd2npc/baf/p#rizdaq.baf~
+COMPILE ~iwd2npc/baf/p#valeeq.baf~
 
-COMPILE ~IWD2NPC/baf/67jaero1.baf~
-COMPILE ~IWD2NPC/baf/67jaero2.baf~
-COMPILE ~IWD2NPC/baf/67jaero3.baf~
+COMPILE ~iwd2npc/baf/67jaero1.baf~
+COMPILE ~iwd2npc/baf/67jaero2.baf~
+COMPILE ~iwd2npc/baf/67jaero3.baf~
 
-COMPILE ~IWD2NPC/baf/60dirir1.baf~
-COMPILE ~IWD2NPC/baf/60dirir2.baf~
-COMPILE ~IWD2NPC/baf/60dirir3.baf~
+COMPILE ~iwd2npc/baf/60dirir1.baf~
+COMPILE ~iwd2npc/baf/60dirir2.baf~
+COMPILE ~iwd2npc/baf/60dirir3.baf~
 
-COMPILE ~IWD2NPC/baf/70epilo1.baf~
-COMPILE ~IWD2NPC/baf/70cutlua.baf~
-COMPILE ~IWD2NPC/baf/70cunhid.baf~
+COMPILE ~iwd2npc/baf/70epilo1.baf~
+COMPILE ~iwd2npc/baf/70cutlua.baf~
+COMPILE ~iwd2npc/baf/70cunhid.baf~
 
-COMPILE ~IWD2NPC/baf/p#hildr1.baf~
-COMPILE ~IWD2NPC/baf/p#hildr2.baf~
-COMPILE ~IWD2NPC/baf/p#hildr3.baf~
-COMPILE ~IWD2NPC/baf/p#hildr4.baf~
-COMPILE ~IWD2NPC/baf/p#hildr5.baf~
-COMPILE ~IWD2NPC/baf/p#hildr6.baf~
-COMPILE ~IWD2NPC/baf/p#hildr7.baf~
+COMPILE ~iwd2npc/baf/p#hildr1.baf~
+COMPILE ~iwd2npc/baf/p#hildr2.baf~
+COMPILE ~iwd2npc/baf/p#hildr3.baf~
+COMPILE ~iwd2npc/baf/p#hildr4.baf~
+COMPILE ~iwd2npc/baf/p#hildr5.baf~
+COMPILE ~iwd2npc/baf/p#hildr6.baf~
+COMPILE ~iwd2npc/baf/p#hildr7.baf~
 
-COMPILE ~IWD2NPC/baf/p#peonav.baf~
-COMPILE ~IWD2NPC/baf/p#gnfmav.baf~
+COMPILE ~iwd2npc/baf/p#peonav.baf~
+COMPILE ~iwd2npc/baf/p#gnfmav.baf~
 
-EXTEND_TOP ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#PEONYA.baf~
-EXTEND_TOP ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#HILDUR.baf~
+EXTEND_TOP ~dplayer3.bcs~ ~iwd2npc/baf/p#peonya.baf~
+EXTEND_TOP ~dplayer3.bcs~ ~iwd2npc/baf/p#hildur.baf~
 
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#CONFLICTS.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#WINDN1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#PEONY1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#SALOM1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#DIRIE1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#HILDU1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#JAEMA1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#NIKOS1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#PRACH1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#RIZDA1.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#VALEE1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#conflicts.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#windn1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#peony1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#salom1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#dirie1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#hildu1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#jaema1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#nikos1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#prach1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#rizda1.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#valee1.baf~
 
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#SANIFL.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#PENIFL.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#JANIFL.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#RINIFL.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#DINIFL.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#JAROM.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#RMATCH.baf~
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#RBREAK.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#sanifl.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#penifl.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#janifl.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#rinifl.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#dinifl.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#jarom.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#rmatch.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#rbreak.baf~
 
-EXTEND_BOTTOM ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#SH_Slaves.baf~
+EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#sh_slaves.baf~
 
-EXTEND_TOP ~41SHERIN.bcs~ ~IWD2NPC/baf/P#SHERI.baf~
-EXTEND_TOP ~AR4000.bcs~ ~IWD2NPC/baf/P#AR4000.baf~
-EXTEND_BOTTOM ~AR4101.bcs~ ~IWD2NPC/baf/P#AR4101.baf~
-EXTEND_BOTTOM ~AR4102.bcs~ ~IWD2NPC/baf/P#AR4102.baf~
-EXTEND_BOTTOM ~AR5001.bcs~ ~IWD2NPC/baf/P#AR5001.baf~
-EXTEND_TOP ~61MANDAL.bcs~ ~IWD2NPC/baf/P#MANDAL.baf~
-EXTEND_TOP ~63pexits.bcs~ ~IWD2NPC/baf/70epilog.baf~
-EXTEND_TOP ~63pe6303.bcs~ ~IWD2NPC/baf/70epilog.baf~
-EXTEND_TOP ~ar6007.bcs~ ~IWD2NPC/baf/64salro1.baf~
+EXTEND_TOP ~41sherin.bcs~  ~iwd2npc/baf/p#sheri.baf~
+EXTEND_TOP ~ar4000.bcs~    ~iwd2npc/baf/p#ar4000.baf~
+EXTEND_BOTTOM ~ar4101.bcs~ ~iwd2npc/baf/p#ar4101.baf~
+EXTEND_BOTTOM ~ar4102.bcs~ ~iwd2npc/baf/p#ar4102.baf~
+EXTEND_BOTTOM ~ar5001.bcs~ ~iwd2npc/baf/p#ar5001.baf~
+EXTEND_TOP ~61mandal.bcs~  ~iwd2npc/baf/p#mandal.baf~
+EXTEND_TOP ~63pexits.bcs~  ~iwd2npc/baf/70epilog.baf~
+EXTEND_TOP ~63pe6303.bcs~  ~iwd2npc/baf/70epilog.baf~
+EXTEND_TOP ~ar6007.bcs~    ~iwd2npc/baf/64salro1.baf~
 
-EXTEND_BOTTOM ~20sabri0.bcs~ ~IWD2NPC/baf/20sabrin.baf~
+EXTEND_BOTTOM ~20sabri0.bcs~ ~iwd2npc/baf/20sabrin.baf~
 
 //Compiles additional scripts
 
-COMPILE ~IWD2NPC/baf/P#5010a.BAF~
-COMPILE ~IWD2NPC/baf/P#5010b.BAF~
-COMPILE ~IWD2NPC/baf/P#5010c.BAF~
+COMPILE ~iwd2npc/baf/p#5010a.baf~
+        ~iwd2npc/baf/p#5010b.baf~
+        ~iwd2npc/baf/p#5010c.baf~
 
 //Nord in Prologue
 
-COPY ~IWD2NPC/CRE/P#nord.cre~ ~override~
-SAY NAME1 @32
-SAY NAME2 @32
-WRITE_ASCII 0x626 ~P#NORDJ~// dialog //
+COPY ~iwd2npc/cre/p#nord.cre~ ~override~
+  SAY NAME1 @32
+  SAY NAME2 @32
+  WRITE_ASCII 0x626 ~p#nordj~// dialog //
 
-EXTEND_TOP ~AR1000.bcs~ ~IWD2NPC/baf/P#AR1000.baf~
+EXTEND_TOP ~ar1000.bcs~ ~iwd2npc/baf/p#ar1000.baf~
 
 //This copies over CHR and RES
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/RES~ ~Characters~
+COPY ~iwd2npc/%LANGUAGE%/chr/res~ ~characters~
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/RIZDAER.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/RIZDAE15.CHR~ ~Characters~
-SAY 0x2d0 @33  
-SAY 0x2d4 @34 
-SAY 0x2d8 @35  
-SAY 0x2dc @36  
-SAY 0x2e0 @37  
-SAY 0x2e4 @38  
-SAY 0x2e8 @39  
-SAY 0x2ec @40  
-SAY 0x2f0 @41  
-SAY 0x2f4 @42  
-SAY 0x2f8 @43  
-SAY 0x2fc @44  
-SAY 0x300 @45  
-SAY 0x304 @46  
-SAY 0x308 @47 
-SAY 0x30c @48  
-SAY 0x310 @49  
-SAY 0x314 @50  
-SAY 0x318 @51  
-SAY 0x31c @52  
-SAY 0x320 @53  
-SAY 0x324 @54  
-SAY 0x328 @55  
-SAY 0x32c @56  
-SAY 0x330 @57  
-SAY 0x334 @58  
-SAY 0x338 @59  
-SAY 0x33c @60  
-SAY 0x340 @61  
-SAY 0x344 @62  
-SAY 0x348 @63  
-SAY 0x34c @64  
-SAY 0x350 @65  
-SAY 0x354 @66  
-SAY 0x358 @67  
-SAY 0x35c @68  
-SAY 0x360 @69  
-SAY 0x364 @70  
-SAY 0x368 @71  
-SAY 0x36c @72  
-SAY 0x370 @73  
-SAY 0x374 @74  
-SAY 0x378 @75  
+COPY ~iwd2npc/%LANGUAGE%/chr/rizdaer.chr~  ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/rizdae03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/rizdae06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/rizdae09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/rizdae12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/rizdae15.chr~ ~characters~
+  SAY 0x2d0 @33
+  SAY 0x2d4 @34
+  SAY 0x2d8 @35
+  SAY 0x2dc @36
+  SAY 0x2e0 @37
+  SAY 0x2e4 @38
+  SAY 0x2e8 @39
+  SAY 0x2ec @40
+  SAY 0x2f0 @41
+  SAY 0x2f4 @42
+  SAY 0x2f8 @43
+  SAY 0x2fc @44
+  SAY 0x300 @45
+  SAY 0x304 @46
+  SAY 0x308 @47
+  SAY 0x30c @48
+  SAY 0x310 @49
+  SAY 0x314 @50
+  SAY 0x318 @51
+  SAY 0x31c @52
+  SAY 0x320 @53
+  SAY 0x324 @54
+  SAY 0x328 @55
+  SAY 0x32c @56
+  SAY 0x330 @57
+  SAY 0x334 @58
+  SAY 0x338 @59
+  SAY 0x33c @60
+  SAY 0x340 @61
+  SAY 0x344 @62
+  SAY 0x348 @63
+  SAY 0x34c @64
+  SAY 0x350 @65
+  SAY 0x354 @66
+  SAY 0x358 @67
+  SAY 0x35c @68
+  SAY 0x360 @69
+  SAY 0x364 @70
+  SAY 0x368 @71
+  SAY 0x36c @72
+  SAY 0x370 @73
+  SAY 0x374 @74
+  SAY 0x378 @75
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/VALEERO.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/VALEER03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/VALEER06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/VALEER09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/VALEER12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/VALEER15.CHR~ ~Characters~
-SAY 0x2d0 @76 
-SAY 0x2d4 @77  
-SAY 0x2d8 @78  
-SAY 0x2dc @79  
-SAY 0x2e0 @80  
-SAY 0x2e4 @81  
-SAY 0x2e8 @82  
-SAY 0x2ec @83  
-SAY 0x2f0 @84  
-SAY 0x2f4 @85  
-SAY 0x2f8 @86  
-SAY 0x2fc @87  
-SAY 0x300 @88  
-SAY 0x304 @89  
-SAY 0x308 @90  
-SAY 0x30c @91  
-SAY 0x310 @92  
-SAY 0x314 @93  
-SAY 0x318 @94  
-SAY 0x31c @95  
-SAY 0x320 @96  
-SAY 0x324 @97  
-SAY 0x328 @98  
-SAY 0x32c @99  
-SAY 0x330 @100  
-SAY 0x334 @101  
-SAY 0x338 @102  
-SAY 0x33c @103  
-SAY 0x340 @104  
-SAY 0x344 @105  
-SAY 0x348 @106  
-SAY 0x34c @107  
-SAY 0x350 @108  
-SAY 0x354 @109  
-SAY 0x358 @110  
-SAY 0x35c @111  
-SAY 0x360 @112  
-SAY 0x364 @113  
-SAY 0x368 @114  
-SAY 0x36c @115  
-SAY 0x370 @116  
-SAY 0x374 @117  
-SAY 0x378 @118 
+COPY ~iwd2npc/%LANGUAGE%/chr/valeero.chr~  ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/valeer03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/valeer06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/valeer09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/valeer12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/valeer15.chr~ ~characters~
+  SAY 0x2d0 @76
+  SAY 0x2d4 @77
+  SAY 0x2d8 @78
+  SAY 0x2dc @79
+  SAY 0x2e0 @80
+  SAY 0x2e4 @81
+  SAY 0x2e8 @82
+  SAY 0x2ec @83
+  SAY 0x2f0 @84
+  SAY 0x2f4 @85
+  SAY 0x2f8 @86
+  SAY 0x2fc @87
+  SAY 0x300 @88
+  SAY 0x304 @89
+  SAY 0x308 @90
+  SAY 0x30c @91
+  SAY 0x310 @92
+  SAY 0x314 @93
+  SAY 0x318 @94
+  SAY 0x31c @95
+  SAY 0x320 @96
+  SAY 0x324 @97
+  SAY 0x328 @98
+  SAY 0x32c @99
+  SAY 0x330 @100
+  SAY 0x334 @101
+  SAY 0x338 @102
+  SAY 0x33c @103
+  SAY 0x340 @104
+  SAY 0x344 @105
+  SAY 0x348 @106
+  SAY 0x34c @107
+  SAY 0x350 @108
+  SAY 0x354 @109
+  SAY 0x358 @110
+  SAY 0x35c @111
+  SAY 0x360 @112
+  SAY 0x364 @113
+  SAY 0x368 @114
+  SAY 0x36c @115
+  SAY 0x370 @116
+  SAY 0x374 @117
+  SAY 0x378 @118
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/PEONY.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PEONY03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PEONY06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PEONY09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PEONY12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PEONY15.CHR~ ~Characters~
-SAY 0x2d0 @119 
-SAY 0x2d4 @120  
-SAY 0x2d8 @121  
-SAY 0x2dc @122  
-SAY 0x2e0 @123  
-SAY 0x2e4 @124  
-SAY 0x2e8 @125  
-SAY 0x2ec @126  
-SAY 0x2f0 @127  
-SAY 0x2f4 @128  
-SAY 0x2f8 @129  
-SAY 0x2fc @130  
-SAY 0x300 @131 
-SAY 0x304 @132 
-SAY 0x308 @133  
-SAY 0x30c @134  
-SAY 0x310 @135  
-SAY 0x314 @136  
-SAY 0x318 @137  
-SAY 0x31c @138  
-SAY 0x320 @139  
-SAY 0x324 @140  
-SAY 0x328 @141  
-SAY 0x32c @142  
-SAY 0x330 @143  
-SAY 0x334 @144  
-SAY 0x338 @145  
-SAY 0x33c @146  
-SAY 0x340 @147  
-SAY 0x344 @148  
-SAY 0x348 @149  
-SAY 0x34c @150  
-SAY 0x350 @151  
-SAY 0x354 @152  
-SAY 0x358 @153  
-SAY 0x35c @154  
-SAY 0x360 @155  
-SAY 0x364 @156  
-SAY 0x368 @157  
-SAY 0x36c @158  
-SAY 0x370 @159  
-SAY 0x374 @160  
-SAY 0x378 @161 
+COPY ~iwd2npc/%LANGUAGE%/chr/peony.chr~   ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/peony03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/peony06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/peony09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/peony12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/peony15.chr~ ~characters~
+  SAY 0x2d0 @119
+  SAY 0x2d4 @120
+  SAY 0x2d8 @121
+  SAY 0x2dc @122
+  SAY 0x2e0 @123
+  SAY 0x2e4 @124
+  SAY 0x2e8 @125
+  SAY 0x2ec @126
+  SAY 0x2f0 @127
+  SAY 0x2f4 @128
+  SAY 0x2f8 @129
+  SAY 0x2fc @130
+  SAY 0x300 @131
+  SAY 0x304 @132
+  SAY 0x308 @133
+  SAY 0x30c @134
+  SAY 0x310 @135
+  SAY 0x314 @136
+  SAY 0x318 @137
+  SAY 0x31c @138
+  SAY 0x320 @139
+  SAY 0x324 @140
+  SAY 0x328 @141
+  SAY 0x32c @142
+  SAY 0x330 @143
+  SAY 0x334 @144
+  SAY 0x338 @145
+  SAY 0x33c @146
+  SAY 0x340 @147
+  SAY 0x344 @148
+  SAY 0x348 @149
+  SAY 0x34c @150
+  SAY 0x350 @151
+  SAY 0x354 @152
+  SAY 0x358 @153
+  SAY 0x35c @154
+  SAY 0x360 @155
+  SAY 0x364 @156
+  SAY 0x368 @157
+  SAY 0x36c @158
+  SAY 0x370 @159
+  SAY 0x374 @160
+  SAY 0x378 @161
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/SALOMEYA.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SALOM03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SALOM06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SALOM09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SALOM12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SALOM15.CHR~ ~Characters~
-SAY 0x2d0 @162 
-SAY 0x2d4 @163  
-SAY 0x2d8 @164  
-SAY 0x2dc @165 
-SAY 0x2e0 @166  
-SAY 0x2e4 @167  
-SAY 0x2e8 @168  
-SAY 0x2ec @169 
-SAY 0x2f0 @170  
-SAY 0x2f4 @171  
-SAY 0x2f8 @172  
-SAY 0x2fc @173  
-SAY 0x300 @174  
-SAY 0x304 @175  
-SAY 0x308 @176 
-SAY 0x30c @177  
-SAY 0x310 @178  
-SAY 0x314 @179  
-SAY 0x318 @180  
-SAY 0x31c @181  
-SAY 0x320 @182 
-SAY 0x324 @178  
-SAY 0x328 @183  
-SAY 0x32c @184  
-SAY 0x330 @185  
-SAY 0x334 @186  
-SAY 0x338 @187  
-SAY 0x33c @188  
-SAY 0x340 @189  
-SAY 0x344 @190  
-SAY 0x348 @191  
-SAY 0x34c @192  
-SAY 0x350 @193  
-SAY 0x354 @194  
-SAY 0x358 @195  
-SAY 0x35c @196  
-SAY 0x360 @197  
-SAY 0x364 @198  
-SAY 0x368 @199  
-SAY 0x36c @200  
-SAY 0x370 @201  
-SAY 0x374 @202 
-SAY 0x378 @203 
+COPY ~iwd2npc/%LANGUAGE%/chr/salomeya.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/salom03.chr~  ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/salom06.chr~  ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/salom09.chr~  ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/salom12.chr~  ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/salom15.chr~  ~characters~
+  SAY 0x2d0 @162
+  SAY 0x2d4 @163
+  SAY 0x2d8 @164
+  SAY 0x2dc @165
+  SAY 0x2e0 @166
+  SAY 0x2e4 @167
+  SAY 0x2e8 @168
+  SAY 0x2ec @169
+  SAY 0x2f0 @170
+  SAY 0x2f4 @171
+  SAY 0x2f8 @172
+  SAY 0x2fc @173
+  SAY 0x300 @174
+  SAY 0x304 @175
+  SAY 0x308 @176
+  SAY 0x30c @177
+  SAY 0x310 @178
+  SAY 0x314 @179
+  SAY 0x318 @180
+  SAY 0x31c @181
+  SAY 0x320 @182
+  SAY 0x324 @178
+  SAY 0x328 @183
+  SAY 0x32c @184
+  SAY 0x330 @185
+  SAY 0x334 @186
+  SAY 0x338 @187
+  SAY 0x33c @188
+  SAY 0x340 @189
+  SAY 0x344 @190
+  SAY 0x348 @191
+  SAY 0x34c @192
+  SAY 0x350 @193
+  SAY 0x354 @194
+  SAY 0x358 @195
+  SAY 0x35c @196
+  SAY 0x360 @197
+  SAY 0x364 @198
+  SAY 0x368 @199
+  SAY 0x36c @200
+  SAY 0x370 @201
+  SAY 0x374 @202
+  SAY 0x378 @203
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/PRACHI.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/PRACHI15.CHR~ ~Characters~
-SAY 0x2d0 @204  
-SAY 0x2d4 @205  
-SAY 0x2d8 @206  
-SAY 0x2dc @207  
-SAY 0x2e0 @208  
-SAY 0x2e4 @209  
-SAY 0x2e8 @210  
-SAY 0x2ec @211  
-SAY 0x2f0 @212  
-SAY 0x2f4 @213  
-SAY 0x2f8 @214  
-SAY 0x2fc @215 
-SAY 0x300 @216  
-SAY 0x304 @217 
-SAY 0x308 @218  
-SAY 0x30c @219  
-SAY 0x310 @220  
-SAY 0x314 @221  
-SAY 0x318 @222  
-SAY 0x31c @223  
-SAY 0x320 @224  
-SAY 0x324 @225  
-SAY 0x328 @226  
-SAY 0x32c @227  
-SAY 0x330 @228  
-SAY 0x334 @229  
-SAY 0x338 @230  
-SAY 0x33c @231  
-SAY 0x340 @232  
-SAY 0x344 @233  
-SAY 0x348 @234  
-SAY 0x34c @235  
-SAY 0x350 @236  
-SAY 0x354 @237  
-SAY 0x358 @238  
-SAY 0x35c @239  
-SAY 0x360 @240  
-SAY 0x364 @241  
-SAY 0x368 @242  
-SAY 0x36c @243  
-SAY 0x370 @244  
-SAY 0x374 @245  
-SAY 0x378 @246  
+COPY ~iwd2npc/%LANGUAGE%/chr/prachi.chr~   ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/prachi03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/prachi06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/prachi09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/prachi12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/prachi15.chr~ ~characters~
+  SAY 0x2d0 @204
+  SAY 0x2d4 @205
+  SAY 0x2d8 @206
+  SAY 0x2dc @207
+  SAY 0x2e0 @208
+  SAY 0x2e4 @209
+  SAY 0x2e8 @210
+  SAY 0x2ec @211
+  SAY 0x2f0 @212
+  SAY 0x2f4 @213
+  SAY 0x2f8 @214
+  SAY 0x2fc @215
+  SAY 0x300 @216
+  SAY 0x304 @217
+  SAY 0x308 @218
+  SAY 0x30c @219
+  SAY 0x310 @220
+  SAY 0x314 @221
+  SAY 0x318 @222
+  SAY 0x31c @223
+  SAY 0x320 @224
+  SAY 0x324 @225
+  SAY 0x328 @226
+  SAY 0x32c @227
+  SAY 0x330 @228
+  SAY 0x334 @229
+  SAY 0x338 @230
+  SAY 0x33c @231
+  SAY 0x340 @232
+  SAY 0x344 @233
+  SAY 0x348 @234
+  SAY 0x34c @235
+  SAY 0x350 @236
+  SAY 0x354 @237
+  SAY 0x358 @238
+  SAY 0x35c @239
+  SAY 0x360 @240
+  SAY 0x364 @241
+  SAY 0x368 @242
+  SAY 0x36c @243
+  SAY 0x370 @244
+  SAY 0x374 @245
+  SAY 0x378 @246
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/SIR_NORD.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/SIR_NO15.CHR~ ~Characters~
-SAY 0x2d0 @247  
-SAY 0x2d4 @248  
-SAY 0x2d8 @249  
-SAY 0x2dc @250  
-SAY 0x2e0 @251  
-SAY 0x2e4 @252  
-SAY 0x2e8 @253  
-SAY 0x2ec @254  
-SAY 0x2f0 @255  
-SAY 0x2f4 @256  
-SAY 0x2f8 @257  
-SAY 0x2fc @258  
-SAY 0x300 @259  
-SAY 0x304 @260  
-SAY 0x308 @261  
-SAY 0x30c @262  
-SAY 0x310 @263  
-SAY 0x314 @264 
-SAY 0x318 @265 
-SAY 0x31c @266 
-SAY 0x320 @267  
-SAY 0x324 @268  
-SAY 0x328 @269  
-SAY 0x32c @270  
-SAY 0x330 @271  
-SAY 0x334 @272  
-SAY 0x338 @273  
-SAY 0x33c @274  
-SAY 0x340 @275  
-SAY 0x344 @276  
-SAY 0x348 @277  
-SAY 0x34c @278  
-SAY 0x350 @279  
-SAY 0x354 @280  
-SAY 0x358 @281  
-SAY 0x35c @282  
-SAY 0x360 @283  
-SAY 0x364 @284  
-SAY 0x368 @285  
-SAY 0x36c @286  
-SAY 0x370 @287 
-SAY 0x374 @288  
-SAY 0x378 @289  
+COPY ~iwd2npc/%LANGUAGE%/chr/sir_nord.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/sir_no03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/sir_no06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/sir_no09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/sir_no12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/sir_no15.chr~ ~characters~
+  SAY 0x2d0 @247
+  SAY 0x2d4 @248
+  SAY 0x2d8 @249
+  SAY 0x2dc @250
+  SAY 0x2e0 @251
+  SAY 0x2e4 @252
+  SAY 0x2e8 @253
+  SAY 0x2ec @254
+  SAY 0x2f0 @255
+  SAY 0x2f4 @256
+  SAY 0x2f8 @257
+  SAY 0x2fc @258
+  SAY 0x300 @259
+  SAY 0x304 @260
+  SAY 0x308 @261
+  SAY 0x30c @262
+  SAY 0x310 @263
+  SAY 0x314 @264
+  SAY 0x318 @265
+  SAY 0x31c @266
+  SAY 0x320 @267
+  SAY 0x324 @268
+  SAY 0x328 @269
+  SAY 0x32c @270
+  SAY 0x330 @271
+  SAY 0x334 @272
+  SAY 0x338 @273
+  SAY 0x33c @274
+  SAY 0x340 @275
+  SAY 0x344 @276
+  SAY 0x348 @277
+  SAY 0x34c @278
+  SAY 0x350 @279
+  SAY 0x354 @280
+  SAY 0x358 @281
+  SAY 0x35c @282
+  SAY 0x360 @283
+  SAY 0x364 @284
+  SAY 0x368 @285
+  SAY 0x36c @286
+  SAY 0x370 @287
+  SAY 0x374 @288
+  SAY 0x378 @289
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH_B.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/NIKOSH15.CHR~ ~Characters~
-SAY 0x2d0 @290 
-SAY 0x2d4 @291 
-SAY 0x2d8 @292  
-SAY 0x2dc @293  
-SAY 0x2e0 @294  
-SAY 0x2e4 @295  
-SAY 0x2e8 @296  
-SAY 0x2ec @297  
-SAY 0x2f0 @298  
-SAY 0x2f4 @299  
-SAY 0x2f8 @300  
-SAY 0x2fc @301  
-SAY 0x300 @302  
-SAY 0x304 @303  
-SAY 0x308 @304  
-SAY 0x30c @305  
-SAY 0x310 @306  
-SAY 0x314 @307  
-SAY 0x318 @308  
-SAY 0x31c @309  
-SAY 0x320 @310  
-SAY 0x324 @311  
-SAY 0x328 @312  
-SAY 0x32c @313  
-SAY 0x330 @314  
-SAY 0x334 @315  
-SAY 0x338 @316  
-SAY 0x33c @317  
-SAY 0x340 @318  
-SAY 0x344 @319  
-SAY 0x348 @320  
-SAY 0x34c @321  
-SAY 0x350 @322  
-SAY 0x354 @323  
-SAY 0x358 @324  
-SAY 0x35c @325  
-SAY 0x360 @326  
-SAY 0x364 @327  
-SAY 0x368 @328  
-SAY 0x36c @329  
-SAY 0x370 @330  
-SAY 0x374 @331 
-SAY 0x378 @332 
+COPY ~iwd2npc/%LANGUAGE%/chr/nikosh_b.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/nikosh03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/nikosh06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/nikosh09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/nikosh12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/nikosh15.chr~ ~characters~
+  SAY 0x2d0 @290
+  SAY 0x2d4 @291
+  SAY 0x2d8 @292
+  SAY 0x2dc @293
+  SAY 0x2e0 @294
+  SAY 0x2e4 @295
+  SAY 0x2e8 @296
+  SAY 0x2ec @297
+  SAY 0x2f0 @298
+  SAY 0x2f4 @299
+  SAY 0x2f8 @300
+  SAY 0x2fc @301
+  SAY 0x300 @302
+  SAY 0x304 @303
+  SAY 0x308 @304
+  SAY 0x30c @305
+  SAY 0x310 @306
+  SAY 0x314 @307
+  SAY 0x318 @308
+  SAY 0x31c @309
+  SAY 0x320 @310
+  SAY 0x324 @311
+  SAY 0x328 @312
+  SAY 0x32c @313
+  SAY 0x330 @314
+  SAY 0x334 @315
+  SAY 0x338 @316
+  SAY 0x33c @317
+  SAY 0x340 @318
+  SAY 0x344 @319
+  SAY 0x348 @320
+  SAY 0x34c @321
+  SAY 0x350 @322
+  SAY 0x354 @323
+  SAY 0x358 @324
+  SAY 0x35c @325
+  SAY 0x360 @326
+  SAY 0x364 @327
+  SAY 0x368 @328
+  SAY 0x36c @329
+  SAY 0x370 @330
+  SAY 0x374 @331
+  SAY 0x378 @332
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/JAEMAL15.CHR~ ~Characters~
-SAY 0x2d0 @333  
-SAY 0x2d4 @334 
-SAY 0x2d8 @335  
-SAY 0x2dc @336  
-SAY 0x2e0 @337  
-SAY 0x2e4 @338  
-SAY 0x2e8 @339  
-SAY 0x2ec @340  
-SAY 0x2f0 @341  
-SAY 0x2f4 @342  
-SAY 0x2f8 @343  
-SAY 0x2fc @344  
-SAY 0x300 @345  
-SAY 0x304 @346  
-SAY 0x308 @347  
-SAY 0x30c @348  
-SAY 0x310 @349  
-SAY 0x314 @350 
-SAY 0x318 @351  
-SAY 0x31c @352  
-SAY 0x320 @94  
-SAY 0x324 @354  
-SAY 0x328 @355  
-SAY 0x32c @356  
-SAY 0x330 @357  
-SAY 0x334 @358  
-SAY 0x338 @359  
-SAY 0x33c @360  
-SAY 0x340 @361  
-SAY 0x344 @362  
-SAY 0x348 @363  
-SAY 0x34c @364 
-SAY 0x350 @365  
-SAY 0x354 @366  
-SAY 0x358 @367  
-SAY 0x35c @368  
-SAY 0x360 @369  
-SAY 0x364 @370  
-SAY 0x368 @371  
-SAY 0x36c @372  
-SAY 0x370 @373  
-SAY 0x374 @374  
-SAY 0x378 @375  
+COPY ~iwd2npc/%LANGUAGE%/chr/jaemal.chr~   ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/jaemal03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/jaemal06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/jaemal09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/jaemal12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/jaemal15.chr~ ~characters~
+  SAY 0x2d0 @333
+  SAY 0x2d4 @334
+  SAY 0x2d8 @335
+  SAY 0x2dc @336
+  SAY 0x2e0 @337
+  SAY 0x2e4 @338
+  SAY 0x2e8 @339
+  SAY 0x2ec @340
+  SAY 0x2f0 @341
+  SAY 0x2f4 @342
+  SAY 0x2f8 @343
+  SAY 0x2fc @344
+  SAY 0x300 @345
+  SAY 0x304 @346
+  SAY 0x308 @347
+  SAY 0x30c @348
+  SAY 0x310 @349
+  SAY 0x314 @350
+  SAY 0x318 @351
+  SAY 0x31c @352
+  SAY 0x320 @94
+  SAY 0x324 @354
+  SAY 0x328 @355
+  SAY 0x32c @356
+  SAY 0x330 @357
+  SAY 0x334 @358
+  SAY 0x338 @359
+  SAY 0x33c @360
+  SAY 0x340 @361
+  SAY 0x344 @362
+  SAY 0x348 @363
+  SAY 0x34c @364
+  SAY 0x350 @365
+  SAY 0x354 @366
+  SAY 0x358 @367
+  SAY 0x35c @368
+  SAY 0x360 @369
+  SAY 0x364 @370
+  SAY 0x368 @371
+  SAY 0x36c @372
+  SAY 0x370 @373
+  SAY 0x374 @374
+  SAY 0x378 @375
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/HILDURY.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/HILDUR15.CHR~ ~Characters~
-SAY 0x2d0 @376  
-SAY 0x2d4 @377  
-SAY 0x2d8 @378  
-SAY 0x2dc @379  
-SAY 0x2e0 @380  
-SAY 0x2e4 @381  
-SAY 0x2e8 @382  
-SAY 0x2ec @383 
-SAY 0x2f0 @384  
-SAY 0x2f4 @385  
-SAY 0x2f8 @386  
-SAY 0x2fc @387  
-SAY 0x300 @388  
-SAY 0x304 @389  
-SAY 0x308 @390  
-SAY 0x30c @391  
-SAY 0x310 @392  
-SAY 0x314 @393  
-SAY 0x318 @394  
-SAY 0x31c @395 
-SAY 0x320 @396  
-SAY 0x324 @397  
-SAY 0x328 @398  
-SAY 0x32c @399  
-SAY 0x330 @400  
-SAY 0x334 @401  
-SAY 0x338 @402  
-SAY 0x33c @403  
-SAY 0x340 @404  
-SAY 0x344 @405  
-SAY 0x348 @406  
-SAY 0x34c @407  
-SAY 0x350 @408  
-SAY 0x354 @409  
-SAY 0x358 @410  
-SAY 0x35c @411  
-SAY 0x360 @412  
-SAY 0x364 @413  
-SAY 0x368 @414 
-SAY 0x36c @415  
-SAY 0x370 @416  
-SAY 0x374 @417  
-SAY 0x378 @418  
+COPY ~iwd2npc/%LANGUAGE%/chr/hildury.chr~  ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/hildur03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/hildur06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/hildur09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/hildur12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/hildur15.chr~ ~characters~
+  SAY 0x2d0 @376
+  SAY 0x2d4 @377
+  SAY 0x2d8 @378
+  SAY 0x2dc @379
+  SAY 0x2e0 @380
+  SAY 0x2e4 @381
+  SAY 0x2e8 @382
+  SAY 0x2ec @383
+  SAY 0x2f0 @384
+  SAY 0x2f4 @385
+  SAY 0x2f8 @386
+  SAY 0x2fc @387
+  SAY 0x300 @388
+  SAY 0x304 @389
+  SAY 0x308 @390
+  SAY 0x30c @391
+  SAY 0x310 @392
+  SAY 0x314 @393
+  SAY 0x318 @394
+  SAY 0x31c @395
+  SAY 0x320 @396
+  SAY 0x324 @397
+  SAY 0x328 @398
+  SAY 0x32c @399
+  SAY 0x330 @400
+  SAY 0x334 @401
+  SAY 0x338 @402
+  SAY 0x33c @403
+  SAY 0x340 @404
+  SAY 0x344 @405
+  SAY 0x348 @406
+  SAY 0x34c @407
+  SAY 0x350 @408
+  SAY 0x354 @409
+  SAY 0x358 @410
+  SAY 0x35c @411
+  SAY 0x360 @412
+  SAY 0x364 @413
+  SAY 0x368 @414
+  SAY 0x36c @415
+  SAY 0x370 @416
+  SAY 0x374 @417
+  SAY 0x378 @418
 
-COPY ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL03.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL06.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL09.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL12.CHR~ ~Characters~
-     ~IWD2NPC/%LANGUAGE%/CHR/DIRIEL15.CHR~ ~Characters~
-SAY 0x2d0 @419 
-SAY 0x2d4 @420 
-SAY 0x2d8 @421 
-SAY 0x2dc @422 
-SAY 0x2e0 @423 
-SAY 0x2e4 @424 
-SAY 0x2e8 @425 
-SAY 0x2ec @426 
-SAY 0x2f0 @427 
-SAY 0x2f4 @428 
-SAY 0x2f8 @429 
-SAY 0x2fc @430 
-SAY 0x300 @431 
-SAY 0x304 @432 
-SAY 0x308 @433 
-SAY 0x30c @434 
-SAY 0x310 @435 
-SAY 0x314 @436 
-SAY 0x318 @437 
-SAY 0x31c @438 
-SAY 0x320 @439 
-SAY 0x324 @440 
-SAY 0x328 @441 
-SAY 0x32c @442 
-SAY 0x330 @443 
-SAY 0x334 @444 
-SAY 0x338 @445 
-SAY 0x33c @446 
-SAY 0x340 @447 
-SAY 0x344 @448 
-SAY 0x348 @449 
-SAY 0x34c @450 
-SAY 0x350 @451 
-SAY 0x354 @452 
-SAY 0x358 @453 
-SAY 0x35c @454 
-SAY 0x360 @455 
-SAY 0x364 @456 
-SAY 0x368 @457 
-SAY 0x36c @458 
-SAY 0x370 @459 
-SAY 0x374 @460 
-SAY 0x378 @461 
+COPY ~iwd2npc/%LANGUAGE%/chr/diriel.chr~   ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/diriel03.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/diriel06.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/diriel09.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/diriel12.chr~ ~characters~
+     ~iwd2npc/%LANGUAGE%/chr/diriel15.chr~ ~characters~
+  SAY 0x2d0 @419
+  SAY 0x2d4 @420
+  SAY 0x2d8 @421
+  SAY 0x2dc @422
+  SAY 0x2e0 @423
+  SAY 0x2e4 @424
+  SAY 0x2e8 @425
+  SAY 0x2ec @426
+  SAY 0x2f0 @427
+  SAY 0x2f4 @428
+  SAY 0x2f8 @429
+  SAY 0x2fc @430
+  SAY 0x300 @431
+  SAY 0x304 @432
+  SAY 0x308 @433
+  SAY 0x30c @434
+  SAY 0x310 @435
+  SAY 0x314 @436
+  SAY 0x318 @437
+  SAY 0x31c @438
+  SAY 0x320 @439
+  SAY 0x324 @440
+  SAY 0x328 @441
+  SAY 0x32c @442
+  SAY 0x330 @443
+  SAY 0x334 @444
+  SAY 0x338 @445
+  SAY 0x33c @446
+  SAY 0x340 @447
+  SAY 0x344 @448
+  SAY 0x348 @449
+  SAY 0x34c @450
+  SAY 0x350 @451
+  SAY 0x354 @452
+  SAY 0x358 @453
+  SAY 0x35c @454
+  SAY 0x360 @455
+  SAY 0x364 @456
+  SAY 0x368 @457
+  SAY 0x36c @458
+  SAY 0x370 @459
+  SAY 0x374 @460
+  SAY 0x378 @461
 
 //This copies Soundsets
 
-MKDIR ~Sounds/Diriel~
-MKDIR ~Sounds/Hildury~
-MKDIR ~Sounds/Jaemal~
-MKDIR ~Sounds/Nikosh~
-MKDIR ~Sounds/Sir_Nord~
-MKDIR ~Sounds/Salomeya~
-MKDIR ~Sounds/Peony~
-MKDIR ~Sounds/Prachi~
-MKDIR ~Sounds/Rizdaer~
-MKDIR ~Sounds/Valeero~
+MKDIR ~sounds/diriel~
+MKDIR ~sounds/hildury~
+MKDIR ~sounds/jaemal~
+MKDIR ~sounds/nikosh~
+MKDIR ~sounds/sir_nord~
+MKDIR ~sounds/salomeya~
+MKDIR ~sounds/peony~
+MKDIR ~sounds/prachi~
+MKDIR ~sounds/rizdaer~
+MKDIR ~sounds/valeero~
 
 //This is the Bigg's code for PIDs
 
-COMPILE ~IWD2NPC/d3/P#PID.d~
-EXTEND_TOP ~dplayer3.bcs~ ~IWD2NPC/d3/P#PID.baf~
+COMPILE ~iwd2npc/baf/p#pid.d~
+EXTEND_TOP ~dplayer3.bcs~ ~iwd2npc/d3/p#pid.baf~
 
 //This adds Nord's Company as a custom Party
 
 COPY ~party.ini~ ~party.ini~
-  APPEND_FILE ~IWD2NPC/%LANGUAGE%/party.txt~
+  APPEND_FILE ~iwd2npc/%LANGUAGE%/party.txt~
   SET "index" = (0 - 1)
   REPLACE_EVALUATE ~^\[Party \([0-9]+\)\]~ BEGIN
     SET "index" = ("%index%" + 1)
@@ -818,48 +821,73 @@ COPY ~party.ini~ ~party.ini~
 //Convert OGG to WAV
 LAF HANDLE_AUDIO END
 
-/*
-COPY_EXISTING ~IWD2NPC\party.txt~ ~override/IWD2NPCSounds.g3~
-PRINT @462
-*/
+// make these available as player soundsets
+COPY_EXISTING_REGEXP GLOB ~^diri0[0-4][0-9]a?\.wav$~ ~sounds/diriel~
+COPY_EXISTING_REGEXP GLOB ~^hild0[0-4][0-9]\.wav$~   ~sounds/hildury~
+COPY_EXISTING_REGEXP GLOB ~^jaem0[0-4][0-9]\.wav$~   ~sounds/jaemal~
+COPY_EXISTING_REGEXP GLOB ~^laof0[0-4][0-9]\.wav$~   ~sounds/nikosh~
+COPY_EXISTING_REGEXP GLOB ~^peon0[0-4][0-9]\.wav$~   ~sounds/peony~
+COPY_EXISTING_REGEXP GLOB ~^prac0[0-4][0-9]\.wav$~   ~sounds/prachi~
+COPY_EXISTING_REGEXP GLOB ~^rizd0[0-4][0-9]\.wav$~   ~sounds/rizdaer~
+COPY_EXISTING_REGEXP GLOB ~^salo0[0-4][0-9]\.wav$~   ~sounds/salomeya~
+COPY_EXISTING_REGEXP GLOB ~^nord0[0-4][0-9]\.wav$~   ~sounds/sir_nord~
+COPY_EXISTING_REGEXP GLOB ~^vale0[0-4][0-9]\.wav$~   ~sounds/valeero~
 
-// sounds
-COPY_EXISTING_REGEXP ~DIRI.*.wav~ ~Sounds/Diriel~
-COPY_EXISTING_REGEXP ~HILD.*.wav~ ~Sounds/Hildury~
-COPY_EXISTING_REGEXP ~JAEM.*.wav~ ~Sounds/Jaemal~
-COPY_EXISTING_REGEXP ~LAOF.*.wav~ ~Sounds/Nikosh~
-COPY_EXISTING_REGEXP ~PEON.*.wav~ ~Sounds/Peony~
-COPY_EXISTING_REGEXP ~PRAC.*.wav~ ~Sounds/Prachi~
-COPY_EXISTING_REGEXP ~RIZD.*.wav~ ~Sounds/Rizdaer~
-COPY_EXISTING_REGEXP ~SALO.*.wav~ ~Sounds/Salomeya~
-COPY_EXISTING_REGEXP ~NORD.*.wav~ ~Sounds/Sir_Nord~
-COPY_EXISTING_REGEXP ~VALE.*.wav~ ~Sounds/Valeero~
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// female gnome avatars                             \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
+/////                                                  \\\\\
+///// use female mage elf                              \\\\\
+/////                                                  \\\\\
 
 BEGIN @463 DESIGNATED 1
 SUBCOMPONENT @464
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_elf~
-COPY ~IWD2NPC/gnomeav/P#PEELF1.spl~ ~override/P#gnomea.spl~
-COPY ~IWD2NPC/%LANGUAGE%/CHR/EPEONY.CHR~ ~Characters/PEONY.CHR~
-     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY03.CHR~ ~Characters/PEONY03.CHR~
-     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY06.CHR~ ~Characters/PEONY06.CHR~
-     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY09.CHR~ ~Characters/PEONY09.CHR~
-     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY12.CHR~ ~Characters/PEONY12.CHR~
-     ~IWD2NPC/%LANGUAGE%/CHR/EPEONY15.CHR~ ~Characters/PEONY15.CHR~
+
+COPY ~iwd2npc/spl/p#peelf1.spl~            ~override/p#gnomea.spl~
+     ~iwd2npc/%language%/chr/epeony.chr~   ~characters/peony.chr~
+     ~iwd2npc/%language%/chr/epeony03.chr~ ~characters/peony03.chr~
+     ~iwd2npc/%language%/chr/epeony06.chr~ ~characters/peony06.chr~
+     ~iwd2npc/%language%/chr/epeony09.chr~ ~characters/peony09.chr~
+     ~iwd2npc/%language%/chr/epeony12.chr~ ~characters/peony12.chr~
+     ~iwd2npc/%language%/chr/epeony15.chr~ ~characters/peony15.chr~
+
+/////                                                  \\\\\
+///// use female thief halfling                        \\\\\
+/////                                                  \\\\\
 
 BEGIN @465 DESIGNATED 2
 SUBCOMPONENT @464
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_halfling~
-COPY ~IWD2NPC/gnomeav/P#PEELF2.spl~ ~override/P#gnomea.spl~
-EXTEND_TOP ~DPLAYER3.bcs~ ~IWD2NPC/baf/P#PEONYB.baf~
+
+COPY ~iwd2npc/spl/p#peelf2.spl~ ~override/p#gnomea.spl~
+EXTEND_TOP ~dplayer3.bcs~ ~iwd2npc/baf/p#peonyb.baf~
+
+/////                                                  \\\\\
+///// use male mage dwarf avatars                      \\\\\
+/////                                                  \\\\\
 
 BEGIN @466 DESIGNATED 3
 SUBCOMPONENT @464
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_male_dwarf~
-COPY ~IWD2NPC/gnomeav/P#PEELF3.spl~ ~override/P#gnomea.spl~
+
+COPY ~iwd2npc/spl/p#peelf3.spl~ ~override/p#gnomea.spl~
+
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////                                                  \\\\\
+///// use alternate nwn-style portraits for all npcs   \\\\\
+/////                                                  \\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
+/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 
 BEGIN @467 DESIGNATED 4
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
@@ -877,6 +905,7 @@ ACTION_DEFINE_ASSOCIATIVE_ARRAY cd_portraits BEGIN
   salo => salome
   vale => valeer
 END
+
 ACTION_FOR_EACH suffix IN l s BEGIN
   ACTION_PHP_EACH cd_portraits AS foo => bar BEGIN
     COPY ~iwd2npc/bmp/nwn_%foo%%suffix%.bmp~  ~portraits/%bar%%suffix%.bmp~   // actually used by the CHR
