@@ -5,4 +5,15 @@ THEN
   RESPONSE #100
     ActionOverride("peony",Polymorph(%av%))
 END
+
+IF
+  IsPlayerNumber("charbase",1)
+  Gender("charbase",FEMALE)
+  Race("charbase",GNOME)
+  ClassEx("charbase",MAGE_ALL)
+  !IsAnimationID("charbase",%av%) 
+THEN
+  RESPONSE #100
+    ActionOverride("charbase",Polymorph(%av%))
+END
     
