@@ -86,23 +86,27 @@ END
 
 COPY ~iwd2npc/spl~ ~override~
 
-COPY ~iwd2npc/itm/avrobeer.itm~ ~override~
-  SAY NAME1 @1
-  SAY NAME2 @1
-  SAY UNIDENTIFIED_DESC @2
-  SAY DESC @3
+COPY_EXISTING ~60clckir.itm~ ~override/60clckin.itm~
+  SAY NAME1 @24
+  SAY NAME2 @24
+  SAY UNIDENTIFIED_DESC @25
+  SAY DESC @26
+  WRITE_LONG 0x1e (THIS BAND `BIT6) // removes paladin flag
+  WRITE_BYTE 0x2f (THIS BAND `(BIT0 + BIT1 + BIT2)) // removes paladin of ilmater/helm/mystra flags
+                            
+APPEND ~tooltip.2da~ ~avamulbl 12089 -1 -1~ // add tooltip for bless via amulet
+COPY ~iwd2npc/itm/avamulbl.itm~ ~override~
+  SAY NAME1 @15
+  SAY NAME2 @15
+  SAY UNIDENTIFIED_DESC @16
+  SAY DESC @17
 
-COPY ~iwd2npc/itm/avringam.itm~ ~override~
-  SAY NAME1 @4
-  SAY NAME2 @4
-  SAY UNIDENTIFIED_DESC @5
-  SAY DESC @6
-
-COPY ~iwd2npc/itm/avhelmsc.itm~ ~override~
-  SAY NAME1 @7
-  SAY NAME2 @8
-  SAY UNIDENTIFIED_DESC @9
-  SAY DESC @10
+APPEND ~tooltip.2da~ ~avbracsd 12018 12031 -1~ // add tooltips for mirror image/mage armor via prachi's bracers
+COPY ~iwd2npc/itm/avbracsd.itm~ ~override~
+  SAY NAME1 @12
+  SAY NAME2 @12
+  SAY UNIDENTIFIED_DESC @13
+  SAY DESC @14
 
 COPY ~iwd2npc/itm/avhelms2.itm~ ~override~
   SAY NAME1 @7
@@ -110,17 +114,24 @@ COPY ~iwd2npc/itm/avhelms2.itm~ ~override~
   SAY UNIDENTIFIED_DESC @9
   SAY DESC @11
 
-COPY ~iwd2npc/itm/avbracsd.itm~ ~override~
-  SAY NAME1 @12
-  SAY NAME2 @12
-  SAY UNIDENTIFIED_DESC @13
-  SAY DESC @14
+APPEND ~tooltip.2da~ ~avhelmsc 21425 -1 -1~ // add tooltip for sunscroch via helm
+COPY ~iwd2npc/itm/avhelmsc.itm~ ~override~
+  SAY NAME1 @7
+  SAY NAME2 @8
+  SAY UNIDENTIFIED_DESC @9
+  SAY DESC @10
 
-COPY ~iwd2npc/itm/avamulbl.itm~ ~override~
-  SAY NAME1 @15
-  SAY NAME2 @15
-  SAY UNIDENTIFIED_DESC @16
-  SAY DESC @17
+COPY ~iwd2npc/itm/avringam.itm~ ~override~
+  SAY NAME1 @4
+  SAY NAME2 @4
+  SAY UNIDENTIFIED_DESC @5
+  SAY DESC @6  
+
+COPY ~iwd2npc/itm/avrobeer.itm~ ~override~
+  SAY NAME1 @1
+  SAY NAME2 @1
+  SAY UNIDENTIFIED_DESC @2
+  SAY DESC @3
 
 COPY ~iwd2npc/bam/ip#garro.bam~ ~override~
      ~iwd2npc/bam/cp#garro.bam~ ~override~
@@ -129,38 +140,33 @@ COPY ~iwd2npc/itm/avweapga.itm~ ~override~
   SAY NAME2 @18
   SAY DESC @19
 
+OUTER_SET garrotte_hit  = RESOLVE_STR_REF(@22)
+OUTER_SET garrotte_miss = RESOLVE_STR_REF(@23)
 COPY ~iwd2npc/itm/avweapg2.itm~ ~override~
-  SAY NAME1 @18
-  SAY NAME2 @18
-  SAY DESC @19
-  SAY 8 @20
-  SAY 12 @20
-  SAY 80 @21
-  SAY 334 @22
-  SAY 430 @23
+  SAY NAME1 @20
+  SAY NAME2 @20
+  SAY 0x50 @21
+  LPF ALTER_EFFECT INT_VAR check_globals = 0 match_opcode = 283 match_savingthrow = BIT3 parameter1 = garrotte_hit END
+  LPF ALTER_EFFECT INT_VAR check_globals = 0 match_opcode = 283 match_savingthrow = 0 parameter1 = garrotte_miss END
 
-COPY_EXISTING ~60clckir.itm~ ~override/60clckin.itm~
-  SAY NAME1 @24
-  SAY NAME2 @24
-  SAY UNIDENTIFIED_DESC @25
-  SAY DESC @26
-  WRITE_LONG 0x1e (THIS BAND `BIT6) // removes paladin flag
-  WRITE_BYTE 0x2f (THIS BAND `(BIT0 + BIT1 + BIT2)) // removes paladin of ilmater/helm/mystra flags
+COPY_EXISTING ~00ring19.itm~ ~override/p#ring01.itm~
+  SAY NAME1 @30
+  SAY NAME2 @30
+  SAY UNIDENTIFIED_DESC @5
+  SAY DESC @31
+  WRITE_LONG 0x18 (THIS BOR BIT0) // adds critical item flag
+  WRITE_ASCII 0x3a ~iring14~ #8   // update icon
+  WRITE_SHORT 0x42 0              // lore
 
+COPY ~iwd2npc/itm/p#rizbas.itm~ ~override~
+     ~iwd2npc/itm/p#rizham.itm~ ~override~
+
+APPEND ~tooltip.2da~ ~p#shsw01 15529 12025 -1~ // add tooltips for Melee, resist fear
 COPY ~iwd2npc/itm/p#shsw01.itm~ ~override~
   SAY NAME1 @27
   SAY NAME2 @27
   SAY UNIDENTIFIED_DESC @28
   SAY DESC @29
-
-COPY ~iwd2npc/itm/p#ring01.itm~ ~override~
-  SAY NAME1 @30
-  SAY NAME2 @30
-  SAY UNIDENTIFIED_DESC @5
-  SAY DESC @31
-
-COPY ~iwd2npc/itm/p#rizbas.itm~ ~override~
-     ~iwd2npc/itm/p#rizham.itm~ ~override~
 
 //This compiles D-files for Phase I
 
@@ -286,14 +292,28 @@ EXTEND_TOP ~ar1000.bcs~ ~iwd2npc/baf/p#ar1000.baf~
 
 //This copies over CHR and RES
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/res~ ~characters~
+<<<<<<<<./inline/iwd2npc/res.res
+%bio%
+>>>>>>>>
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/rizdae00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/rizdae03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/rizdae06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/rizdae09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/rizdae12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/rizdae15.chr~ ~characters~
+OUTER_SPRINT name @2008
+OUTER_SPRINT bio  @2018
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/rizdae00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/rizdae03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/rizdae06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/rizdae09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/rizdae12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/rizdae15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/rizdae00.chr~ ~characters~
+     ~iwd2npc/chr/rizdae03.chr~ ~characters~
+     ~iwd2npc/chr/rizdae06.chr~ ~characters~
+     ~iwd2npc/chr/rizdae09.chr~ ~characters~
+     ~iwd2npc/chr/rizdae12.chr~ ~characters~
+     ~iwd2npc/chr/rizdae15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @33
   SAY 0x2d4 @34
   SAY 0x2d8 @35
@@ -338,12 +358,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/rizdae00.chr~ ~characters~
   SAY 0x374 @74
   SAY 0x378 @75
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/valeer00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/valeer03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/valeer06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/valeer09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/valeer12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/valeer15.chr~ ~characters~
+OUTER_SPRINT name @2010
+OUTER_SPRINT bio  @2020
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/valeer00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/valeer03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/valeer06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/valeer09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/valeer12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/valeer15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/valeer00.chr~ ~characters~
+     ~iwd2npc/chr/valeer03.chr~ ~characters~
+     ~iwd2npc/chr/valeer06.chr~ ~characters~
+     ~iwd2npc/chr/valeer09.chr~ ~characters~
+     ~iwd2npc/chr/valeer12.chr~ ~characters~
+     ~iwd2npc/chr/valeer15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @76
   SAY 0x2d4 @77
   SAY 0x2d8 @78
@@ -388,12 +420,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/valeer00.chr~ ~characters~
   SAY 0x374 @117
   SAY 0x378 @118
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/peony00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/peony03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/peony06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/peony09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/peony12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/peony15.chr~ ~characters~
+OUTER_SPRINT name @2006
+OUTER_SPRINT bio  @2016
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/peony00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/peony03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/peony06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/peony09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/peony12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/peony15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/peony00.chr~ ~characters~
+     ~iwd2npc/chr/peony03.chr~ ~characters~
+     ~iwd2npc/chr/peony06.chr~ ~characters~
+     ~iwd2npc/chr/peony09.chr~ ~characters~
+     ~iwd2npc/chr/peony12.chr~ ~characters~
+     ~iwd2npc/chr/peony15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @119
   SAY 0x2d4 @120
   SAY 0x2d8 @121
@@ -438,12 +482,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/peony00.chr~ ~characters~
   SAY 0x374 @160
   SAY 0x378 @161
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/salom00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom15.chr~ ~characters~
+OUTER_SPRINT name @2009
+OUTER_SPRINT bio  @2019
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/salom00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/salom03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/salom06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/salom09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/salom12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/salom15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/salom00.chr~ ~characters~
+     ~iwd2npc/chr/salom03.chr~ ~characters~
+     ~iwd2npc/chr/salom06.chr~ ~characters~
+     ~iwd2npc/chr/salom09.chr~ ~characters~
+     ~iwd2npc/chr/salom12.chr~ ~characters~
+     ~iwd2npc/chr/salom15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @162
   SAY 0x2d4 @163
   SAY 0x2d8 @164
@@ -488,12 +544,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/salom00.chr~ ~characters~
   SAY 0x374 @202
   SAY 0x378 @203
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/prachi00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/prachi03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/prachi06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/prachi09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/prachi12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/prachi15.chr~ ~characters~
+OUTER_SPRINT name @2007
+OUTER_SPRINT bio  @2017
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/prachi00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/prachi03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/prachi06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/prachi09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/prachi12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/prachi15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/prachi00.chr~ ~characters~
+     ~iwd2npc/chr/prachi03.chr~ ~characters~
+     ~iwd2npc/chr/prachi06.chr~ ~characters~
+     ~iwd2npc/chr/prachi09.chr~ ~characters~
+     ~iwd2npc/chr/prachi12.chr~ ~characters~
+     ~iwd2npc/chr/prachi15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @204
   SAY 0x2d4 @205
   SAY 0x2d8 @206
@@ -538,12 +606,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/prachi00.chr~ ~characters~
   SAY 0x374 @245
   SAY 0x378 @246
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/sir_no00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/sir_no03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/sir_no06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/sir_no09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/sir_no12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/sir_no15.chr~ ~characters~
+OUTER_SPRINT name @32
+OUTER_SPRINT bio  @2011
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/sir_no00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/sir_no03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/sir_no06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/sir_no09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/sir_no12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/sir_no15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/sir_no00.chr~ ~characters~
+     ~iwd2npc/chr/sir_no03.chr~ ~characters~
+     ~iwd2npc/chr/sir_no06.chr~ ~characters~
+     ~iwd2npc/chr/sir_no09.chr~ ~characters~
+     ~iwd2npc/chr/sir_no12.chr~ ~characters~
+     ~iwd2npc/chr/sir_no15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @247
   SAY 0x2d4 @248
   SAY 0x2d8 @249
@@ -588,12 +668,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/sir_no00.chr~ ~characters~
   SAY 0x374 @288
   SAY 0x378 @289
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/nikosh00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/nikosh03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/nikosh06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/nikosh09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/nikosh12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/nikosh15.chr~ ~characters~
+OUTER_SPRINT name @2005
+OUTER_SPRINT bio  @2015
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/nikosh00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/nikosh03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/nikosh06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/nikosh09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/nikosh12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/nikosh15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/nikosh00.chr~ ~characters~
+     ~iwd2npc/chr/nikosh03.chr~ ~characters~
+     ~iwd2npc/chr/nikosh06.chr~ ~characters~
+     ~iwd2npc/chr/nikosh09.chr~ ~characters~
+     ~iwd2npc/chr/nikosh12.chr~ ~characters~
+     ~iwd2npc/chr/nikosh15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @290
   SAY 0x2d4 @291
   SAY 0x2d8 @292
@@ -638,12 +730,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/nikosh00.chr~ ~characters~
   SAY 0x374 @331
   SAY 0x378 @332
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/jaemal00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/jaemal03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/jaemal06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/jaemal09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/jaemal12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/jaemal15.chr~ ~characters~
+OUTER_SPRINT name @2004
+OUTER_SPRINT bio  @2014
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/jaemal00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/jaemal03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/jaemal06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/jaemal09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/jaemal12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/jaemal15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/jaemal00.chr~ ~characters~
+     ~iwd2npc/chr/jaemal03.chr~ ~characters~
+     ~iwd2npc/chr/jaemal06.chr~ ~characters~
+     ~iwd2npc/chr/jaemal09.chr~ ~characters~
+     ~iwd2npc/chr/jaemal12.chr~ ~characters~
+     ~iwd2npc/chr/jaemal15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @333
   SAY 0x2d4 @334
   SAY 0x2d8 @335
@@ -688,12 +792,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/jaemal00.chr~ ~characters~
   SAY 0x374 @374
   SAY 0x378 @375
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/hildur00.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/hildur03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/hildur06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/hildur09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/hildur12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/hildur15.chr~ ~characters~
+OUTER_SPRINT name @2003
+OUTER_SPRINT bio  @2013
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/hildur00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/hildur03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/hildur06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/hildur09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/hildur12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/hildur15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/hildur00.chr~ ~characters~
+     ~iwd2npc/chr/hildur03.chr~ ~characters~
+     ~iwd2npc/chr/hildur06.chr~ ~characters~
+     ~iwd2npc/chr/hildur09.chr~ ~characters~
+     ~iwd2npc/chr/hildur12.chr~ ~characters~
+     ~iwd2npc/chr/hildur15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @376
   SAY 0x2d4 @377
   SAY 0x2d8 @378
@@ -738,12 +854,24 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/hildur00.chr~ ~characters~
   SAY 0x374 @417
   SAY 0x378 @418
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/diriel00.chr~   ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/diriel03.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/diriel06.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/diriel09.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/diriel12.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/diriel15.chr~ ~characters~
+OUTER_SPRINT name @2002
+OUTER_SPRINT bio  @2012
+
+COPY ~./inline/iwd2npc/res.res~ ~characters/diriel00.res~ // create res file
+     ~./inline/iwd2npc/res.res~ ~characters/diriel03.res~
+     ~./inline/iwd2npc/res.res~ ~characters/diriel06.res~
+     ~./inline/iwd2npc/res.res~ ~characters/diriel09.res~
+     ~./inline/iwd2npc/res.res~ ~characters/diriel12.res~
+     ~./inline/iwd2npc/res.res~ ~characters/diriel15.res~ 
+  EVALUATE_BUFFER
+  
+COPY ~iwd2npc/chr/diriel00.chr~ ~characters~
+     ~iwd2npc/chr/diriel03.chr~ ~characters~
+     ~iwd2npc/chr/diriel06.chr~ ~characters~
+     ~iwd2npc/chr/diriel09.chr~ ~characters~
+     ~iwd2npc/chr/diriel12.chr~ ~characters~
+     ~iwd2npc/chr/diriel15.chr~ ~characters~
+  WRITE_ASCIIE 0x08 ~%name%~ #32
   SAY 0x2d0 @419
   SAY 0x2d4 @420
   SAY 0x2d8 @421
