@@ -10,10 +10,10 @@ Descr5=Jaemal (Neutral Good, Male, Aasimar, Sorcerer): STR: 14, DEX: 14, CON: 12
 Descr6=Salomeya (Chaotic Evil, Female, Half-elf, Bard): STR: 10, DEX: 14, CON: 10, INT: 14, WIS: 12, CHA: 16, Skills: Alchemy (7), Bluff (7), Concentration (4), Diplomacy (5), Hide (2), Intimidate (3), Move Silently (2), Pick Pocket (4), Search (3), Use Magic Device (5), Wilderness Lore (1) Feats: Armour (2), Combat Casting.
 Descr7=Nikosh Bracegirdle (True Neutral, Male, Lightfoot Halfling, Rogue): STR: 12, DEX: 16, CON: 12, INT: 16, WIS: 11, CHA: 12, Skills: Bluff (1), Concentration (1), Disable Device (7), Hide (5), Knowledge Arcana (5), Move Silently (11), Open Lock (7), Search (7), Use Magic Device (3) Feats: Armour (1), Rapid Shot.
 Descr8=Sir Nord by all appearances is a commoner who made it up in the ranks of the Order. Crude but efficient, rough but fair, the man is liked by an astonishing number of people and hated by just as many.  He is accompanied by his loyal squire, Hildury the Half-Orc that he saved on a battle field and converted. Or, more accurately, she converted herself. In Sir Nord Hildury sees the ideal of goodness and righteousness. Her only goal in life is to serve her knight and pay for the horrible deeds she’d committed in the past. Jaemal is a Mulhorandi sorcerer with a touch of divine blood. Either that, or some inner conflict gives him a troubling, bitter aura. He speaks little of his past, but one could gather that he is an escaped slave. Salomeya Orsini, the bard extraordinaire, on the other hand, is ready to talk for hours on end about her past adventures, romantic and otherwise. She originates from Turmish or Calimshan, depending on the hour of the day and the particular story, but always from the aristocratic circles. Nikosh, the Chessentian antique dealer that had fallen on the hard times was probably hired for his expertise with lock-picking and trap finding rather than his knowledge of the ancient artifacts. Why he is so skilled in those areas is anyone’s guess. The last one to join the company, Diriel, is an elven druid. He is mostly keeping to himself, though it is not inconceivable, that after a while his companions will learn if there are dark secrets lurking behind his cold silence, or he is just haughty. Or both.
-Char1 = SIR_NORD
-Char2 = HILDURY
-Char3 = DIRIEL
-Char4 = JAEMAL
-Char5 = SALOMEYA 
-Char6 = NIKOSH_B
+Char1 = SIR_NO00
+Char2 = HILDUR00
+Char3 = DIRIEL00
+Char4 = JAEMAL00
+Char5 = SALOM00 
+Char6 = NIKOSH00
 
