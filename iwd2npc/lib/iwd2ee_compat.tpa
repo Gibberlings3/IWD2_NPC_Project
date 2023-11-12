@@ -1,0 +1,38 @@
+INCLUDE ~iwd2ee/components/iwd2ee_functions.tpa~ // borrow some functions
+  
+ACTION_FOR_EACH char IN diriel epeony hildur jaemal nikosh peony prachi rizdae salom sir_no valeer BEGIN
+
+  ACTION_FOR_EACH suffix IN 00 03 06 09 12 15 BEGIN
+  
+    COPY ~characters/%char%%suffix%.chr~ ~characters~
+      WRITE_LONG 0x3bc 0 // these flags are actually used in iwd2ee, clear 'em
+      WRITE_LONG 0x3c4 0 // these flags are actually used in iwd2ee, clear 'em
+      WRITE_LONG 0x3c8 0 // these flags are actually used in iwd2ee, clear 'em
+        
+  END
+
+END  
+
+ACTION_IF MOD_IS_INSTALLED ~iwd2ee.tp2~ ~84~ BEGIN // Revise racial level adjustment/ECL
+  
+  ACTION_FOR_EACH char IN jaemal rizdae BEGIN
+
+    COPY ~characters/%char%00.chr~ ~characters~
+      WRITE_LONG 0x23c 0
+
+    COPY ~characters/%char%03.chr~ ~characters~
+      WRITE_LONG 0x23c 3000
+
+    COPY ~characters/%char%06.chr~ ~characters~
+      WRITE_LONG 0x23c 15000
+
+    COPY ~characters/%char%09.chr~ ~characters~
+      WRITE_LONG 0x23c 36000
+
+    COPY ~characters/%char%12.chr~ ~characters~
+      WRITE_LONG 0x23c 66000
+
+    COPY ~characters/%char%15.chr~ ~characters~
+      WRITE_LONG 0x23c 105000
+
+END
