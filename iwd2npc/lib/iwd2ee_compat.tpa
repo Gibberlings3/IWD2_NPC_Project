@@ -1,6 +1,7 @@
-INCLUDE ~iwd2ee/components/iwd2ee_functions.tpa~ // borrow some functions
-  
-ACTION_FOR_EACH char IN diriel epeony hildur jaemal nikosh peony prachi rizdae salom sir_no valeer BEGIN
+// sir nord's p#nord creature file needs several updates to be fully integrated, but not bothering since he appears for two seconds to deliver a dialogue and then leaves forever
+
+// update all of the CHR files
+ACTION_FOR_EACH char IN diriel hildur jaemal nikosh peony prachi rizdae salom sir_no valeer BEGIN
 
   ACTION_FOR_EACH suffix IN 00 03 06 09 12 15 BEGIN
   
@@ -12,6 +13,39 @@ ACTION_FOR_EACH char IN diriel epeony hildur jaemal nikosh peony prachi rizdae s
   END
 
 END  
+
+ACTION_IF MOD_IS_INSTALLED ~iwd2ee.tp2~ ~0~ BEGIN // class revisions
+
+  OUTER_SET splstate_ME_ITEM_TYPE_EQUIPPED    = IDS_OF_SYMBOL (~splstate~ ~ME_ITEM_TYPE_EQUIPPED~)
+
+  // melee generic changes
+  COPY_EXISTING ~p#shsw01.itm~ ~override~ // Fierce Short Sword
+    READ_SHORT 0x1c item_type
+    READ_LONG  0x64 abil_off
+    SET 288_save = (BIT18 + BIT19 + BIT21)                
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 287 target = 1 timing = 2 STR_VAR resource = USNONSNA END
+    LPF ADD_ITEM_EQEFFECT INT_VAR opcode = 288 target = 1 parameter1 = item_type parameter2 = splstate_ME_ITEM_TYPE_EQUIPPED timing = 2 savingthrow = 288_save special = 5 STR_VAR resource = USEQTYPE END
+    LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 500 target = 2 special = 1 STR_VAR resource = MEONHIT END
+    LPF ADD_ITEM_EFFECT INT_VAR type = 1 opcode = 500 target = 2 parameter1 = 0x00010600 parameter2 = BIT20 savingthrow = (BIT14 + BIT19 + BIT23 + BIT24) STR_VAR resource = EXDAMAGE END
+    
+END
+
+ACTION_IF MOD_IS_INSTALLED ~iwd2ee.tp2~ ~4~ BEGIN // Revise racial level adjustment/ECL
+  
+  OUTER_SPRINT helm_match   @2000
+  OUTER_SPRINT helm_replace @2001
+  
+  // item revisions adds generic +1 armor to helmets 
+  COPY_EXISTING ~avhelmsc.itm~ ~override~
+                ~avhelms2.itm~ ~override~
+    LPF ADD_ITEM_EQEFFECT INT_VAR target = 1 parameter1 = 1 timing = 2 END // add armor bonus
+    READ_STRREF 0x54 desc                                                  // update description
+    INNER_PATCH_SAVE desc ~%desc%~ BEGIN
+      REPLACE_TEXTUALLY ~%helm_match%~ ~%helm_replace%~
+    END
+    SAY_EVALUATED 0x54 ~%desc%~
+
+END
 
 ACTION_IF MOD_IS_INSTALLED ~iwd2ee.tp2~ ~84~ BEGIN // Revise racial level adjustment/ECL
   
@@ -35,4 +69,6 @@ ACTION_IF MOD_IS_INSTALLED ~iwd2ee.tp2~ ~84~ BEGIN // Revise racial level adjust
     COPY ~characters/%char%15.chr~ ~characters~
       WRITE_LONG 0x23c 105000
 
+  END
+  
 END
