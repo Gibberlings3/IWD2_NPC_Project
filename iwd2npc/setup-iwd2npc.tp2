@@ -230,10 +230,6 @@ COMPILE ~iwd2npc/baf/p#hildr5.baf~
 COMPILE ~iwd2npc/baf/p#hildr6.baf~
 COMPILE ~iwd2npc/baf/p#hildr7.baf~
 
-COMPILE ~iwd2npc/baf/p#peonav.baf~
-COMPILE ~iwd2npc/baf/p#gnfmav.baf~
-
-EXTEND_TOP ~dplayer3.bcs~ ~iwd2npc/baf/p#peonya.baf~
 EXTEND_TOP ~dplayer3.bcs~ ~iwd2npc/baf/p#hildur.baf~
 
 EXTEND_BOTTOM ~dplayer3.bcs~ ~iwd2npc/baf/p#conflicts.baf~
@@ -290,7 +286,7 @@ EXTEND_TOP ~ar1000.bcs~ ~iwd2npc/baf/p#ar1000.baf~
 
 COPY ~iwd2npc/languages/%LANGUAGE%/chr/res~ ~characters~
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/rizdaer.chr~  ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/rizdae00.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/rizdae03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/rizdae06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/rizdae09.chr~ ~characters~
@@ -340,7 +336,7 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/rizdaer.chr~  ~characters~
   SAY 0x374 @74
   SAY 0x378 @75
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/valeero.chr~  ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/valeer00.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/valeer03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/valeer06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/valeer09.chr~ ~characters~
@@ -390,7 +386,7 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/valeero.chr~  ~characters~
   SAY 0x374 @117
   SAY 0x378 @118
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/peony.chr~   ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/peony00.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/peony03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/peony06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/peony09.chr~ ~characters~
@@ -440,12 +436,12 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/peony.chr~   ~characters~
   SAY 0x374 @160
   SAY 0x378 @161
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/salomeya.chr~ ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom03.chr~  ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom06.chr~  ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom09.chr~  ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom12.chr~  ~characters~
-     ~iwd2npc/languages/%LANGUAGE%/chr/salom15.chr~  ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/salom00.chr~ ~characters~
+     ~iwd2npc/languages/%LANGUAGE%/chr/salom03.chr~ ~characters~
+     ~iwd2npc/languages/%LANGUAGE%/chr/salom06.chr~ ~characters~
+     ~iwd2npc/languages/%LANGUAGE%/chr/salom09.chr~ ~characters~
+     ~iwd2npc/languages/%LANGUAGE%/chr/salom12.chr~ ~characters~
+     ~iwd2npc/languages/%LANGUAGE%/chr/salom15.chr~ ~characters~
   SAY 0x2d0 @162
   SAY 0x2d4 @163
   SAY 0x2d8 @164
@@ -490,7 +486,7 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/salomeya.chr~ ~characters~
   SAY 0x374 @202
   SAY 0x378 @203
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/prachi.chr~   ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/prachi00.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/prachi03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/prachi06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/prachi09.chr~ ~characters~
@@ -540,7 +536,7 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/prachi.chr~   ~characters~
   SAY 0x374 @245
   SAY 0x378 @246
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/sir_nord.chr~ ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/sir_no00.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/sir_no03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/sir_no06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/sir_no09.chr~ ~characters~
@@ -590,7 +586,7 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/sir_nord.chr~ ~characters~
   SAY 0x374 @288
   SAY 0x378 @289
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/nikosh_b.chr~ ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/nikosh00.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/nikosh03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/nikosh06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/nikosh09.chr~ ~characters~
@@ -640,7 +636,7 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/nikosh_b.chr~ ~characters~
   SAY 0x374 @331
   SAY 0x378 @332
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/jaemal.chr~   ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/jaemal00.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/jaemal03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/jaemal06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/jaemal09.chr~ ~characters~
@@ -690,7 +686,7 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/jaemal.chr~   ~characters~
   SAY 0x374 @374
   SAY 0x378 @375
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/hildury.chr~  ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/hildur00.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/hildur03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/hildur06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/hildur09.chr~ ~characters~
@@ -740,7 +736,7 @@ COPY ~iwd2npc/languages/%LANGUAGE%/chr/hildury.chr~  ~characters~
   SAY 0x374 @417
   SAY 0x378 @418
 
-COPY ~iwd2npc/languages/%LANGUAGE%/chr/diriel.chr~   ~characters~
+COPY ~iwd2npc/languages/%LANGUAGE%/chr/diriel00.chr~   ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/diriel03.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/diriel06.chr~ ~characters~
      ~iwd2npc/languages/%LANGUAGE%/chr/diriel09.chr~ ~characters~
@@ -850,13 +846,8 @@ SUBCOMPONENT @464
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_elf~
 
-COPY ~iwd2npc/spl/p#peelf1.spl~            ~override/p#gnomea.spl~
-     ~iwd2npc/languages/%LANGUAGE%/chr/epeony.chr~   ~characters/peony.chr~
-     ~iwd2npc/languages/%LANGUAGE%/chr/epeony03.chr~ ~characters/peony03.chr~
-     ~iwd2npc/languages/%LANGUAGE%/chr/epeony06.chr~ ~characters/peony06.chr~
-     ~iwd2npc/languages/%LANGUAGE%/chr/epeony09.chr~ ~characters/peony09.chr~
-     ~iwd2npc/languages/%LANGUAGE%/chr/epeony12.chr~ ~characters/peony12.chr~
-     ~iwd2npc/languages/%LANGUAGE%/chr/epeony15.chr~ ~characters/peony15.chr~
+OUTER_SET av = 25105 // mage_female_elf
+INCLUDE ~iwd2npc/lib/peony.tpa~
 
 /////                                                  \\\\\
 ///// use female thief halfling                        \\\\\
@@ -867,8 +858,8 @@ SUBCOMPONENT @464
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_halfling~
 
-COPY ~iwd2npc/spl/p#peelf2.spl~ ~override/p#gnomea.spl~
-EXTEND_TOP ~dplayer3.bcs~ ~iwd2npc/baf/p#peonyb.baf~
+OUTER_SET av = 25363 // thief_female_halfling
+INCLUDE ~iwd2npc/lib/peony.tpa~
 
 /////                                                  \\\\\
 ///// use male mage dwarf avatars                      \\\\\
@@ -879,7 +870,8 @@ SUBCOMPONENT @464
 REQUIRE_PREDICATE MOD_IS_INSTALLED ~iwd2npc/setup-iwd2npc.tp2~ ~0~ @469 // requires main component
 LABEL ~p#_iwd2_npc_female_gnome_avatar_male_dwarf~
 
-COPY ~iwd2npc/spl/p#peelf3.spl~ ~override/p#gnomea.spl~
+OUTER_SET av = 25108 // mage_female_gnome
+INCLUDE ~iwd2npc/lib/peony.tpa~
 
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\
 /////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\/////\\\\\

@@ -1,0 +1,9 @@
+COPY ~characters/peony00.chr~   ~characters/peony00.chr~
+     ~characters/peony03.chr~   ~characters/peony03.chr~
+     ~characters/peony06.chr~   ~characters/peony06.chr~
+     ~characters/peony09.chr~   ~characters/peony09.chr~
+     ~characters/peony12.chr~   ~characters/peony12.chr~
+     ~characters/peony15.chr~   ~characters/peony15.chr~
+  WRITE_LONG 0x24c av
+  
+EXTEND_TOP ~dplayer3.bcs~ ~iwd2npc/baf/cdpeony.baf~ EVALUATE_BUFFER

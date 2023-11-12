@@ -1,0 +1,8 @@
+IF
+  !IsAnimationID("peony",%av%) 
+  CheckStat("peony",0,POLYMORPHED)
+THEN
+  RESPONSE #100
+    ActionOverride("peony",Polymorph(%av%))
+END
+    
