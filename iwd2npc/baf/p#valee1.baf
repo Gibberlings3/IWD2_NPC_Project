@@ -1101,7 +1101,7 @@ SetGlobalTimer("P#ValeeroTimer","GLOBAL",3600)
 IncrementGlobal("P#VARI3","GLOBAL",1)
 SetMusic(9,0)
 PlaySound("salo000")
-ActionOverride("vale",StartDialogueNoSet("rizdaer"))
+ActionOverride("valeero",StartDialogueNoSet("rizdaer"))
 END
 
 //Talks with Player 1, charbase is the script name for joinables//

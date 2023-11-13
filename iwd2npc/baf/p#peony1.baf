@@ -781,7 +781,7 @@ IF
 InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
 !AnyPCSeesEnemy()
 Global("P#MandalStoryTold","GLOBAL",1)
-!See("61Mandal",0)
+!See("Mandal",0)
 Global("Chapter","GLOBAL",5)
 CurrentAreaIs("Peony",6102)
 Global("P#PeonyMandal","GLOBAL",0)
@@ -878,7 +878,7 @@ IF
 InParty("Peony") !Dead("Peony") !StateCheck("Peony",STATE_SLEEPING)
 Global("Chapter","GLOBAL",2)
 CurrentAreaIs("Peony",4101)
-See("41ITroIce",0)
+See("41TroIce",0)
 Global("P#PeonyITrolls","GLOBAL",0)
 IsPlayerNumber("charbase",1)
 THEN

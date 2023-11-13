@@ -430,7 +430,7 @@ InParty("Nikosh") !Dead("Nikosh") !StateCheck("Nikosh",STATE_SLEEPING) !AnyPCSee
 !AnyPCSeesEnemy()
 Global("Chapter","GLOBAL",1)
 CurrentAreaIs("nikosh",2100)
-See("210gr",1)
+See("21Ogr",1)
 Global("P#NikoshHarpies","GLOBAL",0)
 InParty("Salomeya")
 !Dead("Salomeya")

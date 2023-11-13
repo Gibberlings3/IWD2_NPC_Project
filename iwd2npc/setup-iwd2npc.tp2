@@ -205,9 +205,10 @@ COMPILE ~iwd2npc/d2/p#chapter.d~
 
 //This compiles Cutscenes
 
+EXTEND_TOP ~60dirieq.bcs~ ~iwd2npc/baf/60dirieq.baf~
+EXTEND_TOP ~40diriel.bcs~ ~iwd2npc/baf/40diriel.baf~
+
 COMPILE ~iwd2npc/baf/p#salom.baf~
-COMPILE ~iwd2npc/baf/60dirieq.baf~
-COMPILE ~iwd2npc/baf/40diriel.baf~
 COMPILE ~iwd2npc/baf/p#hilduq.baf~
 COMPILE ~iwd2npc/baf/p#jaemaq.baf~
 COMPILE ~iwd2npc/baf/p#nikosq.baf~
@@ -218,17 +219,17 @@ COMPILE ~iwd2npc/baf/p#salomq.baf~
 COMPILE ~iwd2npc/baf/p#rizdaq.baf~
 COMPILE ~iwd2npc/baf/p#valeeq.baf~
 
-COMPILE ~iwd2npc/baf/67jaero1.baf~
-COMPILE ~iwd2npc/baf/67jaero2.baf~
-COMPILE ~iwd2npc/baf/67jaero3.baf~
+EXTEND_TOP ~67jaero1.bcs~ ~iwd2npc/baf/67jaero1.baf~
+EXTEND_TOP ~67jaero2.bcs~ ~iwd2npc/baf/67jaero2.baf~
+EXTEND_TOP ~67jaero3.bcs~ ~iwd2npc/baf/67jaero3.baf~
 
-COMPILE ~iwd2npc/baf/60dirir1.baf~
-COMPILE ~iwd2npc/baf/60dirir2.baf~
-COMPILE ~iwd2npc/baf/60dirir3.baf~
+EXTEND_TOP ~60dirir1.bcs~ ~iwd2npc/baf/60dirir1.baf~
+EXTEND_TOP ~60dirir2.bcs~ ~iwd2npc/baf/60dirir2.baf~
+EXTEND_TOP ~60dirir3.bcs~ ~iwd2npc/baf/60dirir3.baf~
 
-COMPILE ~iwd2npc/baf/70epilo1.baf~
-COMPILE ~iwd2npc/baf/70cutlua.baf~
-COMPILE ~iwd2npc/baf/70cunhid.baf~
+EXTEND_TOP ~70epilo1.bcs~ ~iwd2npc/baf/70epilo1.baf~
+EXTEND_TOP ~70cutlua.bcs~ ~iwd2npc/baf/70cutlua.baf~
+EXTEND_TOP ~70cunhid.bcs~ ~iwd2npc/baf/70cunhid.baf~
 
 COMPILE ~iwd2npc/baf/p#hildr1.baf~
 COMPILE ~iwd2npc/baf/p#hildr2.baf~
@@ -944,7 +945,6 @@ COPY ~party.ini~ ~party.ini~
   END
   ~[Party %index%]~
 
-/* temp commented out to speed up testing
 //Convert OGG to WAV
 LAF HANDLE_AUDIO END
 
@@ -959,7 +959,6 @@ COPY_EXISTING_REGEXP GLOB ~^rizd0[0-4][0-9]\.wav$~   ~sounds/rizdaer~
 COPY_EXISTING_REGEXP GLOB ~^salo0[0-4][0-9]\.wav$~   ~sounds/salomeya~
 COPY_EXISTING_REGEXP GLOB ~^nord0[0-4][0-9]\.wav$~   ~sounds/sir_nord~
 COPY_EXISTING_REGEXP GLOB ~^vale0[0-4][0-9]\.wav$~   ~sounds/valeero~
-*/
 
 // iwd2ee compat
 ACTION_IF FILE_EXISTS_IN_GAME ~usInitialModifications.txt~ BEGIN // modifications from the ALWAYS block

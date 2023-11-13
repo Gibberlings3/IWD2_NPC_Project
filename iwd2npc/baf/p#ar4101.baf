@@ -25,7 +25,7 @@ END
 IF
 InParty("peony")
 Global("Chapter","GLOBAL",2)
-See("41ITroIce",0)
+See("41TroIce",0)
 Global("P#PeonyITrolls","GLOBAL",0)
 IsPlayerNumber("charbase",1)
 THEN
