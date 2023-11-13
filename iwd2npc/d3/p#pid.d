@@ -1,4 +1,4 @@
-BEGIN MULTIG
+//BEGIN MULTIG
 APPEND MULTIG
 
 IF ~Global("P#EpilogueReady","GLOBAL",2)~ THEN BEGIN P#Epilogue

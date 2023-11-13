@@ -170,6 +170,8 @@ COPY ~iwd2npc/itm/p#shsw01.itm~ ~override~
 
 //This compiles D-files for Phase I
 
+ACTION_IF !FILE_EXISTS_IN_GAME ~multig.dlg~ BEGIN COMPILE ~iwd2npc/d/multig.d~ END // create multig in case it doesn't exist
+
 COMPILE ~iwd2npc/d/p#dirib.d~
 COMPILE ~iwd2npc/d/p#pracb.d~
 COMPILE ~iwd2npc/d/p#hildb.d~
